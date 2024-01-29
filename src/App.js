@@ -15,6 +15,7 @@ import ContactUsPage from "./pages/ContactUsPage";
 import LoginPage from "./pages/LoginPage";
 
 function App() {
+
     return (
         <Provider store={store}>
             <ThemeProvider theme={theme}>
