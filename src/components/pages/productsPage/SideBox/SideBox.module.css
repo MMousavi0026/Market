@@ -1,0 +1,6 @@
+.sideBoxItem {
+    transition: color 0.4s;
+}
+.sideBoxItemWrapper:hover .sideBoxItem{
+    color: #01e281 !important;
+}

@@ -1,12 +1,12 @@
 import React, {useContext, useReducer} from 'react';
 import {faCartShopping, faCodeCompare, faHeart, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
-import ProductOption from "./ProductOption/ProductOption";
+import ProductOption from "./ProductOption";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import styles from './Product.module.css';
 import {Card, CardActionArea, CardContent, CardMedia} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import {useDispatch} from "react-redux";
-import {increment} from "../../redux/reducers/counterCart";
+import {increment} from "../../../redux/reducers/counterCart";
 
 const Product = ({imgSrc, title, price}) => {
     const dispatch = useDispatch()

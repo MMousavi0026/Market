@@ -1,9 +1,8 @@
 import React from 'react';
-import style from './Layout.module.css';
 import Header from "../Header";
-import Footer from "../Footer";
-import {AppBar} from "@mui/material";
+import Footer from "./Footer";
 import {Outlet} from "react-router-dom";
+import style from './Layout.module.css';
 
 const Layout = () => {
     return (
@@ -11,7 +10,6 @@ const Layout = () => {
             <Header/>
             <Outlet/>
             <Footer/>
-            <AppBar/>
         </div>
     );
 };

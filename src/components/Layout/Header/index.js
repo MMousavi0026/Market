@@ -1,4 +1,5 @@
 import React from 'react';
+import {useSelector} from "react-redux";
 import {AppBar, IconButton, InputBase, styled, Toolbar} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
@@ -7,14 +8,13 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PersonIcon from "@mui/icons-material/Person";
 import MenuIcon from '@mui/icons-material/Menu';
-import Drawer from "../mui/Drawer";
-import ResponsiveMenu from "./ResponsiveMenu/";
-import Row from "../mui/Layout/Row";
-import Col from "../mui/Layout/Col";
-import NavMenu from "./NavMenu";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
-import {useSelector} from "react-redux";
+import Drawer from "../mui/Drawer";
+import Row from "../mui/Layout/Row";
+import Col from "../mui/Layout/Col";
+import ResponsiveMenu from "./ResponsiveMenu/";
+import NavMenu from "./NavMenu";
 import styles from "./Header.module.css";
 
 const Header = () => {

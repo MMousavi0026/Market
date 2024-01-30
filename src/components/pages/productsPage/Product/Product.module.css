@@ -54,3 +54,50 @@
     width: 22%;
     height: 40px;
 }
+
+.love {
+    width: fit-content;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-top: 10px;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.love:hover .icon {
+    border: #01e281 solid 1px;
+    color: #01e281;
+}
+
+.icon {
+    font-size: 15px;
+    color: #122d40;
+    border: #122d40 solid 1px;
+    border-radius: 100%;
+    padding: 10px;
+    transition: color .3s, border .3s;
+}
+
+.icon:hover {
+    border: #01e281 solid 1px;
+    color: #01e281;
+}
+
+.productOptionTitle {
+    background-color: #01e281;
+    color: white;
+    border-radius: 50px;
+    font-size: 12px;
+    padding: 3.5px 10px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+}

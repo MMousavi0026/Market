@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styles from "./SiteHeader.module.css";
-import ProductsCategorization from "../../productsCategorization/productsCategorization";
+import ProductsCategorization from "../productsCategorization/productsCategorization";
 import MenuButtonOff from "./MenuButtonOff";
 
 const NavItemsOff = () => {

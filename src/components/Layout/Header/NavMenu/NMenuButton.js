@@ -22,10 +22,10 @@ const NMenuButton = ({children, title, to}) => {
                 <ListItem
                     onMouseEnter={handlePopoverOpen}
                     onMouseLeave={handlePopoverClose}
-                    sx={{width:"fit-content", cursor:"pointer", color:"white"}}
+                    sx={{width: "fit-content", cursor: "pointer", color: "white"}}
                     className={styles.menuItems}
                 >
-                    <Typography  textAlign="center" className={styles.menuItem} fontSize="1rem">{title}</Typography>
+                    <Typography textAlign="center" className={styles.menuItem} fontSize="1rem">{title}</Typography>
                 </ListItem>
                 <Menu
                     id="basic-menu"
@@ -44,19 +44,18 @@ const NMenuButton = ({children, title, to}) => {
         ) : (
             <NavLink
                 style={({isActive}) =>
-                    isActive
-                        ? {
-                            color: "#01e281",
-                            backgroundColor:'none'
-                        } :
+                    isActive ?
                         {
+                            color: "#01e281",
+                            backgroundColor: 'none'
+                        }
+                        : {
                             color: "white"
                         }
                 } to={to}
             >
-                <ListItem
-                    className={styles.menuItems}>
-                    <Typography  textAlign="center" className={styles.menuItem} fontSize="1rem">{title}</Typography>
+                <ListItem className={styles.menuItems}>
+                    <Typography textAlign="center" className={styles.menuItem} fontSize="1rem">{title}</Typography>
                 </ListItem>
             </NavLink>
         )

@@ -1,7 +1,6 @@
 import React from 'react';
 import {Breadcrumbs} from "@mui/material";
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import Link from "@mui/material/Link";
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
 import styles from './products.module.css'
@@ -21,12 +20,15 @@ const ProductsPage = () => {
     return (
         <Row rowSpacing={4} className={styles.pageWrapper}>
             <Col className={styles.breadcrumbs}>
-                <Breadcrumbs separator={<NavigateNextIcon fontSize="16px" />} aria-label="breadcrumb">
+                <Breadcrumbs separator={<NavigateBeforeIcon fontSize="16px" />} aria-label="breadcrumb">
                     {breadcrumbs}
                 </Breadcrumbs>
             </Col>
             <Col>
-
+                <Row>
+                    <Col></Col>
+                    <Col></Col>
+                </Row>
             </Col>
         </Row>
     );

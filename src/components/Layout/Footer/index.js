@@ -4,8 +4,8 @@ import SocialMediaIcon from "./socialMediaIcon";
 import FooterLink from "./FooterLink";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Row from "../mui/Layout/Row";
-import Col from "../mui/Layout/Col";
+import Row from "../../mui/Layout/Row";
+import Col from "../../mui/Layout/Col";
 import styles from './footer.module.css'
 import {formControlClasses, IconButton, InputBase, inputBaseClasses, styled, TextField} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";

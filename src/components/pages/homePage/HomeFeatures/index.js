@@ -1,7 +1,7 @@
 import React from 'react';
 import HomeFeature from "./HomeFeature";
-import Row from "../mui/Layout/Row";
-import Col from "../mui/Layout/Col";
+import Row from "../../mui/Layout/Row";
+import Col from "../../mui/Layout/Col";
 import style from "./HomeFeatures.module.css"
 
 const HomeFeatures = () => {

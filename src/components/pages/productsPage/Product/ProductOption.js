@@ -1,5 +1,5 @@
 import React from 'react';
-import Styles from "./ProductOption.module.css";
+import Styles from "./Product.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Popover from "@mui/material/Popover";
 
