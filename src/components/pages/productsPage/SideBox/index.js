@@ -5,21 +5,14 @@ import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
 import styles from "./SideBox.module.css";
 
-const SideBox = (data, title, children, ) => {
+const SideBox = ({title, children,}) => {
     return (
-        <Box>
-            <div>
-                {title}
+        <Box className={styles.boxWrapper}>
+            <div className={styles.titleWrapper}>
+                <Typography variant="h6" textAlign="center">{title}</Typography>
             </div>
             <List>
-                {
-                    data.map((item) => (
-                        <ListItem className={styles.sideBoxItemWrapper}>
-                            {children}
-                            <Typography variant={h6} textAlign="center" className={styles.sideBoxItem}>{item.title}</Typography>
-                        </ListItem>
-                    ))
-                }
+                {children}
             </List>
         </Box>
     );

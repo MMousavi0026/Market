@@ -1,7 +1,6 @@
 import React from 'react';
+import RTLDirection from "../RTLDirection";
 import Grid from "@mui/material/Grid";
-import RTLDirection from "../../RTLDirection";
-import Row from "./Row";
 
 const Col = (props) => {
     return (
@@ -11,9 +10,9 @@ const Col = (props) => {
     );
 };
 
-Row.propTypes = {
-    // ...GridProps
-}
+// Col.propTypes = {
+//     ...GridProps
+// }
 
 
 export default Col;

@@ -5,7 +5,7 @@ import {ThemeProvider} from "@mui/material";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import { Provider } from 'react-redux'
-import theme from "./components/themeConfig";
+import theme from "./components/mui/themeConfig";
 import store from "./redux/store";
 import './assets/font/NotoArabic/style.css'
 import './App.scss'

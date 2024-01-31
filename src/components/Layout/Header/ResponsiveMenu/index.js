@@ -5,10 +5,10 @@ import Divider from '@mui/material/Divider';
 import {Autocomplete, TextField} from "@mui/material";
 import RMenuButton from "./RMenuButton";
 import ProductsCategorization from "../productsCategorization/productsCategorization";
-import Row from "../../mui/Layout/Row";
-import Col from "../../mui/Layout/Col";
+import Row from "../../../mui/Layout/Row";
+import Col from "../../../mui/Layout/Col";
 import {useCallback} from "react";
-import menuData from "../../../Data/menuData";
+import menuData from "../../../../Data/menuData";
 
 const ResponsiveMenu = () => {
     const [selectedIndex, setSelectedIndex] = React.useState(0);

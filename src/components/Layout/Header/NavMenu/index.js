@@ -4,11 +4,11 @@ import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CardGiftCardIcon from "@mui/icons-material/CardGiftcard";
-import Col from "../../mui/Layout/Col";
-import Row from "../../mui/Layout/Row";
+import Col from "../../../mui/Layout/Col";
+import Row from "../../../mui/Layout/Row";
 import ProductsCategorization from "../productsCategorization/productsCategorization";
 import NMenuButton from "./NMenuButton";
-import menuData from "../../../Data/menuData";
+import menuData from "../../../../Data/menuData";
 import styles from "./NMenu.module.scss";
 
 const NavMenu = () => {

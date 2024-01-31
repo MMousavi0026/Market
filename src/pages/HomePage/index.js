@@ -1,30 +1,17 @@
-import Product from "../../components/ProductsPage/Product";
-import ProductsCategorization from "../../components/Header/productsCategorization/productsCategorization";
-import NewsItem from "../../components/HomePage/NewsItem";
-import HomeFeatures from "../../components/HomePage/HomeFeatures";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import Product from "../../components/Pages/ProductsPage/Product";
+import ProductsCategorization from "../../components/Layout/Header/productsCategorization/productsCategorization";
+import NewsItem from "../../components/Pages/HomePage/NewsItem";
+import HomeFeatures from "../../components/Pages/HomePage/HomeFeatures";
 import Row from "../../components/mui/Layout/Row";
 import Col from "../../components/mui/Layout/Col";
+import productsCategorization from "../../Data/productsCategorization";
+import productsInformation from "../../Data/productsInformation";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import styles from './home.module.scss';
 
 const HomePage = () => {
-
-    const productsCategorizationData = [
-        {imgSrc:"/img/s1.png", title:"ماهی و آبزیان" },
-        {imgSrc:"/img/s2.png", title:"میوه و سبزیجات" },
-        {imgSrc:"/img/s3.png", title:"نان و غلات" },
-        {imgSrc:"/img/s4.png", title:"لبنیات و پروتئین" },
-        {imgSrc:"/img/s5.png", title:"شوینده و نظافتی" },
-        {imgSrc:"/img/s6.png", title:"گوشت و استیک" },
-    ]
-    const productData = [
-        {imgSrc:'/img/filehMorgh.jpg', title:"فیله مرغ", price:"۷۰۰۰۰ تومان"},
-        {imgSrc:'/img/water.jpg', title:"آب معدنی", price:"۱۰۰۰۰ تومان"},
-        {imgSrc:'/img/water.jpg', title:"آب معدنی", price:"۱۰۰۰۰ تومان"},
-        {imgSrc:'/img/water.jpg', title:"آب معدنی", price:"۱۰۰۰۰ تومان"},
-    ]
 
     return (
         <>
@@ -36,7 +23,7 @@ const HomePage = () => {
                         </Typography>
                         <Typography fontSize="2.5rem" textAlign="center" margin="30px 0">تازه تر از همه
                             جا</Typography>
-                        <Typography  fontSize="1rem" textAlign="center" color="#535353">سوپرمارکت شکلی از
+                        <Typography fontSize="1rem" textAlign="center" color="#535353">سوپرمارکت شکلی از
                             خواربارفروشی ولی بزرگتر از آن است که مشتری خودش محصولات را از قفسه برمی‌دارد یا به اصطلاح
                             سلف سرویس است.</Typography>
                         <Col className={styles.box1Item1Buttons} width="fit-content">
@@ -118,7 +105,7 @@ const HomePage = () => {
                 </div>
                 <Row spacing={4} marginTop="0">
                     {
-                        productsCategorizationData.map((item) => (
+                        productsCategorization.map((item) => (
                             <Col item xs={12} sm={4} lg={2}>
                                 <ProductsCategorization titleColor={"black"} {...item}/>
                             </Col>
@@ -139,7 +126,7 @@ const HomePage = () => {
                 </div>
                 <Row spacing={4} width="100%">
                     {
-                        productData.map((productDataItem) => (
+                        productsInformation.map((productDataItem) => (
                             <Col xs={12} sm={6} lg={3}>
                                 <Product {...productDataItem} />
                             </Col>

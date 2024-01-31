@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid, {GridProps} from "@mui/material/Grid";
-import RTLDirection from "../../RTLDirection";
+import RTLDirection from "../RTLDirection";
 
 const Row = (props) => {
     return (
@@ -10,8 +10,8 @@ const Row = (props) => {
     );
 };
 
-Row.propTypes = {
-    // ...GridProps
-}
+// Row.propTypes = {
+//     ...GridProps
+// }
 
 export default Row;
