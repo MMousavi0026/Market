@@ -35,7 +35,7 @@ const NMenuButton = ({children, title, to}) => {
                     anchorOrigin={{vertical: 'bottom', horizontal: 'right',}}
                     transformOrigin={{vertical: 'top', horizontal: 'right',}}
                     onMouseLeave={handlePopoverClose}
-                    disableRestoreFocus
+                    disableScrollLock
                     slotProps={{paper: {className: styles.menuPaper}}}
                 >
                     {children}

@@ -7,6 +7,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Card, CardActionArea, CardContent, CardMedia} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import styles from './Product.module.css';
+import Button from "@mui/material/Button";
 
 const Product = ({imgSrc, title, price}) => {
     const dispatch = useDispatch()
@@ -32,15 +33,36 @@ const Product = ({imgSrc, title, price}) => {
                     </CardContent>
                 </CardActionArea>
                 <div className={styles.productOption}>
-                    <ProductOption iconName={faHeart} title={'افزودن به علاقمندی ها'}/>
-                    <ProductOption iconName={faCodeCompare} title={'افزودن به مقایسه'}/>
-                    <ProductOption iconName={faMagnifyingGlass} title={'نمایش سریع'}/>
+                    <ProductOption
+                        iconVertical="center"
+                        iconHorizontal="right"
+                        textVertical="center"
+                        textHorizontal="left"
+                        iconName={faHeart}
+                        title='افزودن به علاقمندی ها'
+                    />
+                    <ProductOption
+                        iconVertical="center"
+                        iconHorizontal="right"
+                        textVertical="center"
+                        textHorizontal="left"
+                        iconName={faCodeCompare}
+                        title='افزودن به مقایسه'
+                    />
+                    <ProductOption
+                        iconVertical="center"
+                        iconHorizontal="right"
+                        textVertical="center"
+                        textHorizontal="left"
+                        iconName={faMagnifyingGlass}
+                        title='نمایش سریع'
+                    />
                 </div>
             </Card>
-            <button className={styles.button1} onClick={() => dispatch(increment())}>
+            <Button variant="contained" color="secondary" className={styles.button1} onClick={() => dispatch(increment())}>
                 <FontAwesomeIcon className={styles.button1Text} style={{marginLeft: '10px'}} icon={faCartShopping}/>
-                <span className={styles.button1Text}>افزودن به سبد خرید</span>
-            </button>
+                <Typography className={styles.button1Text}>افزودن به سبد خرید</Typography>
+            </Button>
         </div>
     );
 };

@@ -2,8 +2,9 @@ import React from 'react';
 import Styles from "./Product.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Popover from "@mui/material/Popover";
+import Typography from "@mui/material/Typography";
 
-const ProductOption = ({iconName, title}) => {
+const ProductOption = ({iconName, title, iconVertical, iconHorizontal, textVertical, textHorizontal}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handlePopoverOpen = (event) => {
@@ -26,13 +27,13 @@ const ProductOption = ({iconName, title}) => {
                 sx={{pointerEvents: 'none'}}
                 open={open}
                 anchorEl={anchorEl}
-                anchorOrigin={{vertical: 'center', horizontal: 'right',}}
-                transformOrigin={{vertical: 'center', horizontal: 'left',}}
+                anchorOrigin={{vertical: iconVertical, horizontal: iconHorizontal,}}
+                transformOrigin={{vertical: textVertical, horizontal: textHorizontal,}}
                 onClose={handlePopoverClose}
-                disableRestoreFocus
+                disableScrollLock
                 slotProps={{paper: { sx: {backgroundColor: 'transparent', boxShadow:'none'}}}}
             >
-                <span className={Styles.productOptionTitle}>{title}</span>
+                <Typography variant="span" className={Styles.productOptionTitle}>{title}</Typography>
             </Popover>
         </div>
     );

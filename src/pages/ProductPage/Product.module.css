@@ -1,0 +1,19 @@
+.pageWrapper {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+.productImg {
+    border: solid gray 1px ;
+    border-radius: 40px;
+}
+.cartShoppingButtonText {
+    color: #122d40;
+    transition: color .4s;
+}
+.cartShoppingButton:hover .cartShoppingButtonText {
+    color: #01e281;
+}
+.cartShoppingButton:hover {
+    background-color: #122d40 !important;
+}

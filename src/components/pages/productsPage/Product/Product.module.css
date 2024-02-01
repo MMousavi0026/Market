@@ -1,5 +1,5 @@
 .product {
-    position: relative;
+    position: relative !important;
     align-items: center;
 }
 
@@ -8,7 +8,7 @@
 }
 
 .product:hover .button1 {
-    opacity: 1!important;
+    opacity: 1 !important;
 }
 
 .productOption {
@@ -24,7 +24,7 @@
     width: 90%;
     background-color: #01e281;
     height: 40px;
-    opacity: 0;
+    opacity: 0 !important;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -32,8 +32,8 @@
     cursor: pointer;
     transition: background-color 0.4s, opacity .3s ease;
     margin-top: -20px;
-    position: absolute;
-    bottom: -20px;
+    position: absolute !important;
+    bottom: -20px !important;
 }
 
 .button1Text {
@@ -47,7 +47,7 @@
 }
 
 .button1:hover {
-    background-color: #122d40;
+    background-color: #122d40 !important;
 }
 
 .button1Wrapper {
@@ -94,10 +94,11 @@ button {
     color: white;
     border-radius: 50px;
     font-size: 12px;
-    padding: 3.5px 10px;
+    padding: 4px 10px;
     height: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 8px;
+    margin-left: 8px !important;
+    margin-bottom: 8px !important;
 }
