@@ -7,13 +7,13 @@
     border: solid gray 1px ;
     border-radius: 40px;
 }
-.cartShoppingButtonText {
-    color: #122d40;
-    transition: color .4s;
-}
-.cartShoppingButton:hover .cartShoppingButtonText {
-    color: #01e281;
+.cartShoppingButton {
+    box-shadow: none !important;
+    background-color: #01e281 !important;
+    color: #122d40 !important;
+    transition: color 0.3s, background-color 0.3s;
 }
 .cartShoppingButton:hover {
     background-color: #122d40 !important;
+    color: #01e281 !important;
 }

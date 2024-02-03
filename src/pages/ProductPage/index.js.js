@@ -1,16 +1,14 @@
 import React from 'react';
 import Row from "../../components/mui/Layout/Row";
 import Col from "../../components/mui/Layout/Col";
-import styles from "./Product.module.css"
+import ProductOption from "../../components/pages/productsPage/Product/ProductOption";
+import {multipurposeSpray} from "../../Data/product";
 import Typography from "@mui/material/Typography";
 import {Rating} from "@mui/material";
-import {multipurposeSpray} from "../../Data/product";
-import Badge from "@mui/material/Badge";
-import {increment} from "../../redux/reducers/counterCart";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCartShopping, faCodeCompare, faHeart, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import {faCartShopping, faCodeCompare, faHeart} from "@fortawesome/free-solid-svg-icons";
 import Button from "@mui/material/Button";
-import ProductOption from "../../components/Pages/ProductsPage/Product/ProductOption";
+import styles from "./Product.module.css"
 
 const ProductPage = () => {
     return (
@@ -42,14 +40,10 @@ const ProductPage = () => {
                                     {multipurposeSpray[0].desc}
                                 </Typography>
                             </Col>
-                            <Col style={{display: "flex", alignItems: "center", flexDirection: "row"}}>
-                                <Button variant="contained" color="secondary" className={styles.cartShoppingButton}>
-                                    <FontAwesomeIcon
-                                        className={styles.cartShoppingButtonText}
-                                        style={{marginLeft: '10px'}}
-                                        icon={faCartShopping}
-                                    />
-                                    <Typography className={styles.cartShoppingButtonText}>افزودن به سبد خرید</Typography>
+                            <Col style={{width:"100%", display: "flex", alignItems: "center", flexDirection: "row"}}>
+                                <Button variant="contained" className={styles.cartShoppingButton}>
+                                    <FontAwesomeIcon style={{marginLeft: '10px'}} icon={faCartShopping}/>
+                                    <Typography>افزودن به سبد خرید</Typography>
                                 </Button>
                                 <ProductOption
                                     iconVertical="top"
@@ -58,7 +52,6 @@ const ProductPage = () => {
                                     textHorizontal="center"
                                     iconName={faHeart}
                                     title='افزودن به علاقمندی ها'
-
                                 />
                                 <ProductOption
                                     iconVertical="top"
