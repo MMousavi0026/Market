@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router , Routes ,Route} from "react-router-dom";
-import ProductsPage from "./pages/ProductsPage/index.js";
+import ProductsPage from "./pages/ProductsPage";
 import {ThemeProvider} from "@mui/material";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
@@ -9,7 +9,7 @@ import theme from "./components/mui/themeConfig";
 import store from "./redux/store";
 import './assets/font/NotoArabic/style.css'
 import './App.scss'
-import ProductPage from "./pages/ProductPage/index.js";
+import ProductPage from "./pages/ProductPage";
 import NewsPage from "./pages/NewsPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import LoginPage from "./pages/LoginPage";

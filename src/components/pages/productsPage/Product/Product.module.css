@@ -61,7 +61,7 @@
     display: flex;
     align-items: center;
     justify-content: end;
-    margin-top: 10px;
+    margin: 10px 0;
 }
 
 button {
