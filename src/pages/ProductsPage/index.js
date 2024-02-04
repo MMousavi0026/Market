@@ -1,7 +1,7 @@
 import React from 'react';
-import Row from "../../components/mui/Layout/Row";
-import Col from "../../components/mui/Layout/Col";
-import SideBox from "../../components/Pages/ProductsPage/SideBox";
+import Row from "../../components/mui/Grid/Row";
+import Col from "../../components/mui/Grid/Col";
+import SideBox from "../../components/pages/productsPage/SideBox";
 import {Breadcrumbs, Rating} from "@mui/material";
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import Link from "@mui/material/Link";
@@ -10,7 +10,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
 import Slider from "react-slick";
-import {productsCategorization, reviewsOfRecentProducts} from "../../Data/productsPage";
+import {productsCategorization, reviewsOfRecentProducts} from "../../data/productsPage";
 import styles from './products.module.css'
 
 const ProductsPage = () => {

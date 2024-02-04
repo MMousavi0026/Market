@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import Row from "../../components/mui/Layout/Row";
-import Col from "../../components/mui/Layout/Col";
-import ProductOption from "../../components/Pages/ProductsPage/Product/ProductOption";
-import {multipurposeSpray} from "../../Data/product";
+import Row from "../../components/mui/Grid/Row";
+import Col from "../../components/mui/Grid/Col";
+import ProductOption from "../../components/pages/productsPage/Product/ProductOption";
+import {multipurposeSpray} from "../../data/product";
 import Typography from "@mui/material/Typography";
-import {Rating} from "@mui/material";
+import {Rating, Tab, Tabs} from "@mui/material";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCartShopping, faCodeCompare, faHeart} from "@fortawesome/free-solid-svg-icons";
 import Button from "@mui/material/Button";
@@ -18,8 +18,52 @@ import {useDispatch} from "react-redux";
 import {incrementByAmount} from "../../redux/reducers/counterCart";
 import Divider from "@mui/material/Divider";
 import styles from "./Product.module.css"
+import SocialMediaIcon from "./SocialMediaIcon";
+import Box from "@mui/material/Box";
+import PropTypes from "prop-types";
+
+const CustomTabPanel = (props) => {
+    const { children, value, index, ...other } = props;
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box sx={{ p: 3 , display:"flex", justifyContent:"center" , backgroundColor:"#122d40", borderRadius:"15px"}}>
+                    {children}
+                </Box>
+            )}
+        </div>
+    );
+}
+
+CustomTabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+};
+
+const a11yProps = (index) => {
+    return {
+        id: `simple-tab-${index}`,
+        'aria-controls': `simple-tabpanel-${index}`,
+    };
+}
 
 const ProductPage = () => {
+
+    const socialMediaIcon = [
+        {icon: FacebookOutlinedIcon, title:"اشتراک گذاری در فیسبوک"},
+        {icon: WhatsAppIcon, title:"اشتراک گذاری در واتساپ"},
+        {icon: XIcon, title:"اشتراک گذاری در ایکس"},
+        {icon: PinterestIcon, title:"اشتراک گذاری در پینترست"},
+        {icon: EmailIcon, title:"اشتراک گذاری در ایمیل"},
+        {icon: ContentCopyIcon, title:"کپی لینک کوتاه"},
+    ]
     const dispatch = useDispatch()
 
     const [cartNumber, setCartNumber] = useState(1)
@@ -32,12 +76,17 @@ const ProductPage = () => {
         setCartNumber(cartNumber + 1)
     }
 
+    const [value, setValue] = React.useState(0);
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
     return (
         <Row rowSpacing={4} className={styles.pageWrapper}>
-            <Col height="50px" width="100%"/>
-            <Col>
+            <Col xs={12} height="50px"/>
+            <Col xs={12}>
                 <Row columnSpacing={4}>
-                    <Col width="39%" position="sticky">
+                    <Col md={5.5} position="sticky">
                         <div>
                             <img
                                 width="100%"
@@ -47,7 +96,7 @@ const ProductPage = () => {
                             />
                         </div>
                     </Col>
-                    <Col width="60%">
+                    <Col md={6.5}>
                         <Row rowSpacing={3} style={{flexDirection: "column"}}>
                             <Col>
                                 <Typography fontWeight="bold" variant="h4">{multipurposeSpray[0].title}</Typography>
@@ -141,19 +190,46 @@ const ProductPage = () => {
                                 </Typography>
                             </Col>
                             <Col sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-                                <div style={{width:"100%", backgroundColor:"rgba:(0,0,0 0.4)", borderRadius:"10rem", display:'flex', flexDirection:"row"}}>
-                                    <Typography>اشتراک گذاری:</Typography>
-                                    <FacebookOutlinedIcon sx={{color:"rgba(128, 128, 128, 1)", margin:"10px 0"}}/>
-                                    <WhatsAppIcon sx={{color:"rgba(128, 128, 128, 1)", margin:"10px 0"}}/>
-                                    <XIcon sx={{color:"rgba(128, 128, 128, 1)", margin:"10px 0"}}/>
-                                    <PinterestIcon sx={{color:"rgba(128, 128, 128, 1)", margin:"10px 0"}}/>
-                                    <EmailIcon sx={{color:"rgba(128, 128, 128, 1)", margin:"10px 0"}}/>
-                                    <ContentCopyIcon sx={{color:"rgba(128, 128, 128, 1)", margin:"10px 0"}}/>
+                                <div style={{width:"fit-content", backgroundColor:"#f1f2f6", borderRadius:"10rem", display:'flex', alignItems:"center", justifyContent:"center", flexDirection:"row", padding:"5px 15px"}}>
+                                    <Typography style={{margin:"0 15px"}}>اشتراک گذاری:</Typography>
+                                    {
+                                        socialMediaIcon.map((item) => (
+                                            <SocialMediaIcon icon={item.icon}/>
+                                        ))
+                                    }
                                 </div>
                             </Col>
                         </Row>
                     </Col>
                 </Row>
+            </Col>
+            <Col xs={12} style={{display:"flex", alignItems:"center", flexDirection:"column"}}>
+                <Box width="80%">
+                    <Box width="100%" sx={{ justifyContent:"center" }}>
+                        <Tabs width="100%" value={value} classes={{scroller: styles.tabs}} onChange={handleChange} >
+                            <Tab label="توضیحات" {...a11yProps(0)} />
+                            <Tab label="نظرات" {...a11yProps(1)} />
+                        </Tabs>
+                    </Box>
+                    <CustomTabPanel value={value} index={0}>
+                        <Typography color="white">
+                            سوپرمارکت شکلی از خواربارفروشی ولی بزرگتر از آن است که مشتری خودش محصولات را از قفسه برمی‌دارد یا به اصطلاح سلف سرویس است. در حدود ۷۵ تا ۹۰ درصد کالاهای این مغازه‌ها محصولات غذایی هستند. اندازه سوپرمارکت‌ها معمولاً از خواربارفروشیهای سنتی بزرگترند و محصولات بیشتری می‌فروشند ولی از هایپرمارکت‌ها و سوپرسنترها کوچکترند.
+                        </Typography>
+                    </CustomTabPanel>
+                    <CustomTabPanel value={value} index={1}>
+                        <div style={{width:"100%", display:'flex', alignItems:"start", flexDirection:"column"}}>
+                            <Typography variant="h5" color="white">۱ دیدگاه برای اسپری چند منظوره</Typography>
+                            <div style={{backgroundColor:"white", width:"97%", borderRadius:"10px", marginTop:"30px", padding:"10px", display:"flex", flexDirection:"column"}}>
+                                <Rating value={3} readOnly/>
+                                <div>
+                                    <Typography>آناهیتا خسروی</Typography>
+                                    <Typography variant="caption" padding="10px" sx={{backgroundColor:"rgba(167,167,167,.15)"}}>۲۷ دی ۱۴۰۲</Typography>
+                                </div>
+                                <Typography variant="body2" color="rgb(128, 128, 128)">بسیار عالی، از حمایت صمیمانه و بهترین محصول شما بسیار متشکرم.</Typography>
+                            </div>
+                        </div>
+                    </CustomTabPanel>
+                </Box>
             </Col>
         </Row>
     );

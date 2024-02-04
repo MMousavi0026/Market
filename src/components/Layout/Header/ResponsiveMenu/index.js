@@ -4,11 +4,11 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import {Autocomplete, TextField} from "@mui/material";
 import RMenuButton from "./RMenuButton";
-import ProductsCategorization from "../productsCategorization/productsCategorization";
-import Row from "../../../mui/Layout/Row";
-import Col from "../../../mui/Layout/Col";
+import ProductsCategorization from "../ProductsCategorization";
+import Row from "../../../mui/Grid/Row";
+import Col from "../../../mui/Grid/Col";
 import {useCallback} from "react";
-import menuData from "../../../../Data/menuData";
+import menuData from "../../../../data/menuData";
 
 const ResponsiveMenu = () => {
     const [selectedIndex, setSelectedIndex] = React.useState(0);

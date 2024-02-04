@@ -1,14 +1,13 @@
 import React from 'react';
-import DraftsIcon from "@mui/icons-material/Drafts";
-import SocialMediaIcon from "./socialMediaIcon";
+import SocialMediaIcon from "./SocialMediaIcon";
 import FooterLink from "./FooterLink";
+import Row from "../../mui/Grid/Row";
+import Col from "../../mui/Grid/Col";
+import DraftsIcon from "@mui/icons-material/Drafts";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Row from "../../mui/Layout/Row";
-import Col from "../../mui/Layout/Col";
+import {InputBase, styled} from "@mui/material";
 import styles from './footer.module.css'
-import {formControlClasses, IconButton, InputBase, inputBaseClasses, styled, TextField} from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 
 const Footer = () => {
 

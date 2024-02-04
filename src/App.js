@@ -4,15 +4,15 @@ import ProductsPage from "./pages/ProductsPage";
 import {ThemeProvider} from "@mui/material";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
-import { Provider } from 'react-redux'
-import theme from "./components/mui/themeConfig";
-import store from "./redux/store";
-import './assets/font/NotoArabic/style.css'
-import './App.scss'
 import ProductPage from "./pages/ProductPage";
 import NewsPage from "./pages/NewsPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import LoginPage from "./pages/LoginPage";
+import { Provider } from 'react-redux'
+import theme from "./components/mui/ThemeConfig";
+import store from "./redux/store";
+import './assets/font/NotoArabic/style.css'
+import './App.scss'
 
 function App() {
 
