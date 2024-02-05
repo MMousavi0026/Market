@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router , Routes ,Route} from "react-router-dom";
-import ProductsPage from "./pages/ProductsPage";
+import ShopPage from "./pages/ShopPage";
 import {ThemeProvider} from "@mui/material";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
@@ -23,7 +23,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={ <Layout/> }>
                             <Route exact path='/' element={<HomePage/>}/>
-                            <Route exact path='products' element={<ProductsPage/>}/>
+                            <Route exact path='products' element={<ShopPage/>}/>
                             <Route exact path='news' element={<NewsPage/>}/>
                             <Route exact path='contact-us' element={<ContactUsPage/>}/>
                             <Route exact path='product' element={<ProductPage/>}/>

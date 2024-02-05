@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 
-const ProductOption = ({iconName, title, iconVertical, iconHorizontal, textVertical, textHorizontal, props}) => {
+const ProductOption = ({iconName, title, iconVertical, iconHorizontal, textVertical, textHorizontal, ...props}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handlePopoverOpen = (event) => {

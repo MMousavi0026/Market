@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import Row from "../../components/mui/Grid/Row";
 import Col from "../../components/mui/Grid/Col";
-import ProductOption from "../../components/pages/productsPage/Product/ProductOption";
-import {multipurposeSpray} from "../../data/product";
+import ProductOption from "../../components/pages/ShopPage/Product/ProductOption";
+import {products} from "../../data/product";
 import Typography from "@mui/material/Typography";
-import {Rating, Tab, Tabs} from "@mui/material";
+import {Checkbox, FormControlLabel, inputLabelClasses, paperClasses, Rating, Tab, Tabs, TextField} from "@mui/material";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCartShopping, faCodeCompare, faHeart} from "@fortawesome/free-solid-svg-icons";
 import Button from "@mui/material/Button";
@@ -21,6 +21,8 @@ import styles from "./Product.module.css"
 import SocialMediaIcon from "./SocialMediaIcon";
 import Box from "@mui/material/Box";
 import PropTypes from "prop-types";
+import SideBox from "../../components/pages/ShopPage/SideBox";
+import Product from "../../components/pages/ShopPage/Product";
 
 const CustomTabPanel = (props) => {
     const { children, value, index, ...other } = props;
@@ -90,8 +92,8 @@ const ProductPage = () => {
                         <div>
                             <img
                                 width="100%"
-                                src={multipurposeSpray[0].imgSrc}
-                                alt={multipurposeSpray[0].title}
+                                src={products[0].imgSrc}
+                                alt={products[0].title}
                                 className={styles.productImg}
                             />
                         </div>
@@ -99,24 +101,23 @@ const ProductPage = () => {
                     <Col md={6.5}>
                         <Row rowSpacing={3} style={{flexDirection: "column"}}>
                             <Col>
-                                <Typography fontWeight="bold" variant="h4">{multipurposeSpray[0].title}</Typography>
+                                <Typography fontWeight="bold" variant="h4">{products[0].title}</Typography>
                             </Col>
                             <Col>
-                                <Rating name="read-only" value={multipurposeSpray[0].rateNum} readOnly/>
+                                <Rating name="read-only" value={products[0].rateNum} readOnly/>
                             </Col>
                             <Col>
                                 <Typography fontWeight="bold" variant="h6" color="secondary">
-                                    {multipurposeSpray[0].price} تومان
+                                    {products[0].price} تومان
                                 </Typography>
                             </Col>
                             <Col>
                                 <Typography fontWeight="" variant="body1" color="gray">
-                                    {multipurposeSpray[0].desc}
+                                    {products[0].desc}
                                 </Typography>
                             </Col>
                             <Col
                                 style={{
-                                    width: "34%",
                                     display: "flex",
                                     alignItems: "flex-start",
                                     flexDirection: "column"
@@ -129,7 +130,6 @@ const ProductPage = () => {
                                 </div>
                                 <div
                                     style={{
-                                        width: "100%",
                                         display: "flex",
                                         alignItems: "center",
                                         flexDirection: "row",
@@ -140,6 +140,7 @@ const ProductPage = () => {
                                         variant="contained"
                                         className={styles.cartShoppingButton}
                                         onClick={() => dispatch(incrementByAmount(cartNumber))}
+                                        sx={{mr:'10px'}}
                                     >
                                         <FontAwesomeIcon style={{marginLeft: '10px'}} icon={faCartShopping}/>
                                         <Typography>افزودن به سبد خرید</Typography>
@@ -151,6 +152,7 @@ const ProductPage = () => {
                                         textHorizontal="center"
                                         iconName={faHeart}
                                         title='افزودن به علاقمندی ها'
+                                        style={{marginLeft:"10px"}}
                                     />
                                     <ProductOption
                                         iconVertical="top"
@@ -168,11 +170,11 @@ const ProductPage = () => {
                             <Col style={{display:'flex', flexDirection:"column"}}>
                                 <div style={{display:'flex', flexDirection:"row"}}>
                                     <Typography variant="body2"> تگ:&nbsp;</Typography>
-                                    <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 0.8)"}}>{multipurposeSpray[0].tag}</Typography>
+                                    <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 0.8)"}}>{products[0].tag}</Typography>
                                 </div>
                                 <div style={{display:'flex', flexDirection:"row", marginTop:"5px"}}>
                                     <Typography variant="body2"> دسته بندی:&nbsp;</Typography>
-                                    <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 0.8)"}}>{multipurposeSpray[0].categories}</Typography>
+                                    <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 0.8)"}}>{products[0].categories}</Typography>
                                 </div>
                             </Col>
                             <Col>
@@ -189,7 +191,7 @@ const ProductPage = () => {
                                     &#10003; محصول دارای مالیات و عوارض گمرکی نیست
                                 </Typography>
                             </Col>
-                            <Col sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+                            <Col sx={{display:"flex", alignItems:"center", justifyContent:"start"}}>
                                 <div style={{width:"fit-content", backgroundColor:"#f1f2f6", borderRadius:"10rem", display:'flex', alignItems:"center", justifyContent:"center", flexDirection:"row", padding:"5px 15px"}}>
                                     <Typography style={{margin:"0 15px"}}>اشتراک گذاری:</Typography>
                                     {
@@ -218,19 +220,91 @@ const ProductPage = () => {
                     </CustomTabPanel>
                     <CustomTabPanel value={value} index={1}>
                         <div style={{width:"100%", display:'flex', alignItems:"start", flexDirection:"column"}}>
-                            <Typography variant="h5" color="white">۱ دیدگاه برای اسپری چند منظوره</Typography>
-                            <div style={{backgroundColor:"white", width:"97%", borderRadius:"10px", marginTop:"30px", padding:"10px", display:"flex", flexDirection:"column"}}>
-                                <Rating value={3} readOnly/>
-                                <div>
-                                    <Typography>آناهیتا خسروی</Typography>
-                                    <Typography variant="caption" padding="10px" sx={{backgroundColor:"rgba(167,167,167,.15)"}}>۲۷ دی ۱۴۰۲</Typography>
+                            <Typography variant="h4" color="white">۱ دیدگاه برای اسپری چند منظوره</Typography>
+                            <div style={{backgroundColor:"white", width:"97%", borderRadius:"10px", margin:"30px 0", padding:"10px", display:"flex", flexDirection:"column"}}>
+                                <div style={{display:"flex", flexDirection:"row", alignItems:"center"}}>
+                                    <img src="/img/4001b4cb302a45af47747d07c1208745.png" alt="user" style={{borderRadius:"50%"}}/>
+                                    <div style={{marginRight:"10px"}}>
+                                        <Typography variant="h6" display="inline">آناهیتا خسروی</Typography>
+                                        <Typography variant="caption" padding="0 5px" sx={{backgroundColor:"rgba(167,167,167,.15)", borderRadius:"7px", ml:"10px"}}>۲۷ دی ۱۴۰۲</Typography>
+                                        <div style={{marginTop:"10px"}}>
+                                            <Rating value={3} readOnly/>
+                                        </div>
+                                    </div>
                                 </div>
-                                <Typography variant="body2" color="rgb(128, 128, 128)">بسیار عالی، از حمایت صمیمانه و بهترین محصول شما بسیار متشکرم.</Typography>
+                                <Typography variant="body1" color="rgb(128, 128, 128)" sx={{mt:"10px", mb:"15px"}}>بسیار عالی، از حمایت صمیمانه و بهترین محصول شما بسیار متشکرم.</Typography>
+                            </div>
+                            <Typography color="white">دیدگاه خود را بنویسید</Typography>
+                            <Typography color="white">نشانی ایمیل شما منتشر نخواهد شد</Typography>
+                            <div style={{width:"100%", display:"flex", flexDirection:"column"}}>
+                                <Typography color="white">امتیاز شما *</Typography>
+                                <Rating name="no-value" value={null} sx={{width:"fit-content"}} />
+                                <TextField
+                                    required
+                                    id="outlined-required"
+                                    label="دیدگاه شما"
+                                    sx={{marginTop:"20px"}}
+                                    fullWidth
+                                    multiline
+                                    rows={4}
+                                />
+                                <div style={{width:"100%", marginBottom:"40px"}}>
+                                    <TextField
+                                        required
+                                        id="outlined-required"
+                                        label="نام"
+                                        sx={{margin:"20px 20px 0 0", width:"32%"}}
+                                    />
+                                    <TextField
+                                        required
+                                        id="outlined-required"
+                                        label="ایمیل"
+                                        sx={{margin:"20px 20px 0 0", width:"32%"}}
+                                    />
+                                    <TextField
+                                        id="outlined-required"
+                                        label="2 + 4 = ?"
+                                        sx={{margin:"20px 0", width:"32%"}}
+                                    />
+                                    <FormControlLabel required control={<Checkbox color="secondary"/>} label="ذخیره نام، ایمیل و وبسایت من در مرورگر برای زمانی که دوباره دیدگاهی می‌نویسم." />
+                                </div>
+                                <Button sx={{width:"fit-content", padding:"10px 40px"}} variant="contained" color="secondary">ثبت</Button>
                             </div>
                         </div>
                     </CustomTabPanel>
                 </Box>
             </Col>
+            <Col xs={12}>
+                <SideBox title="محصولات مرتبط">
+                    <Row columnSpacing={4}>
+                        <Col xs={12} md={4}>
+                            <Product/>
+                        </Col>
+                        <Col xs={12} md={4}>
+                            <Product/>
+                        </Col>
+                        <Col xs={12} md={4}>
+                            <Product/>
+                        </Col>
+                    </Row>
+                </SideBox>
+            </Col>
+            <Col xs={12}>
+                <SideBox title="محصولات پرفروش">
+                    <Row columnSpacing={4}>
+                        <Col xs={12} md={4}>
+                            <Product/>
+                        </Col>
+                        <Col xs={12} md={4}>
+                            <Product/>
+                        </Col>
+                        <Col xs={12} md={4}>
+                            <Product/>
+                        </Col>
+                    </Row>
+                </SideBox>
+            </Col>
+            <Col xs={12}/>
         </Row>
     );
 };
