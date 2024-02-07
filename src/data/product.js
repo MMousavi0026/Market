@@ -1,4 +1,4 @@
-export const products = [
+export const productsDataList = [
     {
         title: "اسپری چند منظوره",
         imgSrc: "/img/pr7-600x600.jpg",

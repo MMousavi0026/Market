@@ -7,14 +7,14 @@ import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import NewsPage from "./pages/NewsPage";
 import ContactUsPage from "./pages/ContactUsPage";
-import LoginPage from "./pages/LoginPage/SignInPage";
+import SignInPage from "./pages/LoginPage/SignInPage";
+import SignUpPage from "./pages/LoginPage/SignUpPage";
 import { Provider } from 'react-redux'
-import theme from "./components/mui/ThemeConfig";
+import theme from "./components/mui/themeConfig";
 import store from "./redux/store";
 import './assets/font/NotoArabic/style.css'
 import './App.scss'
-import SignInPage from "./pages/LoginPage/SignInPage";
-import SignUpPage from "./pages/LoginPage/SignUpPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
 
@@ -30,6 +30,7 @@ function App() {
                             <Route exact path='contact-us' element={<ContactUsPage/>}/>
                             <Route exact path='product' element={<ProductPage/>}/>
                         </Route>
+                        <Route exact path='login' element={<LoginPage/>}/>
                         <Route exact path='sign-in' element={<SignInPage/>}/>
                         <Route exact path='sign-up' element={<SignUpPage/>}/>
                     </Routes>

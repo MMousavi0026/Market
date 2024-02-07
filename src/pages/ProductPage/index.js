@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Row from "../../components/mui/Grid/Row";
 import Col from "../../components/mui/Grid/Col";
 import ProductOption from "../../components/pages/ShopPage/Product/ProductOption";
-import {products} from "../../data/product";
+import {productsDataList} from "../../data/product";
 import Typography from "@mui/material/Typography";
 import {Checkbox, FormControlLabel, inputLabelClasses, paperClasses, Rating, Tab, Tabs, TextField} from "@mui/material";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -92,8 +92,8 @@ const ProductPage = () => {
                         <div>
                             <img
                                 width="100%"
-                                src={products[0].imgSrc}
-                                alt={products[0].title}
+                                src={productsDataList[0].imgSrc}
+                                alt={productsDataList[0].title}
                                 className={styles.productImg}
                             />
                         </div>
@@ -101,19 +101,19 @@ const ProductPage = () => {
                     <Col md={6.5}>
                         <Row rowSpacing={3} style={{flexDirection: "column"}}>
                             <Col>
-                                <Typography fontWeight="bold" variant="h4">{products[0].title}</Typography>
+                                <Typography fontWeight="bold" variant="h4">{productsDataList[0].title}</Typography>
                             </Col>
                             <Col>
-                                <Rating name="read-only" value={products[0].rateNum} readOnly/>
+                                <Rating name="read-only" value={productsDataList[0].rateNum} readOnly/>
                             </Col>
                             <Col>
                                 <Typography fontWeight="bold" variant="h6" color="secondary">
-                                    {products[0].price} تومان
+                                    {productsDataList[0].price} تومان
                                 </Typography>
                             </Col>
                             <Col>
                                 <Typography fontWeight="" variant="body1" color="gray">
-                                    {products[0].desc}
+                                    {productsDataList[0].desc}
                                 </Typography>
                             </Col>
                             <Col
@@ -170,11 +170,11 @@ const ProductPage = () => {
                             <Col style={{display:'flex', flexDirection:"column"}}>
                                 <div style={{display:'flex', flexDirection:"row"}}>
                                     <Typography variant="body2"> تگ:&nbsp;</Typography>
-                                    <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 0.8)"}}>{products[0].tag}</Typography>
+                                    <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 0.8)"}}>{productsDataList[0].tag}</Typography>
                                 </div>
                                 <div style={{display:'flex', flexDirection:"row", marginTop:"5px"}}>
                                     <Typography variant="body2"> دسته بندی:&nbsp;</Typography>
-                                    <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 0.8)"}}>{products[0].categories}</Typography>
+                                    <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 0.8)"}}>{productsDataList[0].categories}</Typography>
                                 </div>
                             </Col>
                             <Col>

@@ -9,9 +9,12 @@ import productsInformation from "../../data/productsInformation";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
-import styles from './home.module.scss';
+import styles from './HomePage.module.scss';
+import {useState} from "react";
+import {productsDataList} from "../../data/product";
 
 const HomePage = () => {
+    const [productsList, setProductsList] = useState(productsDataList.slice(0, 4))
 
     return (<>
         <div className={styles.box1Wrapper}>
@@ -54,7 +57,7 @@ const HomePage = () => {
                         <div className={styles.box2Column1Item1}>
                             <Typography
                                 fontSize='1.3rem'
-                                color='white'
+                                color='white.main'
                                 display="block"
                                 textAlign='left'
                                 margin='0 0 0 15px'
@@ -64,7 +67,7 @@ const HomePage = () => {
                             </Typography>
                             <Typography
                                 fontSize='2rem'
-                                color='white'
+                                color='white.main'
                                 display="block"
                                 textAlign='left'
                                 margin='0 0 0 15px'
@@ -78,7 +81,7 @@ const HomePage = () => {
                         <div className={styles.box2Column1Item2}>
                             <Typography
                                 fontSize='1.3rem'
-                                color='#01e281'
+                                color='secondary'
                                 display="block"
                                 textAlign='right'
                                 margin='0 15px 0 0'
@@ -88,7 +91,7 @@ const HomePage = () => {
                             </Typography>
                             <Typography
                                 fontSize='2rem'
-                                color='#122d40'
+                                color='primary'
                                 display="block"
                                 textAlign='right'
                                 margin='0 15px 0 0'
@@ -102,7 +105,7 @@ const HomePage = () => {
                         <div className={styles.box2Column1Item3}>
                             <Typography
                                 fontSize='1.3rem'
-                                color='#01e281'
+                                color='secondary'
                                 display="block"
                                 textAlign='left'
                                 margin='0 0 0 15px'
@@ -112,7 +115,7 @@ const HomePage = () => {
                             </Typography>
                             <Typography
                                 fontSize='2rem'
-                                color='white'
+                                color='white.main'
                                 display="block"
                                 textAlign='left'
                                 margin='0 0 0 15px'
@@ -131,7 +134,7 @@ const HomePage = () => {
                 <div className={styles.box2Column2}>
                     <Typography
                         fontSize='1.3rem'
-                        color='white'
+                        color='white.main'
                         display="block"
                         textAlign='left'
                         margin='0 0 0 15px'
@@ -141,7 +144,7 @@ const HomePage = () => {
                     </Typography>
                     <Typography
                         fontSize='2rem'
-                        color='white'
+                        color='white.main'
                         display="block"
                         textAlign='left'
                         margin='0 0 0 15px'
@@ -179,7 +182,7 @@ const HomePage = () => {
                 </Button>
             </div>
             <Row spacing={4} width="100%">
-                {productsInformation.map((productDataItem) => (<Col xs={12} sm={6} lg={3}>
+                {productsList.map((productDataItem) => (<Col xs={12} sm={6} lg={3}>
                     <Product {...productDataItem} />
                 </Col>))}
             </Row>
@@ -196,7 +199,6 @@ const HomePage = () => {
                         textAlign='center'
                         margin="40px 0 0 0"
                         opacity='95%'
-                        className={styles.box5TextH1}
                     >
                         سوپر مارکت اکسترا
                     </Typography>
