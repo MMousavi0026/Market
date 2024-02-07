@@ -15,19 +15,21 @@ const theme = createTheme({
         }
     },
     palette: {
+        white: {
+            main: "#ffffff"
+        },
+        black: {
+            main: "#000"
+        },
         primary: {
             main: "#122d40",
-            light: lighten("#122d40", .05)
         },
         secondary: {
             main: "#01e281"
         },
         tertiary: {
             main: "#1c3e56"
-        },
-        quaternary: {
-            main: "#fff"
-        },
+        }
     },
 
 })

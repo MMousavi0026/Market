@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import Row from "../../components/mui/Grid/Row";
 import Col from "../../components/mui/Grid/Col";
 import SideBox from "../../components/pages/ShopPage/SideBox";
@@ -20,7 +20,7 @@ import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
 import Slider from "react-slick";
 import {productsCategorization, reviewsOfRecentProducts} from "../../data/ShopPage";
-import styles from './products.module.css'
+import styles from './shopPage.module.css'
 import {useLocation} from "react-router-dom";
 import {products} from "../../data/product";
 import Product from "../../components/pages/ShopPage/Product";
@@ -73,7 +73,10 @@ const ShopPage = () => {
         setAge2(event.target.value);
     };
 
+    const pageNumberRef = useRef()
+
     const onPaginationChange = useCallback((_, number)=> {
+        pageNumberRef.current = number
         setData(products.slice((number - 1) * 6, number * 6))
     }, [products])
 
@@ -86,14 +89,14 @@ const ShopPage = () => {
             </Col>
             <Col xs={12}/>
             <Col xs={12}>
-                <Row columnSpacing={6}>
+                <Row spacing={6}>
                     <Col xs={8}>
-                        <Row>
+                        <Row rowSpacing={4}>
                             <Col xs={12} sx={{display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"space-between"}}>
-                                <Typography>نمایش ۱-۸ از ۱۲ نتیجه</Typography>
+                                <Typography>نمایش {((pageNumberRef.current - 1) * 6) + 1} - {pageNumberRef.current * 6} از {products.length} نتیجه</Typography>
                                 <div>
                                     <FormControl sx={{ m: 1, minWidth: 120 , color:"primary"}}>
-                                        <InputLabel id="demo-simple-select-helper-label">تعداد محصول در هر صفحه</InputLabel>
+                                        <InputLabel id="demo-simple-select-helper-label" >تعداد محصول در هر صفحه</InputLabel>
                                         <Select
                                             labelId="demo-simple-select-helper-label"
                                             id="demo-simple-select-helper"
@@ -102,7 +105,7 @@ const ShopPage = () => {
                                             onChange={pageHandleChange}
                                         >
                                             <MenuItem value="">
-                                                <em>تعداد محصول در هر صفحه</em>
+                                                <i>تعداد محصول در هر صفحه</i>
                                             </MenuItem>
                                             <MenuItem value={10}>۴ محصول در هر صفحه</MenuItem>
                                             <MenuItem value={20}>۸  محصول در هر صفحه</MenuItem>
@@ -121,7 +124,7 @@ const ShopPage = () => {
                                             onChange={pageHandleChange2}
                                         >
                                             <MenuItem value="">
-                                                <em>مرتب سازی پیش فرض</em>
+                                                <i>مرتب سازی پیش فرض</i>
                                             </MenuItem>
                                             <MenuItem value={10}>مرتب سازی بر اساس محبوبیت</MenuItem>
                                             <MenuItem value={20}>مرتب سازی بر اساس امتیاز</MenuItem>
@@ -192,6 +195,7 @@ const ShopPage = () => {
                             </Col>
                         </Row>
                     </Col>
+                    <Col xs={12} />
                 </Row>
             </Col>
         </Row>

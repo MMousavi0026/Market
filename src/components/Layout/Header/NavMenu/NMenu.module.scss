@@ -73,6 +73,14 @@
   color: #01e281 !important;
 }
 
+.whiteColor {
+  color: white !important;
+}
+
+.navLink {
+  text-decoration: none;
+}
+
 @media (max-width: 900px) {
   .navAppBar {
     display: none !important;

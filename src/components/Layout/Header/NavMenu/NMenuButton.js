@@ -25,7 +25,7 @@ const NMenuButton = ({children, title, to}) => {
                     sx={{width: "fit-content", cursor: "pointer", color: "white"}}
                     className={styles.menuItems}
                 >
-                    <Typography textAlign="center" className={styles.menuItem} fontSize="1rem">{title}</Typography>
+                    <Typography textAlign="center" color="white" className={styles.menuItem+" "+styles.whiteColor} fontSize="1rem">{title}</Typography>
                 </ListItem>
                 <Menu
                     id="basic-menu"
@@ -52,7 +52,7 @@ const NMenuButton = ({children, title, to}) => {
                         : {
                             color: "white"
                         }
-                } to={to}
+                } to={to} className={styles.navLink}
             >
                 <ListItem className={styles.menuItems}>
                     <Typography textAlign="center" className={styles.menuItem} fontSize="1rem">{title}</Typography>

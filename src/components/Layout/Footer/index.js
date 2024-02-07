@@ -36,9 +36,9 @@ const Footer = () => {
             <Row className={styles.floatBox}>
                 <Col xs={12} md={6} className={styles.floatBoxItem}>
                     <div>
-                        <Typography  fontSize='2rem' color="white">در</Typography>
+                        <Typography  fontSize='2rem' color="white.main">در</Typography>
                         <Typography  fontSize='2rem' color="#01e281"> خبرنامه ویژه </Typography>
-                        <Typography  fontSize='2rem' color="white">ما عضو شوید</Typography>
+                        <Typography  fontSize='2rem' color="white.main">ما عضو شوید</Typography>
                     </div>
                 </Col>
                 <Col xs={12} md={6} className={styles.inputWrapper}>
@@ -90,17 +90,14 @@ const Footer = () => {
                         <div className={styles.footerItem}>
                             <div className={styles.cooperationWrapper}>
                                 <div className={styles.cooperationTitles}>
-                                    <Typography varianr="span" fontSize='22px' textAlign='center' color='white'>آیا
-                                        علاقمند به داشتن </Typography>
-                                    <Typography varianr="span" fontSize='22px' textAlign='center' color='#01e281'>سوپر
-                                        مارکت هستید؟</Typography>
+                                    <Typography varianr="span" fontSize='22px' textAlign='center' color='white.main'>آیا علاقمند به داشتن </Typography>
+                                    <Typography varianr="span" fontSize='22px' textAlign='center' color='#01e281'>سوپر مارکت هستید؟</Typography>
                                 </div>
-                                <Typography varianr="span" fontSize='17px' textAlign='center' color='rgb(159,159,159)'
-                                            lineHeight='35px'>اندازه سوپرمارکت‌ها معمولاً از خواربارفروشیهای سنتی
-                                    بزرگترند و محصولات بیشتری می‌فروشند.</Typography>
+                                <Typography varianr="span" fontSize='17px' textAlign='center' color='rgb(159,159,159)' lineHeight='35px'>
+                                    اندازه سوپرمارکت‌ها معمولاً از خواربارفروشیهای سنتی بزرگترند و محصولات بیشتری می‌فروشند.
+                                </Typography>
                                 <Button className={styles.button2}>
-                                    <Typography varianr="span" fontSize='16px' className={styles.button2Text}>فروشنده
-                                        شوید</Typography>
+                                    <Typography varianr="span" fontSize='16px' className={styles.button2Text}>فروشنده شوید</Typography>
                                 </Button>
                             </div>
                         </div>
