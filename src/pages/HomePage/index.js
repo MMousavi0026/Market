@@ -4,17 +4,17 @@ import ProductsCategorization from "../../components/Layout/Header/ProductsCateg
 import Product from "../../components/pages/ShopPage/Product";
 import NewsItem from "../../components/pages/homePage/NewsItem";
 import HomeFeatures from "../../components/pages/homePage/HomeFeatures";
-import productsCategorization from "../../data/productsCategorization";
+import {productsCategorization} from "../../data/product";
 import productsInformation from "../../data/productsInformation";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import styles from './HomePage.module.scss';
 import {useState} from "react";
-import {productsDataList} from "../../data/product";
+import {productsList} from "../../data/product";
 
 const HomePage = () => {
-    const [productsList, setProductsList] = useState(productsDataList.slice(0, 4))
+    const [productsDataList, setProductsDataList] = useState(productsList.slice(0, 4))
 
     return (<>
         <div className={styles.box1Wrapper}>
@@ -182,7 +182,7 @@ const HomePage = () => {
                 </Button>
             </div>
             <Row spacing={4} width="100%">
-                {productsList.map((productDataItem) => (<Col xs={12} sm={6} lg={3}>
+                {productsDataList.map((productDataItem) => (<Col xs={12} sm={6} lg={3}>
                     <Product {...productDataItem} />
                 </Col>))}
             </Row>

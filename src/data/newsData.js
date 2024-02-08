@@ -1,4 +1,4 @@
-const newsData = [
+export const newsData = [
     {
         title: "نزدیکترین سوپر مارکت به محل زندگی",
         date: "۲۱ فروردین ۱۴۰۲",
@@ -6,7 +6,8 @@ const newsData = [
         tag: "سفارش آنلاین",
         categories: "آموزش",
         writer: "ادمین",
-        imgSrc: "/img/educate.jpg"
+        imgSrc: "/img/educate.jpg",
+        author: "admin",
     },
     {
         title: "نزدیکترین سوپر مارکت به محل زندگی",
@@ -15,7 +16,8 @@ const newsData = [
         tag: "سفارش آنلاین",
         categories: "مصاحبه",
         writer: "ادمین",
-        imgSrc: "/img/mosahebe.jpg"
+        imgSrc: "/img/mosahebe.jpg",
+        author: "Admin",
     },
     {
         title: "نزدیکترین سوپر مارکت به محل زندگی",
@@ -25,6 +27,7 @@ const newsData = [
         categories: "اخبار",
         writer: "ادمین",
         imgSrc: "/img/news.jpg",
+        author: "Admin",
     },
     {
         title: "نزدیکترین سوپر مارکت به محل زندگی",
@@ -34,6 +37,7 @@ const newsData = [
         categories: "فناوری",
         writer: "ادمین",
         imgSrc: "/img/box6Item1.jpg",
+        author: "Admin",
     },
     {
         title: "نزدیکترین سوپر مارکت به محل زندگی",
@@ -42,7 +46,8 @@ const newsData = [
         tag: "سفارش آنلاین",
         categories: "آموزش",
         writer: "ادمین",
-        imgSrc: "/img/educate.jpg"
+        imgSrc: "/img/educate.jpg",
+        author: "Admin",
     },
     {
         title: "نزدیکترین سوپر مارکت به محل زندگی",
@@ -51,7 +56,8 @@ const newsData = [
         tag: "سفارش آنلاین",
         categories: "مصاحبه",
         writer: "ادمین",
-        imgSrc: "/img/mosahebe.jpg"
+        imgSrc: "/img/mosahebe.jpg",
+        author: "Admin",
     },
     {
         title: "نزدیکترین سوپر مارکت به محل زندگی",
@@ -61,6 +67,7 @@ const newsData = [
         categories: "اخبار",
         writer: "ادمین",
         imgSrc: "/img/news.jpg",
+        author: "Admin",
     },
     {
         title: "نزدیکترین سوپر مارکت به محل زندگی",
@@ -70,6 +77,7 @@ const newsData = [
         categories: "فناوری",
         writer: "ادمین",
         imgSrc: "/img/box6Item1.jpg",
+        author: "Admin",
     },
 
 ]

@@ -1,4 +1,4 @@
-import {createTheme, lighten} from "@mui/material";
+import {createTheme, lighten} from "@mui/material/styles";
 
 const theme = createTheme({
     direction: "rtl",
@@ -15,12 +15,6 @@ const theme = createTheme({
         }
     },
     palette: {
-        white: {
-            main: "#ffffff"
-        },
-        black: {
-            main: "#000"
-        },
         primary: {
             main: "#122d40",
         },
@@ -29,9 +23,14 @@ const theme = createTheme({
         },
         tertiary: {
             main: "#1c3e56"
-        }
-    },
-
+        },
+        white: {
+            main: "#ffffff"
+        },
+        black: {
+            main: "#000"
+        },
+    }
 })
 
 export default theme;

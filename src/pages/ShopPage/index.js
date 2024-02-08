@@ -22,7 +22,7 @@ import Slider from "react-slick";
 import {productsCategorization, reviewsOfRecentProducts} from "../../data/ShopPage";
 import styles from './shopPage.module.css'
 import {useLocation} from "react-router-dom";
-import {productsDataList} from "../../data/product";
+import {productsList} from "../../data/product";
 import Product from "../../components/pages/ShopPage/Product";
 
 const Content = () => {
@@ -44,7 +44,7 @@ const Content = () => {
     );
 }
 const ShopPage = () => {
-    const [dataList, setData] = useState(productsDataList.slice(0, 6));
+    const [dataList, setData] = useState(productsList.slice(0, 6));
     const [value, setValue] = useState([0, 20]);
     const [age, setAge] = React.useState('');
     const [age2, setAge2] = React.useState('');
@@ -73,12 +73,12 @@ const ShopPage = () => {
         setAge2(event.target.value);
     };
 
-    const pageNumberRef = useRef()
+    const pageNumberRef = useRef(1)
 
     const onPaginationChange = useCallback((_, number)=> {
         pageNumberRef.current = number
-        setData(productsDataList.slice((number - 1) * 6, number * 6))
-    }, [productsDataList])
+        setData(productsList.slice((number - 1) * 6, number * 6))
+    }, [productsList])
 
     return (
         <Row rowSpacing={4} className={styles.pageWrapper}>
@@ -93,7 +93,7 @@ const ShopPage = () => {
                     <Col xs={8}>
                         <Row rowSpacing={4}>
                             <Col xs={12} sx={{display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"space-between"}}>
-                                <Typography>نمایش {((pageNumberRef.current - 1) * 6) + 1} - {pageNumberRef.current * 6} از {productsDataList.length} نتیجه</Typography>
+                                <Typography>نمایش {((pageNumberRef.current - 1) * 6) + 1} - {pageNumberRef.current * 6} از {productsList.length} نتیجه</Typography>
                                 <div>
                                     <FormControl sx={{ m: 1, minWidth: 120 , color:"primary"}}>
                                         <InputLabel id="demo-simple-select-helper-label" >تعداد محصول در هر صفحه</InputLabel>
@@ -101,8 +101,9 @@ const ShopPage = () => {
                                             labelId="demo-simple-select-helper-label"
                                             id="demo-simple-select-helper"
                                             value={age}
-                                            label="Age"
+                                            label="تعداد محصول در هر صفحه"
                                             onChange={pageHandleChange}
+                                            fullWidth
                                         >
                                             <MenuItem value="">
                                                 <i>تعداد محصول در هر صفحه</i>
@@ -120,8 +121,9 @@ const ShopPage = () => {
                                             labelId="demo-simple-select-helper-label"
                                             id="demo-simple-select-helper"
                                             value={age2}
-                                            label="Age"
+                                            label="مرتب سازی پیشفرض"
                                             onChange={pageHandleChange2}
+                                            fullWidth
                                         >
                                             <MenuItem value="">
                                                 <i>مرتب سازی پیش فرض</i>
@@ -145,7 +147,7 @@ const ShopPage = () => {
                                 </Row>
                             </Col>
                             <Col xs={12} sx={{display: "flex", justifyContent: "center"}}>
-                                <Pagination count={2} color="primary" onChange={onPaginationChange} />
+                                <Pagination count={Math.ceil(productsList.length / 6)} color="primary" onChange={onPaginationChange} />
                             </Col>
                         </Row>
                     </Col>

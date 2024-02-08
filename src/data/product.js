@@ -1,4 +1,13 @@
-export const productsDataList = [
+export const productsCategorization = [
+    {imgSrc:"/img/s1.png", title:"ماهی و آبزیان" },
+    {imgSrc:"/img/s2.png", title:"میوه و سبزیجات" },
+    {imgSrc:"/img/s3.png", title:"نان و غلات" },
+    {imgSrc:"/img/s4.png", title:"لبنیات و پروتئین" },
+    {imgSrc:"/img/s5.png", title:"شوینده و نظافتی" },
+    {imgSrc:"/img/s6.png", title:"گوشت و استیک" },
+]
+
+export const productsList = [
     {
         title: "اسپری چند منظوره",
         imgSrc: "/img/pr7-600x600.jpg",
@@ -126,4 +135,16 @@ export const shopOption = [
     {title: "ارسال رایگان برای سفارش های بالای ۱۰۰ تومان"},
     {title: "۲۱ روز بازپرداخت و بازگشت آسان"},
     {title: "محصول دارای مالیات و عوارض گمرکی نیست"},
+]
+
+export const reviewsOfRecentProducts = [
+    {title: "محصول سوپر مارکتی", imgSrc:"/img/pr12-600x600.jpg", ratingNum:"4", desc:"توسط آناهیتا خسروی"},
+    {title: "محصول سوپر مارکتی", imgSrc:"/img/pr12-600x600.jpg", ratingNum:"4", desc:"توسط آناهیتا خسروی"},
+    {title: "محصول سوپر مارکتی", imgSrc:"/img/pr12-600x600.jpg", ratingNum:"4", desc:"توسط آناهیتا خسروی"},
+    {title: "محصول سوپر مارکتی", imgSrc:"/img/pr12-600x600.jpg", ratingNum:"4", desc:"توسط آناهیتا خسروی"},
+    {title: "محصول سوپر مارکتی", imgSrc:"/img/pr12-600x600.jpg", ratingNum:"4", desc:"توسط آناهیتا خسروی"},
+    {title: "محصول سوپر مارکتی", imgSrc:"/img/pr12-600x600.jpg", ratingNum:"4", desc:"توسط آناهیتا خسروی"},
+    {title: "محصول سوپر مارکتی", imgSrc:"/img/pr12-600x600.jpg", ratingNum:"4", desc:"توسط آناهیتا خسروی"},
+    {title: "محصول سوپر مارکتی", imgSrc:"/img/pr12-600x600.jpg", ratingNum:"4", desc:"توسط آناهیتا خسروی"},
+    {title: "محصول سوپر مارکتی", imgSrc:"/img/pr12-600x600.jpg", ratingNum:"4", desc:"توسط آناهیتا خسروی"},
 ]

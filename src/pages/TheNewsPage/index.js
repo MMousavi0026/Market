@@ -1,17 +1,21 @@
-import React, {useCallback, useContext, useState} from 'react';
-import Row from "../../components/mui/Grid/Row";
+import React from 'react';
+import PersonIcon from '@mui/icons-material/Person';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import FolderIcon from '@mui/icons-material/Folder';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import Col from "../../components/mui/Grid/Col";
 import {Breadcrumbs, Pagination, TextField} from "@mui/material";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import Link from "@mui/material/Link";
-import HomeIcon from "@mui/icons-material/Home";
-import Typography from "@mui/material/Typography";
-import SideBox from "../../components/pages/ShopPage/SideBox";
+import Row from "../../components/mui/Grid/Row";
 import Button from "@mui/material/Button";
-import LinkIcon from '@mui/icons-material/Link';
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
+import LinkIcon from "@mui/icons-material/Link";
 import {newsData} from "../../data/newsData";
-import styles from "./NewsPage.module.css";
+import SideBox from "../../components/pages/ShopPage/SideBox";
 import {tags} from "../../data/tags";
+import HomeIcon from "@mui/icons-material/Home";
+import styles from "../NewsPage/NewsPage.module.css";
 
 const breadcrumbs = [
     <Link style={{display: 'flex'}} underline="hover" key="1" color="inherit" href="/">
@@ -22,13 +26,7 @@ const breadcrumbs = [
     </Typography>,
 ];
 
-const NewsPage = () => {
-    const [dataList, setData] = useState(newsData.slice(0,4));
-
-    const onPaginationChange = useCallback((_, index) => (
-        setData(newsData.slice((index - 1) * 4, index * 4))
-    ), [newsData])
-
+const TheNewsPage = () => {
     return (
         <Row rowSpacing={4} className={styles.pageWrapper}>
             <Col xs={12}/>
@@ -41,27 +39,30 @@ const NewsPage = () => {
             <Col xs={12}>
                 <Row columnSpacing={4}>
                     <Col xs={8}>
-                        <Row spacing={4}>
-                            {
-                                dataList.map((item, index) => (
-                                    <Col xs={6} key={index}>
-                                        <div className={styles.newsItem}>
-                                            <Button sx={{borderRadius:"20px", mb:"10px"}}>
-                                                <img src={item.imgSrc} alt={item.title} width="100%" style={{borderRadius:"20px"}} />
-                                            </Button>
-                                            <Link fontSize={25} href="/" className={styles.newsItemTitle}>{item.title}</Link>
-                                            <Typography fontSize={15} display="block" color="text.secondary" margin="10px 0">{item.date}</Typography>
-                                            <Typography fontSize={17} display="block" color="text.primary" className={styles.newsItemDesc}>{item.desc}</Typography>
-                                            <Button variant="contained" color="secondary" sx={{mt:"20px"}}>
-                                                <LinkIcon/>
-                                                <Typography>ادامه مطلب</Typography>
-                                            </Button>
-                                        </div>
-                                    </Col>
-                                ))
-                            }
-                            <Col xs={12} sx={{display: "flex", justifyContent: "center"}}>
-                                <Pagination count={Math.ceil(newsData.length / 4)} color="primary" onChange={onPaginationChange} />
+                        <Row rowSpacing={4}>
+                            <Col xs={12}>
+                                <img src={newsData[0].imgSrc} alt={newsData[0].title} width="100%" style={{borderRadius:"20px"}}/>
+                                <Typography fontSize={25} fontWeight="bold">{newsData[0].title}</Typography>
+                                <Typography fontSize={20} display="block" margin="10px 0" >{newsData[0].desc}</Typography>
+                            </Col>
+                            <Col xs={12} className={styles.bottomItemWrapper} >
+                                <div className={styles.bottomItem}>
+                                    <PersonIcon color="secondary" fontSize="15px" className={styles.icon}/>
+                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{newsData[0].author}</Button>
+                                </div>
+                                <div className={styles.bottomItem}>
+                                    <AccessTimeIcon color="secondary" fontSize="15px" className={styles.icon}/>
+                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{newsData[0].date}</Button>
+                                </div>
+                                <div className={styles.bottomItem}>
+                                    <FolderIcon color="secondary" fontSize="15px" className={styles.icon}/>
+                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{newsData[0].categories}</Button>
+                                </div>
+                                <div className={styles.bottomItem}>
+                                    <LocalOfferIcon color="secondary" fontSize="15px" className={styles.icon}/>
+                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{newsData[0].tag}</Button>
+                                </div>
+
                             </Col>
                             <Col xs={12}/>
                         </Row>
@@ -107,4 +108,4 @@ const NewsPage = () => {
     );
 };
 
-export default NewsPage;
+export default TheNewsPage;

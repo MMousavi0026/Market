@@ -1,7 +1,7 @@
 import React from 'react';
+import {ThemeProvider} from "@mui/material/styles";
 import {BrowserRouter as Router , Routes ,Route} from "react-router-dom";
 import ShopPage from "./pages/ShopPage";
-import {ThemeProvider} from "@mui/material";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
@@ -10,14 +10,14 @@ import ContactUsPage from "./pages/ContactUsPage";
 import SignInPage from "./pages/LoginPage/SignInPage";
 import SignUpPage from "./pages/LoginPage/SignUpPage";
 import { Provider } from 'react-redux'
-import theme from "./components/mui/themeConfig";
+import theme from "./components/mui/ThemeConfig";
 import store from "./redux/store";
 import './assets/font/NotoArabic/style.css'
 import './App.scss'
 import LoginPage from "./pages/LoginPage";
+import TheNewsPage from "./pages/TheNewsPage";
 
 function App() {
-
     return (
         <Provider store={store}>
             <ThemeProvider theme={theme}>
@@ -27,6 +27,7 @@ function App() {
                             <Route exact path='/' element={<HomePage/>}/>
                             <Route exact path='products' element={<ShopPage/>}/>
                             <Route exact path='news' element={<NewsPage/>}/>
+                            <Route exact path='the-news' element={<TheNewsPage/>}/>
                             <Route exact path='contact-us' element={<ContactUsPage/>}/>
                             <Route exact path='product' element={<ProductPage/>}/>
                         </Route>

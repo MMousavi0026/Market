@@ -78,8 +78,21 @@ const ContactUsPage = () => {
                             label="نام"
                             type="text"
                             variant="outlined"
-                            sx={{ width:"48%"}}
                             color="secondary"
+                            sx={{ width:"48%",
+                                "& .MuiInputBase-input": {
+                                    color: "white.main",
+                                },
+                                "& .MuiFormLabel-root": {
+                                    color: "white.main",
+                                },
+                                "& .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: "white.main",
+                                },
+                                "&:hover .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: "secondary.main",
+                                },
+                            }}
                         />
                         <TextField
                             required
@@ -87,7 +100,21 @@ const ContactUsPage = () => {
                             label="ایمیل"
                             type="text"
                             variant="outlined"
-                            sx={{ width:"48%"}}
+                            color="secondary"
+                            sx={{ width:"48%",
+                                "& .MuiInputBase-input": {
+                                    color: "white.main",
+                                },
+                                "& .MuiFormLabel-root": {
+                                    color: "white.main",
+                                },
+                                "& .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: "white.main",
+                                },
+                                "&:hover .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: "secondary.main",
+                                },
+                            }}
                         />
                     </div>
                     <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", width:'100%'}}>
@@ -97,16 +124,37 @@ const ContactUsPage = () => {
                             label="موضوع"
                             type="text"
                             variant="outlined"
-                            sx={{ width:"48%"}}
+                            color="secondary"
+                            sx={{ width:"48%",
+                                "& .MuiInputBase-input": {
+                                    color: "white.main",
+                                },
+                                "& .MuiFormLabel-root": {
+                                    color: "white.main",
+                                },
+                                "& .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: "white.main",
+                                },
+                                "&:hover .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: "secondary.main",
+                                },
+                            }}
                         />
                         <FormControl style={{ width:"48%" }}>
-                            <InputLabel id="demo-simple-select-label">دپارتمان</InputLabel>
+                            <InputLabel color="white" id="demo-simple-select-label">دپارتمان</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
                                 value={age}
                                 label="دپارتمان"
                                 onChange={handleChange}
+                                color="secondary"
+                                fullWidth
+                                sx={{
+                                    "& .MuiSelect-iconOutlined": {
+                                        color: 'white.main !important',
+                                    }
+                                }}
                             >
                                 <MenuItem value={10}>فروش</MenuItem>
                                 <MenuItem value={20}>مشتری داری</MenuItem>
@@ -119,10 +167,25 @@ const ContactUsPage = () => {
                         required
                         id="outlined-required"
                         label="دیدگاه شما"
-                        sx={{marginTop:"20px"}}
+                        variant="outlined"
+                        color="secondary"
                         fullWidth
                         multiline
                         rows={4}
+                        sx={{marginTop:"20px",
+                            "& .MuiInputBase-input": {
+                                color: "white.main",
+                            },
+                            "& .MuiFormLabel-root": {
+                                color: "white.main",
+                            },
+                            "& .MuiOutlinedInput-notchedOutline": {
+                                borderColor: "white.main",
+                            },
+                            "&:hover .MuiOutlinedInput-notchedOutline": {
+                                borderColor: "secondary.main",
+                            }
+                        }}
                     />
                     <Button variant="contained" color="secondary" sx={{padding:"10px 30px", mt:'20px'}} >
                         <Typography fontSize={20}>ارسال</Typography>
