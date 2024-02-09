@@ -18,19 +18,19 @@ const HomePage = () => {
         <div className={styles.box1Wrapper}>
             <Row spacing={4} className={styles.box1}>
                 <Col xs={12} lg={6} marginTop='-30px' className={styles.box1Right}>
-                    <Typography variant="h1" fontSize="2.5rem" textAlign="center" marginTop="35px" color='#01e281'>
+                    <Typography variant="h3" textAlign="center" marginTop="35px" color='secondary'>
                         سوپر مارکت اکسترا
                     </Typography>
-                    <Typography fontSize="2.5rem" textAlign="center" margin="30px 0">
+                    <Typography variant="h4" textAlign="center" margin="30px 0">
                         تازه تر از همه جا
                     </Typography>
-                    <Typography fontSize="1rem" textAlign="center" color="#535353">سوپرمارکت شکلی از
+                    <Typography variant="body1" textAlign="center" color="#535353">سوپرمارکت شکلی از
                         خواربارفروشی ولی بزرگتر از آن است که مشتری خودش محصولات را از قفسه برمی‌دارد یا به اصطلاح سلف
                         سرویس است.
                     </Typography>
                     <Col className={styles.box1Item1Buttons} width="fit-content">
                         <Button variant="contained" className={styles.button1}>
-                            <Link fontSize="1.2rem" color="white" className={styles.button1Text}>
+                            <Link href="#" fontSize="1.2rem" color="white.main" className={styles.button1Text}>
                                 ۲۵٪ تخفیف ویژه
                             </Link>
                         </Button>
@@ -117,7 +117,7 @@ const HomePage = () => {
                                 display="block"
                                 textAlign='left'
                                 margin='0 0 0 15px'
-                                paddingTop="15px"
+                                padding="15px 0"
                             >
                                 روی تمامی میوه ها
                             </Typography>
@@ -157,9 +157,11 @@ const HomePage = () => {
                 <Typography fontSize='40px' width="100%" color='#01e281'> محصولات ما</Typography>
             </div>
             <Row spacing={4} marginTop="0">
-                {productsCategories.map((item) => (<Col item xs={12} sm={4} lg={2}>
-                    <ProductsCategories titleColor={"black"} {...item}/>
-                </Col>))}
+                {productsCategories.map((item) => (
+                    <Col item xs={12} sm={4} lg={2}>
+                        <ProductsCategories titleColor={"black"} {...item}/>
+                    </Col>
+                ))}
             </Row>
         </Row>
         <Row className={styles.space}/>
@@ -170,7 +172,7 @@ const HomePage = () => {
                     <Typography fontSize='40px' width="100%" color="secondary"> محصولات</Typography>
                 </div>
                 <Button variant="contained" color="secondary" className={styles.button4}>
-                    <Typography fontSize='18px' color="primary" className={styles.button4Text}>همه محصولات</Typography>
+                    <Link href="/shop" fontSize='18px' color="primary" className={styles.button4Text}>همه محصولات</Link>
                 </Button>
             </div>
             <Row spacing={4} width="100%">

@@ -28,7 +28,6 @@
   align-items: center;
   cursor: pointer;
   color: white!important;
-  text-decoration: none;
   transition: color 0.4s;
   margin-left: 40px;
 }
@@ -75,10 +74,6 @@
 
 .whiteColor {
   color: white !important;
-}
-
-.navLink {
-  text-decoration: none;
 }
 
 @media (max-width: 900px) {

@@ -24,6 +24,7 @@ import PropTypes from "prop-types";
 import SideBox from "../../components/pages/ShopPage/SideBox";
 import Product from "../../components/pages/ShopPage/Product";
 import {shopFeatures} from "../../data/shopFeatures";
+import {useParams} from "react-router-dom";
 
 const CustomTabPanel = (props) => {
     const { children, value, index, ...other } = props;
@@ -58,7 +59,7 @@ const a11yProps = (index) => {
 }
 
 const ProductPage = () => {
-
+    const params = useParams();
     const socialMediaIcon = [
         {icon: FacebookOutlinedIcon, title:"اشتراک گذاری در فیسبوک"},
         {icon: WhatsAppIcon, title:"اشتراک گذاری در واتساپ"},
@@ -84,6 +85,8 @@ const ProductPage = () => {
         setValue(newValue);
     };
 
+    const thisProduct = productsList.find(item => item.id === params.productId)
+
     return (
         <Row rowSpacing={4} className={styles.pageWrapper}>
             <Col xs={12} height="50px"/>
@@ -93,8 +96,8 @@ const ProductPage = () => {
                         <div>
                             <img
                                 width="100%"
-                                src={productsList[0].imgSrc}
-                                alt={productsList[0].title}
+                                src={thisProduct.imgSrc}
+                                alt={thisProduct.title}
                                 className={styles.productImg}
                             />
                         </div>
@@ -102,19 +105,19 @@ const ProductPage = () => {
                     <Col md={6.5}>
                         <Row rowSpacing={3} style={{flexDirection: "column"}}>
                             <Col>
-                                <Typography fontWeight="bold" variant="h4">{productsList[0].title}</Typography>
+                                <Typography fontWeight="bold" variant="h4">{thisProduct.title}</Typography>
                             </Col>
                             <Col>
-                                <Rating name="read-only" value={productsList[0].rateNum} readOnly/>
+                                <Rating name="read-only" value={thisProduct.rateNum} readOnly/>
                             </Col>
                             <Col>
                                 <Typography fontWeight="bold" variant="h6" color="secondary">
-                                    {productsList[0].price} تومان
+                                    {thisProduct.price} تومان
                                 </Typography>
                             </Col>
                             <Col>
                                 <Typography fontWeight="" variant="body1" color="gray">
-                                    {productsList[0].desc}
+                                    {thisProduct.desc}
                                 </Typography>
                             </Col>
                             <Col
@@ -171,11 +174,11 @@ const ProductPage = () => {
                             <Col style={{display:'flex', flexDirection:"column"}}>
                                 <div style={{display:'flex', flexDirection:"row"}}>
                                     <Typography variant="body2"> تگ:&nbsp;</Typography>
-                                    <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 0.8)"}}>{productsList[0].tag}</Typography>
+                                    <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 0.8)"}}>{thisProduct.tag}</Typography>
                                 </div>
                                 <div style={{display:'flex', flexDirection:"row", marginTop:"5px"}}>
                                     <Typography variant="body2"> دسته بندی:&nbsp;</Typography>
-                                    <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 0.8)"}}>{productsList[0].categories}</Typography>
+                                    <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 0.8)"}}>{thisProduct.categories}</Typography>
                                 </div>
                             </Col>
                             <Col>

@@ -26,10 +26,10 @@ function App() {
                         <Route path="/" element={ <Layout/> }>
                             <Route exact path='/' element={<HomePage/>}/>
                             <Route exact path='shop' element={<ShopPage/>}/>
+                            <Route exact path='shop/:productId' element={<ProductPage/>}/>
                             <Route exact path='news' element={<NewsPage/>}/>
                             <Route exact path='the-news' element={<TheNewsPage/>}/>
                             <Route exact path='contact-us' element={<ContactUsPage/>}/>
-                            <Route exact path='product' element={<ProductPage/>}/>
                         </Route>
                         <Route exact path='login' element={<LoginPage/>}/>
                         <Route exact path='sign-in' element={<SignInPage/>}/>

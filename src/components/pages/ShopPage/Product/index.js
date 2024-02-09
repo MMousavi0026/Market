@@ -1,7 +1,7 @@
 import React, {useContext, useReducer} from 'react';
 import ProductOption from "./ProductOption";
 import {useDispatch} from "react-redux";
-import {increment} from "../../../../redux/reducers/counterCart";
+import {counterCart, increment} from "../../../../redux/reducers/counterCart";
 import {faCartShopping, faCodeCompare, faHeart, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Card, CardActionArea, CardContent, CardMedia} from "@mui/material";
@@ -33,14 +33,16 @@ const Product = ({imgSrc, title, price}) => {
                     </CardContent>
                 </CardActionArea>
                 <div className={styles.productOption}>
-                    <ProductOption
-                        iconVertical="center"
-                        iconHorizontal="right"
-                        textVertical="center"
-                        textHorizontal="left"
-                        iconName={faHeart}
-                        title='افزودن به علاقمندی ها'
-                    />
+                    <Button onClick={() => dispatch(increment)}>
+                        <ProductOption
+                            iconVertical="center"
+                            iconHorizontal="right"
+                            textVertical="center"
+                            textHorizontal="left"
+                            iconName={faHeart}
+                            title='افزودن به علاقمندی ها'
+                        />
+                    </Button>
                     <ProductOption
                         iconVertical="center"
                         iconHorizontal="right"

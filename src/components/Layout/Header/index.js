@@ -19,6 +19,7 @@ import styles from "./Header.module.css";
 
 const Header = () => {
     const counterCart = useSelector(x => x.counterCart)
+    const counterBeloved = useSelector(x => x.counterBeloved)
 
     const [open, setOpen] = React.useState(false);
     const toggleDrawer = (open) => (event) => {
@@ -91,7 +92,9 @@ const Header = () => {
                                     </Badge>
                                 </IconButton>
                                 <IconButton className={styles.favorite}>
-                                    <FavoriteIcon fontSize='20' className={styles.icon}/>
+                                    <Badge badgeContent={counterBeloved} color="error" sx={{'& span': {fontSize: 15}}}>
+                                        <FavoriteIcon fontSize='20' className={styles.icon}/>
+                                    </Badge>
                                 </IconButton>
                                 <IconButton className={styles.person}>
                                     <PersonIcon fontSize='20' className={styles.icon}/>

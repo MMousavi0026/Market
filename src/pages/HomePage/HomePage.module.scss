@@ -323,6 +323,9 @@
     background-position: left bottom;
     border-radius: 20px;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 @media (min-width: 1536px) {
