@@ -1,4 +1,4 @@
-export const newsData = [
+export const newsList = [
     {
         title: "نزدیکترین سوپر مارکت به محل زندگی",
         date: "۲۱ فروردین ۱۴۰۲",

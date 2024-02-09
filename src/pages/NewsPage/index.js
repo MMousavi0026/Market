@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import SideBox from "../../components/pages/ShopPage/SideBox";
 import Button from "@mui/material/Button";
 import LinkIcon from '@mui/icons-material/Link';
-import {newsData} from "../../data/newsData";
+import {newsList} from "../../data/newsList";
 import styles from "./NewsPage.module.css";
 import {tags} from "../../data/tags";
 
@@ -23,11 +23,11 @@ const breadcrumbs = [
 ];
 
 const NewsPage = () => {
-    const [dataList, setData] = useState(newsData.slice(0,4));
+    const [dataList, setData] = useState(newsList.slice(0,4));
 
     const onPaginationChange = useCallback((_, index) => (
-        setData(newsData.slice((index - 1) * 4, index * 4))
-    ), [newsData])
+        setData(newsList.slice((index - 1) * 4, index * 4))
+    ), [newsList])
 
     return (
         <Row rowSpacing={4} className={styles.pageWrapper}>
@@ -61,7 +61,7 @@ const NewsPage = () => {
                                 ))
                             }
                             <Col xs={12} sx={{display: "flex", justifyContent: "center"}}>
-                                <Pagination count={Math.ceil(newsData.length / 4)} color="primary" onChange={onPaginationChange} />
+                                <Pagination count={Math.ceil(newsList.length / 4)} color="primary" onChange={onPaginationChange} />
                             </Col>
                             <Col xs={12}/>
                         </Row>

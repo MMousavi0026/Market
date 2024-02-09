@@ -140,9 +140,7 @@ const ShopPage = () => {
                                     {
                                         dataList.map((item) => (
                                             <Col xs={6}>
-                                                <Link href={`/shop/${item.id}`}>
-                                                    <Product {...item} />
-                                                </Link>
+                                                <Product {...item} to={`/shop/${item.id}`} />
                                             </Col>
                                         ))
                                     }

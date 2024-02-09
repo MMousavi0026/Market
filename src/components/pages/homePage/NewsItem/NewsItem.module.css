@@ -1,9 +1,4 @@
-.box6Items {
-    flex-wrap: wrap;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+
 
 .box6ItemLink {
     font-size:30px;
@@ -25,8 +20,7 @@
 }
 
 .box6Item {
-    width: 22%;
-    height: 100%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,27 +32,17 @@
     width: fit-content;
     background-color: #122d40;
     border: white solid 6px;
-    padding: 5px 20px;
+    border-radius: 40px;
+    padding: 5px 15px;
     margin-bottom: -19px;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1;
 }
-@media (max-width: 768px) {
-    .box6Item {
-        width: 46%;
-        margin-bottom: 50px;
-    }
-}
-
 @media (max-width: 425px) {
     .box6Items {
         justify-content: center!important;
-    }
-
-    .box6Item {
-        width: 95%;
     }
 }
 

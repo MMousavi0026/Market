@@ -10,7 +10,7 @@ import Row from "../../components/mui/Grid/Row";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
-import {newsData} from "../../data/newsData";
+import {newsList} from "../../data/newsList";
 import SideBox from "../../components/pages/ShopPage/SideBox";
 import {tags} from "../../data/tags";
 import HomeIcon from "@mui/icons-material/Home";
@@ -40,26 +40,26 @@ const TheNewsPage = () => {
                     <Col xs={8}>
                         <Row rowSpacing={4}>
                             <Col xs={12}>
-                                <img src={newsData[0].imgSrc} alt={newsData[0].title} width="100%" style={{borderRadius:"20px"}}/>
-                                <Typography fontSize={25} fontWeight="bold">{newsData[0].title}</Typography>
-                                <Typography fontSize={20} display="block" margin="10px 0" >{newsData[0].desc}</Typography>
+                                <img src={newsList[0].imgSrc} alt={newsList[0].title} width="100%" style={{borderRadius:"20px"}}/>
+                                <Typography fontSize={25} fontWeight="bold">{newsList[0].title}</Typography>
+                                <Typography fontSize={20} display="block" margin="10px 0" >{newsList[0].desc}</Typography>
                             </Col>
                             <Col xs={12} className={styles.bottomItemWrapper} >
                                 <div className={styles.bottomItem}>
                                     <PersonIcon color="secondary" fontSize="15px" className={styles.icon}/>
-                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{newsData[0].author}</Button>
+                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{newsList[0].author}</Button>
                                 </div>
                                 <div className={styles.bottomItem}>
                                     <AccessTimeIcon color="secondary" fontSize="15px" className={styles.icon}/>
-                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{newsData[0].date}</Button>
+                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{newsList[0].date}</Button>
                                 </div>
                                 <div className={styles.bottomItem}>
                                     <FolderIcon color="secondary" fontSize="15px" className={styles.icon}/>
-                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{newsData[0].categories}</Button>
+                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{newsList[0].categories}</Button>
                                 </div>
                                 <div className={styles.bottomItem}>
                                     <LocalOfferIcon color="secondary" fontSize="15px" className={styles.icon}/>
-                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{newsData[0].tag}</Button>
+                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{newsList[0].tag}</Button>
                                 </div>
 
                             </Col>

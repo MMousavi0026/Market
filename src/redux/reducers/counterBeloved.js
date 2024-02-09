@@ -4,16 +4,20 @@ export const counterBeloved = createSlice({
     name: 'counterBeloved',
     initialState: 0,
     reducers: {
-        increment: (state) => {
-            state += 1;
+        increaseCounterBeloved: (state) => {
+            state++;
             return state;
         },
-        decrement: (state) => {
-            state -= 1;
+        decreaseCounterBeloved: (state) => {
+            state--;
             return state;
-        }
+        },
     }
 })
 
-export const [increment, decrement] = counterBeloved.actions;
+export const {
+    increaseCounterBeloved,
+    decreaseCounterBeloved,
+} = counterBeloved.actions;
+
 export default counterBeloved.reducer

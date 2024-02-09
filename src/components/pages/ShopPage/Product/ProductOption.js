@@ -1,5 +1,5 @@
 import React from 'react';
-import Styles from "./Product.module.css";
+import styles from "./Product.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
@@ -19,8 +19,8 @@ const ProductOption = ({iconName, title, iconVertical, iconHorizontal, textVerti
 
     return (
         <div {...props}>
-            <button className={Styles.love} aria-owns={open ? 'mouse-over-popover' : undefined} aria-haspopup="true" onMouseEnter={handlePopoverOpen} onMouseLeave={handlePopoverClose}>
-                <FontAwesomeIcon className={Styles.icon} icon={iconName} />
+            <button className={styles.love} aria-owns={open ? 'mouse-over-popover' : undefined} aria-haspopup="true" onMouseEnter={handlePopoverOpen} onMouseLeave={handlePopoverClose}>
+                <FontAwesomeIcon className={styles.icon} icon={iconName} />
             </button>
             <Popover
                 id="mouse-over-popover"
@@ -31,9 +31,9 @@ const ProductOption = ({iconName, title, iconVertical, iconHorizontal, textVerti
                 transformOrigin={{vertical: textVertical, horizontal: textHorizontal,}}
                 onClose={handlePopoverClose}
                 disableScrollLock
-                slotProps={{paper: { sx: {backgroundColor: 'transparent', boxShadow:'none'}}}}
+                slotProps={{paper: { sx: {backgroundColor: 'secondary.main', borderRadius: "30px", boxShadow:'none', display: "flex", alignItems: "center", justifyContent: "center", mr: "10px"}}}}
             >
-                <Typography variant="span" className={Styles.productOptionTitle}>{title}</Typography>
+                <Typography variant="span" fontSize="12px" className={styles.POTitle}>{title}</Typography>
             </Popover>
         </div>
     );

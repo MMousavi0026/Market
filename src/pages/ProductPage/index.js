@@ -15,7 +15,7 @@ import PinterestIcon from '@mui/icons-material/Pinterest';
 import EmailIcon from '@mui/icons-material/Email';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import {useDispatch} from "react-redux";
-import {incrementByAmount} from "../../redux/reducers/counterCart";
+import {increaseCartByAmount} from "../../redux/reducers/counterCart";
 import Divider from "@mui/material/Divider";
 import styles from "./Product.module.css"
 import SocialMediaIcon from "./SocialMediaIcon";
@@ -25,9 +25,11 @@ import SideBox from "../../components/pages/ShopPage/SideBox";
 import Product from "../../components/pages/ShopPage/Product";
 import {shopFeatures} from "../../data/shopFeatures";
 import {useParams} from "react-router-dom";
+import {increaseCounterBeloved} from "../../redux/reducers/counterBeloved";
 
 const CustomTabPanel = (props) => {
     const { children, value, index, ...other } = props;
+    const dispatch = useDispatch()
     return (
         <div
             role="tabpanel"
@@ -143,7 +145,7 @@ const ProductPage = () => {
                                     <Button
                                         variant="contained"
                                         className={styles.cartShoppingButton}
-                                        onClick={() => dispatch(incrementByAmount(cartNumber))}
+                                        onClick={() => dispatch(increaseCartByAmount(cartNumber))}
                                         sx={{mr:'10px'}}
                                     >
                                         <FontAwesomeIcon style={{marginLeft: '10px'}} icon={faCartShopping}/>
@@ -156,6 +158,7 @@ const ProductPage = () => {
                                         textHorizontal="center"
                                         iconName={faHeart}
                                         title='افزودن به علاقمندی ها'
+                                        onClick={() => dispatch(increaseCounterBeloved())}
                                         style={{marginLeft:"10px"}}
                                     />
                                     <ProductOption

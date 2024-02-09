@@ -2,13 +2,13 @@ import React from 'react';
 import styles from "./NewsItem.module.css";
 import LinkIcon from "@mui/icons-material/Link";
 
-const NewsItemComponent = ({title, imgSrc, description}) => {
+const NewsItemComponent = ({title, imgSrc, desc, date}) => {
     return (
         <div className={styles.box6Item}>
-            <button className={styles.button6}>
-                <span style={{fontSize: "13px", color: "white"}}>{title}</span>
-            </button>
-            <img width={'100%'} style={{borderRadius: '20px'}} src={imgSrc} alt={title}/>
+            <div className={styles.button6}>
+                <span style={{fontSize: ".7rem", color: "white"}}>{title}</span>
+            </div>
+            <img width='100%' style={{borderRadius: '20px'}} src={imgSrc} alt={title}/>
             <div
                 style={{
                     width: '97%',
@@ -28,11 +28,14 @@ const NewsItemComponent = ({title, imgSrc, description}) => {
                         zIndex: '1'
                     }}
                 >
-                    ۲۱ فروردین ۱۴۰۲
+                    {date}
                 </span>
                 <span
                     style={{
                         width: '100%',
+                        height: "50px",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
                         fontSize: '15px',
                         color: '#49607e',
                         textAlign: 'right',
@@ -41,7 +44,7 @@ const NewsItemComponent = ({title, imgSrc, description}) => {
                         borderTop: 'rgba(128, 128, 128, 0.2) solid 1px'
                     }}
                 >
-                    {description}
+                    {desc}
                 </span>
             </div>
             <div className={styles.box6ItemLink}>

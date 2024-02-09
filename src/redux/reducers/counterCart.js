@@ -4,24 +4,29 @@ export const counterCart = createSlice({
     name: 'counterCart',
     initialState: 0,
     reducers: {
-        increment: (state) => {
-            state += 1
-            return state
+        increaseCounterCart: (state) => {
+            state += 1;
+            return state;
         },
-        decrement: (state) => {
+        decreaseCounterCart: (state) => {
             state -= 1
             return state
         },
-        incrementByAmount: (state, action) => {
+        increaseCartByAmount: (state, action) => {
             state += action.payload
             return state
         },
-        decrementByAmount: (state, action) => {
+        decreaseCartByAmount: (state, action) => {
             state -= action.payload
             return state
         }
     },
 })
 
-export const { increment, decrement, incrementByAmount, decrementByAmount } = counterCart.actions
+export const {
+    increaseCounterCart,
+    decreaseCounterCart,
+    increaseCartByAmount,
+    decreaseCartByAmount
+} = counterCart.actions
 export default counterCart.reducer

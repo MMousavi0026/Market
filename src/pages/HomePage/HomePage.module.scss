@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: -3rem 2rem 0 2rem;
+    margin: -40px -2rem 0 2rem !important;
     background-image: url("https://xtratheme.ir/elementor/supermarket/wp-content/uploads/sites/111/2023/04/bg-hero.jpg");
     padding-top: 3rem;
 }
@@ -258,10 +258,6 @@
     padding-top: 30px;
 }
 
-.box5Img2 {
-    width: 40vw;
-}
-
 .googleplayImg {
     width: 160px;
     height: auto;
@@ -279,10 +275,9 @@
 }
 
 .box6 {
-    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column !important;
+    align-items: center !important;
 }
 
 .box6Title {
@@ -297,6 +292,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .box2Column1Item1 {
@@ -330,7 +326,8 @@
 
 @media (min-width: 1536px) {
     .box1Wrapper {
-        width: calc(100% + 50rem) !important;
+        width: calc(100% + 32rem) !important;
+        margin: -40px -17rem 0 17rem !important;
     }
     .box1 {
         width: 1450px!important;
@@ -353,9 +350,6 @@
 }
 
 @media (max-width: 900px) {
-    .box5Img2 {
-        width: 60vw;
-    }
     .box5Text {
         display: flex;
         flex-direction: column;
