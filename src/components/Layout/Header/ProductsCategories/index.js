@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from "./productsCategorization.module.css";
+import styles from "./productsCategories.module.css";
 import Button from "@mui/material/Button";
 
-const ProductsCategorization = ({imgSrc, title, titleColor, discount, style}) => {
+const ProductsCategories = ({imgSrc, title, titleColor, discount, style}) => {
     return (
         <Button className={styles.item} style={style}>
             <img className={styles.fish} alt='item' src={imgSrc}/>
@@ -12,4 +12,4 @@ const ProductsCategorization = ({imgSrc, title, titleColor, discount, style}) =>
     );
 };
 
-export default ProductsCategorization;
+export default ProductsCategories;

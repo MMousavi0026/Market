@@ -4,7 +4,7 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import {Autocomplete, TextField} from "@mui/material";
 import RMenuButton from "./RMenuButton";
-import ProductsCategorization from "../ProductsCategorization";
+import ProductsCategories from "../ProductsCategories";
 import Row from "../../../mui/Grid/Row";
 import Col from "../../../mui/Grid/Col";
 import {useCallback} from "react";
@@ -36,7 +36,7 @@ const ResponsiveMenu = () => {
                                         item.children.map((discountDataItem) => {
                                             return (
                                                 <Col xs={12}>
-                                                    <ProductsCategorization
+                                                    <ProductsCategories
                                                         titleColor="white"
                                                         discount="۲۰٪ تخفیف"
                                                         {...discountDataItem}

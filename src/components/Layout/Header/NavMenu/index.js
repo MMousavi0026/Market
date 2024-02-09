@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import CardGiftCardIcon from "@mui/icons-material/CardGiftcard";
 import Col from "../../../mui/Grid/Col";
 import Row from "../../../mui/Grid/Row";
-import ProductsCategorization from "../ProductsCategorization";
+import ProductsCategories from "../ProductsCategories";
 import NMenuButton from "./NMenuButton";
 import menuData from "../../../../data/menuData";
 import styles from "./NMenu.module.scss";
@@ -22,7 +22,7 @@ const NavMenu = () => {
                                 {
                                     item.children.map((discountDataItem) => (
                                         <Col xs={2.2}>
-                                            <ProductsCategorization
+                                            <ProductsCategories
                                                 titleColor="white"
                                                 discount="۲۰٪ تخفیف"
                                                 {...discountDataItem}

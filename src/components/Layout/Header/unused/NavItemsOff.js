@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styles from "./SiteHeader.module.css";
-import ProductsCategorization from "../productsCategorization/productsCategorization";
+import productsCategories from "../productsCategories/productsCategories";
 import MenuButtonOff from "./MenuButtonOff";
 
 const NavItemsOff = () => {
@@ -25,7 +25,7 @@ const NavItemsOff = () => {
             >
                 <div className={styles.offItems}>
                     {
-                        data.map((item) => <ProductsCategorization {...item}>۲۰٪ تخفیف</ProductsCategorization>)}
+                        data.map((item) => <productsCategories {...item}>۲۰٪ تخفیف</productsCategories>)}
                 </div>
             </MenuButtonOff>
         </section>

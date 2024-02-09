@@ -19,10 +19,10 @@ import HomeIcon from "@mui/icons-material/Home";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
 import Slider from "react-slick";
-import {productsCategorization, reviewsOfRecentProducts} from "../../data/ShopPage";
+import {productsCategories, reviewsOfRecentProducts} from "../../data/productsData";
 import styles from './shopPage.module.css'
 import {useLocation} from "react-router-dom";
-import {productsList} from "../../data/product";
+import {productsList} from "../../data/productsData";
 import Product from "../../components/pages/ShopPage/Product";
 
 const Content = () => {
@@ -166,7 +166,7 @@ const ShopPage = () => {
                             <Col>
                                 <SideBox title="دسته بندی محصولات">
                                     {
-                                        productsCategorization.map((item) => (
+                                        productsCategories.map((item) => (
                                             <ListItem className={styles.sideBoxItemWrapper}>
                                                 <Link to={item.to}>
                                                     <Typography className={styles.sideBoxItem}>{item.title}</Typography>

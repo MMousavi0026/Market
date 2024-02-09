@@ -1,6 +1,6 @@
 const menuData = [
     {
-        title: "خانه",
+        title: "صفحه اصلی",
         to: "/"
     },
     {

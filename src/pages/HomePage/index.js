@@ -1,17 +1,15 @@
 import Row from "../../components/mui/Grid/Row";
 import Col from "../../components/mui/Grid/Col";
-import ProductsCategorization from "../../components/Layout/Header/ProductsCategorization";
+import ProductsCategories from "../../components/Layout/Header/ProductsCategories";
 import Product from "../../components/pages/ShopPage/Product";
 import NewsItem from "../../components/pages/homePage/NewsItem";
 import HomeFeatures from "../../components/pages/homePage/HomeFeatures";
-import {productsCategorization} from "../../data/product";
-import productsInformation from "../../data/productsInformation";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import styles from './HomePage.module.scss';
 import {useState} from "react";
-import {productsList} from "../../data/product";
+import {productsList, productsCategories} from "../../data/productsData";
 
 const HomePage = () => {
     const [productsDataList, setProductsDataList] = useState(productsList.slice(0, 4))
@@ -32,14 +30,14 @@ const HomePage = () => {
                     </Typography>
                     <Col className={styles.box1Item1Buttons} width="fit-content">
                         <Button variant="contained" className={styles.button1}>
-                            <Typography fontSize="1.2rem" color="white" className={styles.button1Text}>
+                            <Link fontSize="1.2rem" color="white" className={styles.button1Text}>
                                 ۲۵٪ تخفیف ویژه
-                            </Typography>
+                            </Link>
                         </Button>
                         <Button variant="outlined" className={styles.button2}>
-                            <Typography fontSize="1.2rem" color="#122d40" className={styles.button1Text}>
+                            <Link href="/shop" fontSize="1.2rem" color="#122d40" className={styles.button1Text}>
                                 مشاهده محصولات
-                            </Typography>
+                            </Link>
                         </Button>
                     </Col>
                 </Col>
@@ -123,9 +121,6 @@ const HomePage = () => {
                             >
                                 روی تمامی میوه ها
                             </Typography>
-                            <Button variant="contained" color="secondary" className={styles.button7}>
-                                <Typography className={styles.button7Text} fontSize="18px">الان بخرید</Typography>
-                            </Button>
                         </div>
                     </Col>
                 </Row>
@@ -152,9 +147,6 @@ const HomePage = () => {
                     >
                         سبزیجات تازه و با کیفیت
                     </Typography>
-                    <Button variant="contained" color="primary" className={styles.button3}>
-                        <Typography className={styles.button3Text} fontSize="1rem">الان بخرید</Typography>
-                    </Button>
                 </div>
             </Col>
         </Row>
@@ -165,8 +157,8 @@ const HomePage = () => {
                 <Typography fontSize='40px' width="100%" color='#01e281'> محصولات ما</Typography>
             </div>
             <Row spacing={4} marginTop="0">
-                {productsCategorization.map((item) => (<Col item xs={12} sm={4} lg={2}>
-                    <ProductsCategorization titleColor={"black"} {...item}/>
+                {productsCategories.map((item) => (<Col item xs={12} sm={4} lg={2}>
+                    <ProductsCategories titleColor={"black"} {...item}/>
                 </Col>))}
             </Row>
         </Row>

@@ -8,6 +8,9 @@ body {
     margin: 0;
     padding: 0;
 }
+a {
+    text-decoration: none !important;
+}
 
 @media (min-width: 1200px) {
     html {

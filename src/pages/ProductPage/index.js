@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Row from "../../components/mui/Grid/Row";
 import Col from "../../components/mui/Grid/Col";
 import ProductOption from "../../components/pages/ShopPage/Product/ProductOption";
-import {productsList} from "../../data/product";
+import {productsList} from "../../data/productsData";
 import Typography from "@mui/material/Typography";
 import {Checkbox, FormControlLabel, inputLabelClasses, paperClasses, Rating, Tab, Tabs, TextField} from "@mui/material";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -23,6 +23,7 @@ import Box from "@mui/material/Box";
 import PropTypes from "prop-types";
 import SideBox from "../../components/pages/ShopPage/SideBox";
 import Product from "../../components/pages/ShopPage/Product";
+import {shopFeatures} from "../../data/shopFeatures";
 
 const CustomTabPanel = (props) => {
     const { children, value, index, ...other } = props;
@@ -181,15 +182,13 @@ const ProductPage = () => {
                                 <Divider/>
                             </Col>
                             <Col style={{display:'flex', flexDirection:"column"}}>
-                                <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 1)"}}>
-                                    &#10003; ارسال رایگان برای سفارش های بالای ۱۰۰ تومان
-                                </Typography>
-                                <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 1)", margin:"5px 0"}}>
-                                    &#10003; ۲۱ روز بازپرداخت و بازگشت آسان
-                                </Typography>
-                                <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 1)"}}>
-                                    &#10003; محصول دارای مالیات و عوارض گمرکی نیست
-                                </Typography>
+                                {
+                                    shopFeatures.map((item) => (
+                                        <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 1)", mt:"5px"}}>
+                                            &#10003; {item.title} {item.description}
+                                        </Typography>
+                                    ))
+                                }
                             </Col>
                             <Col sx={{display:"flex", alignItems:"center", justifyContent:"start"}}>
                                 <div style={{width:"fit-content", backgroundColor:"#f1f2f6", borderRadius:"10rem", display:'flex', alignItems:"center", justifyContent:"center", flexDirection:"row", padding:"5px 15px"}}>
