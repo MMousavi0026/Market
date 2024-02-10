@@ -67,7 +67,17 @@ const ResponsiveMenu = () => {
         <Box padding="0 16px">
             <List component="nav" aria-label="main mailbox folders">
                 <Autocomplete
-                    sx={{marginTop: '15px', color: 'white', marginBottom: '10px'}}
+                    sx={{marginTop: '15px', marginBottom: '10px',
+                        "& .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "white.main"
+                        },
+                        "&:hover .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "white.main !important"
+                        },
+                        "& .MuiInputLabel-formControl": {
+                            color: "white.main"
+                        },
+                    }}
                     id="free-solo-demo"
                     freeSolo
                     options={top100Films.map((option) => option.title)}

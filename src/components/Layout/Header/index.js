@@ -48,7 +48,7 @@ const Header = () => {
             [theme.breakpoints.up('xl')]: {
                 width: '15vw',
                 '&:focus': {
-                    width: '33vw',
+                    width: '20vw',
                 },
             },
         },
@@ -77,15 +77,15 @@ const Header = () => {
                         </Col>
                         <Col sx={2} lg={4} className={styles.iconsWrapper}>
                             <div className={styles.icons}>
-                                <button className={styles.call}>
+                                <Link href="/shop" className={styles.call}>
                                     <IconButton className={styles.iconButton}>
                                         <PhoneInTalkIcon fontSize='20' className={styles.icon + " " + styles.callIcon}/>
                                     </IconButton>
                                     <div className={styles.callTitle}>
                                         <Typography fontSize=".6rem" color="#e6e6e6" textAlign='left' marginBottom='0' >شماره تماس</Typography>
-                                        <Typography fontSize="1rem" fontWeight='bold'>۰۹۲۲۳۳۴۴۵۵</Typography>
+                                        <Typography fontSize="1rem" color="white.main" fontWeight='bold'>۰۹۲۲۳۳۴۴۵۵</Typography>
                                     </div>
-                                </button>
+                                </Link>
                                 <IconButton className={styles.iconButton}>
                                     <Badge badgeContent={counterCart} color="error" sx={{'& span': {fontSize: 15}}}>
                                         <ShoppingCartIcon fontSize="20" className={styles.icon}/>

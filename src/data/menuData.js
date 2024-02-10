@@ -9,7 +9,7 @@ const menuData = [
     },
     {
         title: "همه محصولات",
-        to: "/products"
+        to: "/shop"
     },
     {
         title: "تخفیفات ویژه",
@@ -18,32 +18,32 @@ const menuData = [
             {
                 imgSrc: "/img/s1.png",
                 title: "ماهی و آبزیان",
-                to: "/fish",
+                to: "shop",
             },
             {
                 imgSrc: "/img/s2.png",
                 title: "میوه و سبزیجات",
-                to: "/fish",
+                to: "shop",
             },
             {
                 imgSrc: "/img/s3.png",
                 title: "نان و غلات",
-                to: "/fish",
+                to: "shop",
             },
             {
                 imgSrc: "/img/s4.png",
                 title: "لبنیات و پروتئین",
-                to: "/fish",
+                to: "shop",
             },
             {
                 imgSrc: "/img/s5.png",
                 title: "شوینده و نظافتی",
-                to: "/fish",
+                to: "shop",
             },
             {
                 imgSrc: "/img/s6.png",
                 title: "گوشت و استیک",
-                to: "/fish",
+                to: "/shop",
             },
         ]
     },
@@ -57,27 +57,27 @@ const menuData = [
                 children: [
                     {
                         title: "سوپر مارکت",
-                        to: "/fish"
+                        to: "/shop"
                     },
                     {
                         title: "مرغ و ماهی",
-                        to: "/fish"
+                        to: "/shop"
                     },
                     {
                         title: "سبزیجات",
-                        to: "/fish"
+                        to: "/shop"
                     },
                     {
                         title: "لبنیات",
-                        to: "/fish"
+                        to: "/shop"
                     },
                     {
                         title: "نظافت و شستشو",
-                        to: "/fish"
+                        to: "/shop"
                     },
                     {
                         title: "پرفروش ترین ها",
-                        to: "/fish"
+                        to: "/shop"
                     },
                 ]
             },
@@ -87,23 +87,23 @@ const menuData = [
                 children: [
                     {
                         title: "سس",
-                        to: "/fish"
+                        to: "/shop"
                     },
                     {
                         title: "سبزیجات",
-                        to: "/fish"
+                        to: "/shop"
                     },
                     {
                         title: "گوشت استیک",
-                        to: "/fish"
+                        to: "/shop"
                     },
                     {
                         title: "برگر",
-                        to: "/fish"
+                        to: "/shop"
                     },
                     {
                         title: "اسپری",
-                        to: "/fish"
+                        to: "/shop"
                     },
                 ]
             },
@@ -113,23 +113,23 @@ const menuData = [
                 children: [
                     {
                         title: "سس",
-                        to: "/fish"
+                        to: "/shop"
                     },
                     {
                         title: "سبزیجات",
-                        to: "/fish"
+                        to: "/shop"
                     },
                     {
                         title: "گوشت استیک",
-                        to: "/fish"
+                        to: "/shop"
                     },
                     {
                         title: "برگر",
-                        to: "/fish"
+                        to: "/shop"
                     },
                     {
                         title: "اسپری",
-                        to: "/fish"
+                        to: "/shop"
                     },
                 ]
             },

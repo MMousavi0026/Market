@@ -68,129 +68,123 @@ const ContactUsPage = () => {
                     </Col>
                 </Row>
             </Col>
-            <Col xs={7} width="100%" >
-                <form style={{backgroundColor:"#122d40", borderRadius:"30px", padding:"30px 30px", display:"flex", flexDirection:'column', justifyContent:"center", alignItems:"center", boxShadow:'0 10px 15px 0 rgba(0, 0, 0, 0.4)'}}>
-                    <Typography variant="h2" color="white.main" marginBottom={5} >با ما در ارتباط باشید</Typography>
-                    <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", width:'100%', marginBottom:"20px"}}>
+            <Col xs={12} md={10} sx={{mt: "32px", ml: "24px"}}>
+                <Row spacing={3} style={{backgroundColor:"#122d40", borderRadius:"30px", padding:"0 0 32px 32px", boxShadow:'0 10px 15px 0 rgba(0, 0, 0, 0.4)'}}>
+                    <Col xs={12}>
+                        <div>
+                            <Typography variant="h4" textAlign="center" color="white.main" marginBottom={5} >با ما در ارتباط باشید</Typography>
+                        </div>
+                    </Col>
+                    <Col xs={12} lg={6}>
                         <TextField
                             required
                             id="outlined-required"
                             label="نام"
                             type="text"
                             variant="outlined"
-                            color="secondary"
-                            sx={{ width:"48%",
+                            color="white"
+                            focused
+                            sx={{ width: "100%",
                                 "& .MuiInputBase-input": {
                                     color: "white.main",
                                 },
-                                "& .MuiFormLabel-root": {
-                                    color: "white.main",
-                                },
-                                "& .MuiOutlinedInput-notchedOutline": {
-                                    borderColor: "white.main",
-                                },
-                                "&:hover .MuiOutlinedInput-notchedOutline": {
-                                    borderColor: "secondary.main",
-                                },
                             }}
                         />
+                    </Col>
+                    <Col xs={12} lg={6}>
                         <TextField
                             required
                             id="outlined-required"
                             label="ایمیل"
                             type="text"
                             variant="outlined"
-                            color="secondary"
-                            sx={{ width:"48%",
+                            color="white"
+                            focused
+                            sx={{ width: "100%",
                                 "& .MuiInputBase-input": {
                                     color: "white.main",
                                 },
-                                "& .MuiFormLabel-root": {
-                                    color: "white.main",
-                                },
-                                "& .MuiOutlinedInput-notchedOutline": {
-                                    borderColor: "white.main",
-                                },
-                                "&:hover .MuiOutlinedInput-notchedOutline": {
-                                    borderColor: "secondary.main",
-                                },
                             }}
                         />
-                    </div>
-                    <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", width:'100%'}}>
+                    </Col>
+                    <Col xs={12} lg={6}>
                         <TextField
                             required
                             id="outlined-required"
                             label="موضوع"
                             type="text"
                             variant="outlined"
-                            color="secondary"
-                            sx={{ width:"48%",
+                            color="white"
+                            focused
+                            sx={{ width: "100%",
                                 "& .MuiInputBase-input": {
                                     color: "white.main",
                                 },
-                                "& .MuiFormLabel-root": {
+                            }}
+                        />
+                    </Col>
+                    <Col xs={12} lg={6}>
+                        <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", width:'100%'}}>
+                            <FormControl style={{ width:"100%" }}>
+                                <InputLabel color="white" id="demo-simple-select-label" sx={{color: "white.main"}}>دپارتمان</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={age}
+                                    label="دپارتمان"
+                                    onChange={handleChange}
+                                    color="white"
+                                    fullWidth
+                                    sx={{
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "white.main",
+                                            borderWidth: "2px"
+                                        },
+                                        "& .MuiInputBase-input": {
+                                            color: "white.main",
+                                        },
+                                        "& .MuiSelect-icon": {
+                                            color: "white.main"
+                                        },
+                                        "& .MuiInputLabel-outlined": {
+                                            color: "white.main !important"
+                                        },
+                                    }}
+                                >
+                                    <MenuItem value={10}>فروش</MenuItem>
+                                    <MenuItem value={20}>مشتری داری</MenuItem>
+                                    <MenuItem value={30}>پشتیبانی</MenuItem>
+                                    <MenuItem value={30}>سایر</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </div>
+                    </Col>
+                    <Col xs={12}>
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="دیدگاه شما"
+                            variant="outlined"
+                            color="white"
+                            fullWidth
+                            multiline
+                            focused
+                            rows={4}
+                            sx={{
+                                "& .MuiInputBase-input": {
                                     color: "white.main",
-                                },
-                                "& .MuiOutlinedInput-notchedOutline": {
-                                    borderColor: "white.main",
-                                },
-                                "&:hover .MuiOutlinedInput-notchedOutline": {
-                                    borderColor: "secondary.main",
                                 },
                             }}
                         />
-                        <FormControl style={{ width:"48%" }}>
-                            <InputLabel color="white" id="demo-simple-select-label">دپارتمان</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={age}
-                                label="دپارتمان"
-                                onChange={handleChange}
-                                color="secondary"
-                                fullWidth
-                                sx={{
-                                    "& .MuiSelect-iconOutlined": {
-                                        color: 'white.main !important',
-                                    }
-                                }}
-                            >
-                                <MenuItem value={10}>فروش</MenuItem>
-                                <MenuItem value={20}>مشتری داری</MenuItem>
-                                <MenuItem value={30}>پشتیبانی</MenuItem>
-                                <MenuItem value={30}>سایر</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </div>
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="دیدگاه شما"
-                        variant="outlined"
-                        color="secondary"
-                        fullWidth
-                        multiline
-                        rows={4}
-                        sx={{marginTop:"20px",
-                            "& .MuiInputBase-input": {
-                                color: "white.main",
-                            },
-                            "& .MuiFormLabel-root": {
-                                color: "white.main",
-                            },
-                            "& .MuiOutlinedInput-notchedOutline": {
-                                borderColor: "white.main",
-                            },
-                            "&:hover .MuiOutlinedInput-notchedOutline": {
-                                borderColor: "secondary.main",
-                            }
-                        }}
-                    />
-                    <Button variant="contained" color="secondary" sx={{padding:"10px 30px", mt:'20px'}} >
-                        <Typography fontSize={20}>ارسال</Typography>
-                    </Button>
-                </form>
+                    </Col>
+                    <Col xs={12}>
+                        <Button variant="contained" color="secondary" sx={{padding:"10px 30px"}} >
+                            <Typography fontSize={20}>ارسال</Typography>
+                        </Button>
+                    </Col>
+                </Row>
+                <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", width:'100%', marginBottom:"20px"}}>
+                </div>
             </Col>
             <Col xs={12}/>
         </Row>

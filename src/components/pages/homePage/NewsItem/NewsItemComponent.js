@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from "./NewsItem.module.css";
 import LinkIcon from "@mui/icons-material/Link";
+import Link from "@mui/material/Link";
 
-const NewsItemComponent = ({title, imgSrc, desc, date}) => {
+const NewsItemComponent = ({title, imgSrc, desc, date, to}) => {
     return (
-        <div className={styles.box6Item}>
+        <Link href={to} className={styles.box6Item}>
             <div className={styles.button6}>
                 <span style={{fontSize: ".7rem", color: "white"}}>{title}</span>
             </div>
@@ -15,7 +16,8 @@ const NewsItemComponent = ({title, imgSrc, desc, date}) => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'flex-start',
-                    marginTop: '15px'
+                    marginTop: '15px',
+                    direction: "rtl"
                 }}
             >
                 <span
@@ -33,16 +35,15 @@ const NewsItemComponent = ({title, imgSrc, desc, date}) => {
                 <span
                     style={{
                         width: '100%',
-                        height: "50px",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
+                        height: "60px",
                         fontSize: '15px',
                         color: '#49607e',
                         textAlign: 'right',
                         paddingTop: '20px',
                         marginTop: '-12px',
-                        borderTop: 'rgba(128, 128, 128, 0.2) solid 1px'
+                        borderTop: 'rgba(128, 128, 128, 0.2) solid 1px',
                     }}
+                    className={styles.desc}
                 >
                     {desc}
                 </span>
@@ -50,7 +51,7 @@ const NewsItemComponent = ({title, imgSrc, desc, date}) => {
             <div className={styles.box6ItemLink}>
                 <LinkIcon/>
             </div>
-        </div>
+        </Link>
     );
 };
 

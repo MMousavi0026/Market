@@ -187,6 +187,7 @@
     border-left: rgba(86, 112, 133, 0.5) solid 1px;
     border-right: rgba(86, 112, 133, 0.5) solid 1px;
     flex-wrap: wrap;
+    margin-right: 6px !important;
 }
 .captionWrapper {
     display: flex;
@@ -286,8 +287,11 @@
     .footerWrapper {
         width: calc(100% + 28rem) !important;
     }
-    .footerItems, .floatBox, .caption {
+    .footerItems, .floatBox {
         width: 1450px !important;
+    }
+    .caption {
+        width: 1430px !important;
     }
 }
 

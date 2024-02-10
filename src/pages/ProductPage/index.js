@@ -27,8 +27,7 @@ import {shopFeatures} from "../../data/shopFeatures";
 import {useParams} from "react-router-dom";
 import {increaseCounterBeloved} from "../../redux/reducers/counterBeloved";
 
-const CustomTabPanel = (props) => {
-    const { children, value, index, ...other } = props;
+const CustomTabPanel = ({children, value, index, ...other}) => {
     const dispatch = useDispatch()
     return (
         <div
@@ -39,7 +38,13 @@ const CustomTabPanel = (props) => {
             {...other}
         >
             {value === index && (
-                <Box sx={{ p: 3 , display:"flex", justifyContent:"center" , backgroundColor:"#122d40", borderRadius:"15px"}}>
+                <Box sx={{
+                    p: 3,
+                    display: "flex",
+                    justifyContent: "center",
+                    backgroundColor: "#122d40",
+                    borderRadius: "15px"
+                }}>
                     {children}
                 </Box>
             )}
@@ -61,15 +66,21 @@ const a11yProps = (index) => {
 }
 
 const ProductPage = () => {
+    const [numRate, setNumRate] = useState(0)
+
+    const [someProductsList] = useState(productsList.slice(0, 3))
+
     const params = useParams();
+
     const socialMediaIcon = [
-        {icon: FacebookOutlinedIcon, title:"اشتراک گذاری در فیسبوک"},
-        {icon: WhatsAppIcon, title:"اشتراک گذاری در واتساپ"},
-        {icon: XIcon, title:"اشتراک گذاری در ایکس"},
-        {icon: PinterestIcon, title:"اشتراک گذاری در پینترست"},
-        {icon: EmailIcon, title:"اشتراک گذاری در ایمیل"},
-        {icon: ContentCopyIcon, title:"کپی لینک کوتاه"},
+        {icon: FacebookOutlinedIcon, title: "اشتراک گذاری در فیسبوک"},
+        {icon: WhatsAppIcon, title: "اشتراک گذاری در واتساپ"},
+        {icon: XIcon, title: "اشتراک گذاری در ایکس"},
+        {icon: PinterestIcon, title: "اشتراک گذاری در پینترست"},
+        {icon: EmailIcon, title: "اشتراک گذاری در ایمیل"},
+        {icon: ContentCopyIcon, title: "کپی لینک کوتاه"},
     ]
+
     const dispatch = useDispatch()
 
     const [cartNumber, setCartNumber] = useState(1)
@@ -94,7 +105,7 @@ const ProductPage = () => {
             <Col xs={12} height="50px"/>
             <Col xs={12}>
                 <Row columnSpacing={4}>
-                    <Col md={5.5} position="sticky">
+                    <Col md={5.5}>
                         <div>
                             <img
                                 width="100%"
@@ -105,33 +116,37 @@ const ProductPage = () => {
                         </div>
                     </Col>
                     <Col md={6.5}>
-                        <Row rowSpacing={3} style={{flexDirection: "column"}}>
-                            <Col>
-                                <Typography fontWeight="bold" variant="h4">{thisProduct.title}</Typography>
+                        <Row rowSpacing={3}>
+                            <Col xs={12}>
+                                <Typography gutterBottom fontWeight="bold" variant="h4">{thisProduct.title}</Typography>
                             </Col>
-                            <Col>
+                            <Col xs={12}>
                                 <Rating name="read-only" value={thisProduct.rateNum} readOnly/>
                             </Col>
-                            <Col>
+                            <Col xs={12}>
                                 <Typography fontWeight="bold" variant="h6" color="secondary">
                                     {thisProduct.price} تومان
                                 </Typography>
                             </Col>
-                            <Col>
-                                <Typography fontWeight="" variant="body1" color="gray">
+                            <Col xs={12}>
+                                <Typography variant="body1" color="gray">
                                     {thisProduct.desc}
                                 </Typography>
                             </Col>
-                            <Col
-                                style={{
+                            <Col xs={12} style={{display: "flex", alignItems: "flex-start", flexDirection: "column"}}>
+                                <div style={{
                                     display: "flex",
-                                    alignItems: "flex-start",
-                                    flexDirection: "column"
-                                }}
-                            >
-                                <div style={{display:"flex", flexDirection:"row", alignItems:"center", marginBottom:"10px"}}>
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    marginBottom: "10px"
+                                }}>
                                     <Button onClick={decrementCartNumber} color="secondary">-</Button>
-                                    <div style={{ border:"rgba(128, 128, 128, 0.4) solid 1px", padding:"5px 15px", borderRadius:"10px", margin:"0 5px"}}>{cartNumber}</div>
+                                    <div style={{
+                                        border: "rgba(128, 128, 128, 0.4) solid 1px",
+                                        padding: "5px 15px",
+                                        borderRadius: "10px",
+                                        margin: "0 5px"
+                                    }}>{cartNumber}</div>
                                     <Button onClick={incrementCartNumber} color="secondary">+</Button>
                                 </div>
                                 <div
@@ -146,7 +161,7 @@ const ProductPage = () => {
                                         variant="contained"
                                         className={styles.cartShoppingButton}
                                         onClick={() => dispatch(increaseCartByAmount(cartNumber))}
-                                        sx={{mr:'10px'}}
+                                        sx={{mr: '10px'}}
                                     >
                                         <FontAwesomeIcon style={{marginLeft: '10px'}} icon={faCartShopping}/>
                                         <Typography>افزودن به سبد خرید</Typography>
@@ -159,7 +174,7 @@ const ProductPage = () => {
                                         iconName={faHeart}
                                         title='افزودن به علاقمندی ها'
                                         onClick={() => dispatch(increaseCounterBeloved())}
-                                        style={{marginLeft:"10px"}}
+                                        style={{marginLeft: "10px"}}
                                     />
                                     <ProductOption
                                         iconVertical="top"
@@ -174,31 +189,40 @@ const ProductPage = () => {
                             <Col>
                                 <Divider/>
                             </Col>
-                            <Col style={{display:'flex', flexDirection:"column"}}>
-                                <div style={{display:'flex', flexDirection:"row"}}>
+                            <Col style={{display: 'flex', flexDirection: "column"}}>
+                                <div style={{display: 'flex', flexDirection: "row"}}>
                                     <Typography variant="body2"> تگ:&nbsp;</Typography>
-                                    <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 0.8)"}}>{thisProduct.tag}</Typography>
+                                    <Typography variant="body2" sx={{color: "rgba(128, 128, 128, 0.8)"}}>{thisProduct.tag}</Typography>
                                 </div>
-                                <div style={{display:'flex', flexDirection:"row", marginTop:"5px"}}>
+                                <div style={{display: 'flex', flexDirection: "row", marginTop: "5px"}}>
                                     <Typography variant="body2"> دسته بندی:&nbsp;</Typography>
-                                    <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 0.8)"}}>{thisProduct.categories}</Typography>
+                                    <Typography variant="body2" sx={{color: "rgba(128, 128, 128, 0.8)"}}>{thisProduct.categories}</Typography>
                                 </div>
                             </Col>
-                            <Col>
+                            <Col xs={12}>
                                 <Divider/>
                             </Col>
-                            <Col style={{display:'flex', flexDirection:"column"}}>
+                            <Col xs={12} style={{display: 'flex', flexDirection: "column"}}>
                                 {
                                     shopFeatures.map((item) => (
-                                        <Typography variant="body2" sx={{color:"rgba(128, 128, 128, 1)", mt:"5px"}}>
+                                        <Typography variant="body2" sx={{color: "rgba(128, 128, 128, 1)", mt: "5px"}}>
                                             &#10003; {item.title} {item.description}
                                         </Typography>
                                     ))
                                 }
                             </Col>
-                            <Col sx={{display:"flex", alignItems:"center", justifyContent:"start"}}>
-                                <div style={{width:"fit-content", backgroundColor:"#f1f2f6", borderRadius:"10rem", display:'flex', alignItems:"center", justifyContent:"center", flexDirection:"row", padding:"5px 15px"}}>
-                                    <Typography style={{margin:"0 15px"}}>اشتراک گذاری:</Typography>
+                            <Col xs={12} sx={{display: "flex", alignItems: "center", justifyContent: "start"}}>
+                                <div style={{
+                                    width: "100%",
+                                    backgroundColor: "#f1f2f6",
+                                    borderRadius: "10rem",
+                                    display: 'flex',
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    flexDirection: "row",
+                                    padding: "5px 15px"
+                                }}>
+                                    <Typography style={{margin: "0 15px"}}>اشتراک گذاری:</Typography>
                                     {
                                         socialMediaIcon.map((item) => (
                                             <SocialMediaIcon icon={item.icon}/>
@@ -210,102 +234,164 @@ const ProductPage = () => {
                     </Col>
                 </Row>
             </Col>
-            <Col xs={12} style={{display:"flex", alignItems:"center", flexDirection:"column"}}>
-                <Box width="80%">
-                    <Box width="100%" sx={{ justifyContent:"center" }}>
-                        <Tabs width="100%" value={value} classes={{scroller: styles.tabs}} onChange={handleChange} >
+            <Col xs={12} style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
+                <Box width="95%">
+                    <Box width="100%" sx={{justifyContent: "center"}}>
+                        <Tabs width="100%" value={value} classes={{scroller: styles.tabs}} onChange={handleChange}>
                             <Tab label="توضیحات" {...a11yProps(0)} />
                             <Tab label="نظرات" {...a11yProps(1)} />
                         </Tabs>
                     </Box>
                     <CustomTabPanel value={value} index={0}>
-                        <Typography color="white">
-                            سوپرمارکت شکلی از خواربارفروشی ولی بزرگتر از آن است که مشتری خودش محصولات را از قفسه برمی‌دارد یا به اصطلاح سلف سرویس است. در حدود ۷۵ تا ۹۰ درصد کالاهای این مغازه‌ها محصولات غذایی هستند. اندازه سوپرمارکت‌ها معمولاً از خواربارفروشیهای سنتی بزرگترند و محصولات بیشتری می‌فروشند ولی از هایپرمارکت‌ها و سوپرسنترها کوچکترند.
+                        <Typography color="white.main">
+                            سوپرمارکت شکلی از خواربارفروشی ولی بزرگتر از آن است که مشتری خودش محصولات را از قفسه
+                            برمی‌دارد یا به اصطلاح سلف سرویس است. در حدود ۷۵ تا ۹۰ درصد کالاهای این مغازه‌ها محصولات
+                            غذایی هستند. اندازه سوپرمارکت‌ها معمولاً از خواربارفروشیهای سنتی بزرگترند و محصولات بیشتری
+                            می‌فروشند ولی از هایپرمارکت‌ها و سوپرسنترها کوچکترند.
                         </Typography>
                     </CustomTabPanel>
                     <CustomTabPanel value={value} index={1}>
-                        <div style={{width:"100%", display:'flex', alignItems:"start", flexDirection:"column"}}>
-                            <Typography variant="h4" color="white">۱ دیدگاه برای اسپری چند منظوره</Typography>
-                            <div style={{backgroundColor:"white", width:"97%", borderRadius:"10px", margin:"30px 0", padding:"10px", display:"flex", flexDirection:"column"}}>
-                                <div style={{display:"flex", flexDirection:"row", alignItems:"center"}}>
-                                    <img src="/img/4001b4cb302a45af47747d07c1208745.png" alt="user" style={{borderRadius:"50%"}}/>
-                                    <div style={{marginRight:"10px"}}>
-                                        <Typography variant="h6" display="inline">آناهیتا خسروی</Typography>
-                                        <Typography variant="caption" padding="0 5px" sx={{backgroundColor:"rgba(167,167,167,.15)", borderRadius:"7px", ml:"10px"}}>۲۷ دی ۱۴۰۲</Typography>
-                                        <div style={{marginTop:"10px"}}>
-                                            <Rating value={3} readOnly/>
+                        <Row rowSpacing={4} style={{width: "100%", display: 'flex', alignItems: "start"}}>
+                            <Col xs={12}>
+                                <Typography variant="h4" color="white.main">۱ دیدگاه برای اسپری چند منظوره</Typography>
+                            </Col>
+                            <Col xs={12}>
+                                <div style={{backgroundColor: "white", width: "97%", borderRadius: "10px", padding: "10px", display: "flex", flexDirection: "column"}}>
+                                    <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
+                                        <img src="/img/4001b4cb302a45af47747d07c1208745.png" alt="user"
+                                             style={{borderRadius: "50%"}}/>
+                                        <div style={{marginRight: "10px"}}>
+                                            <Typography variant="h6" display="inline">آناهیتا خسروی</Typography>
+                                            <Typography variant="caption" padding="0 5px" sx={{
+                                                backgroundColor: "rgba(167,167,167,.15)",
+                                                borderRadius: "7px",
+                                                ml: "10px"
+                                            }}>۲۷ دی ۱۴۰۲</Typography>
+                                            <div style={{marginTop: "10px"}}>
+                                                <Rating value={3} readOnly/>
+                                            </div>
                                         </div>
                                     </div>
+                                    <Typography variant="body1" color="rgb(128, 128, 128)" sx={{mt: "10px", mb: "15px"}}>
+                                        بسیار عالی، از حمایت صمیمانه و بهترین محصول شما بسیار متشکرم.
+                                    </Typography>
                                 </div>
-                                <Typography variant="body1" color="rgb(128, 128, 128)" sx={{mt:"10px", mb:"15px"}}>بسیار عالی، از حمایت صمیمانه و بهترین محصول شما بسیار متشکرم.</Typography>
-                            </div>
-                            <Typography color="white">دیدگاه خود را بنویسید</Typography>
-                            <Typography color="white">نشانی ایمیل شما منتشر نخواهد شد</Typography>
-                            <div style={{width:"100%", display:"flex", flexDirection:"column"}}>
-                                <Typography color="white">امتیاز شما *</Typography>
-                                <Rating name="no-value" value={null} sx={{width:"fit-content"}} />
-                                <TextField
-                                    required
-                                    id="outlined-required"
-                                    label="دیدگاه شما"
-                                    sx={{marginTop:"20px"}}
-                                    fullWidth
-                                    multiline
-                                    rows={4}
-                                />
-                                <div style={{width:"100%", marginBottom:"40px"}}>
-                                    <TextField
-                                        required
-                                        id="outlined-required"
-                                        label="نام"
-                                        sx={{margin:"20px 20px 0 0", width:"32%"}}
-                                    />
-                                    <TextField
-                                        required
-                                        id="outlined-required"
-                                        label="ایمیل"
-                                        sx={{margin:"20px 20px 0 0", width:"32%"}}
-                                    />
-                                    <TextField
-                                        id="outlined-required"
-                                        label="2 + 4 = ?"
-                                        sx={{margin:"20px 0", width:"32%"}}
-                                    />
-                                    <FormControlLabel required control={<Checkbox color="secondary"/>} label="ذخیره نام، ایمیل و وبسایت من در مرورگر برای زمانی که دوباره دیدگاهی می‌نویسم." />
-                                </div>
-                                <Button sx={{width:"fit-content", padding:"10px 40px"}} variant="contained" color="secondary">ثبت</Button>
-                            </div>
-                        </div>
+                            </Col>
+                            <Col xs={12}>
+                                <Typography color="white.main">دیدگاه خود را بنویسید </Typography>
+                                <Typography color="white.main">نشانی ایمیل شما منتشر نخواهد شد</Typography>
+                            </Col>
+                            <Col xs={12}>
+                                <Row spacing={4} sx={{width: "100%", display: "flex",}}>
+                                    <Col xs={12}>
+                                        <Typography color="white.main">امتیاز شما *</Typography>
+                                        <Rating
+                                            name="simple-controlled"
+                                            value={numRate}
+                                            onChange={(event, newValue) => {
+                                                setNumRate(newValue);
+                                            }}
+                                            sx={{
+                                                width: "fit-content",
+                                                "& .MuiRating-iconEmpty": {
+                                                    color: "white.main"
+                                                }
+                                            }}
+                                        />
+                                    </Col>
+                                    <Col xs={12}>
+                                        <TextField
+                                            required
+                                            id="outlined-required"
+                                            label="دیدگاه شما"
+                                            color="white"
+                                            focused
+                                            fullWidth
+                                            multiline
+                                            rows={4}
+                                            sx={{
+                                                marginTop: "20px",
+                                                "& .MuiInputBase-input": {
+                                                    color: "white.main",
+                                                },
+                                            }}
+                                        />
+                                    </Col>
+                                    <Col xs={12} sm={6}>
+                                        <TextField
+                                            required
+                                            id="outlined-required"
+                                            label="نام"
+                                            color="white"
+                                            focused
+                                            fullWidth
+                                            sx={{
+                                                "& .MuiInputBase-input": {
+                                                    color: "white.main",
+                                                },
+                                            }}
+                                        />
+                                    </Col>
+                                    <Col xs={12} sm={6}>
+                                        <TextField
+                                            required
+                                            id="outlined-required"
+                                            label="ایمیل"
+                                            color="white"
+                                            focused
+                                            fullWidth
+                                            sx={{
+                                                "& .MuiInputBase-input": {
+                                                    color: "white.main",
+                                                },
+                                            }}
+                                        />
+                                    </Col>
+                                    <Col xs={12}>
+                                        <FormControlLabel
+                                            required
+                                            control={<Checkbox color="secondary"/>}
+                                            label="ذخیره نام، ایمیل و وبسایت من در مرورگر برای زمانی که دوباره دیدگاهی می‌نویسم."
+                                            sx={{
+                                                color: "white.main",
+                                                "& .muirtl-i4bv87-MuiSvgIcon-root": {
+                                                    color: "white.main"
+                                                }
+                                            }}
+                                        />
+                                    </Col>
+                                    <Col xs={12}>
+                                        <Button sx={{width: "fit-content", padding: "10px 40px"}} variant="contained" color="secondary">ثبت</Button>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
                     </CustomTabPanel>
                 </Box>
             </Col>
             <Col xs={12}>
                 <SideBox title="محصولات مرتبط">
-                    <Row columnSpacing={4}>
-                        <Col xs={12} md={4}>
-                            <Product/>
-                        </Col>
-                        <Col xs={12} md={4}>
-                            <Product/>
-                        </Col>
-                        <Col xs={12} md={4}>
-                            <Product/>
-                        </Col>
+                    <Row spacing={4}>
+                        {
+                            someProductsList.map((item) => (
+                                <Col xs={12} md={4}>
+                                    <Product {...item}/>
+                                </Col>
+                            ))
+                        }
                     </Row>
                 </SideBox>
             </Col>
             <Col xs={12}>
                 <SideBox title="محصولات پرفروش">
-                    <Row columnSpacing={4}>
-                        <Col xs={12} md={4}>
-                            <Product/>
-                        </Col>
-                        <Col xs={12} md={4}>
-                            <Product/>
-                        </Col>
-                        <Col xs={12} md={4}>
-                            <Product/>
-                        </Col>
+                    <Row spacing={4}>
+                        {
+                            someProductsList.map((item) => (
+                                <Col xs={12} md={4}>
+                                    <Product {...item}/>
+                                </Col>
+                            ))
+                        }
                     </Row>
                 </SideBox>
             </Col>

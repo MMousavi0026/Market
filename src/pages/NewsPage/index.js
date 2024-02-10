@@ -39,12 +39,12 @@ const NewsPage = () => {
             </Col>
             <Col xs={12}/>
             <Col xs={12}>
-                <Row columnSpacing={4}>
-                    <Col xs={8}>
+                <Row columnSpacing={4} sx={{display: "flex", justifyContent: "center"}}>
+                    <Col xs={12} md={8}>
                         <Row spacing={4}>
                             {
                                 dataList.map((item, index) => (
-                                    <Col xs={6} key={index}>
+                                    <Col xs={12} sm={6} key={index}>
                                         <div className={styles.newsItem}>
                                             <Button sx={{borderRadius:"20px", mb:"10px"}}>
                                                 <img src={item.imgSrc} alt={item.title} width="100%" style={{borderRadius:"20px"}} />
@@ -66,7 +66,7 @@ const NewsPage = () => {
                             <Col xs={12}/>
                         </Row>
                     </Col>
-                    <Col xs={4}>
+                    <Col xs={10} md={4} >
                         <Row rowSpacing={4}>
                             <Col xs={12}>
                                 <SideBox title="جستجو">
@@ -82,7 +82,7 @@ const NewsPage = () => {
                                 </SideBox>
                             </Col>
                             <Col xs={12}>
-                                <SideBox title="برچسب ها">
+                                <SideBox title="برچسبها">
                                     {
                                         tags.map((item, index) => (
                                             <Link href="#">
@@ -95,7 +95,7 @@ const NewsPage = () => {
                             <Col xs={12}>
                                 <SideBox title="تبلیغات ساده">
                                     <Link href="#" >
-                                        <img src="/img/ads.jpg" alt="تبلیغات" style={{borderRadius:"20px", marginTop:'15px'}}/>
+                                        <img src="/img/ads.jpg" alt="تبلیغات" width="100%" style={{borderRadius:"20px", marginTop:'15px'}}/>
                                     </Link>
                                 </SideBox>
                             </Col>
@@ -103,6 +103,7 @@ const NewsPage = () => {
                     </Col>
                 </Row>
             </Col>
+            <Col xs={12}/>
         </Row>
     );
 };

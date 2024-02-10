@@ -9,7 +9,6 @@ import Link from "@mui/material/Link";
 import React, {useState} from "react";
 import {productsList, productsCategories} from "../../data/productsData";
 import NewsSlider from "../../components/pages/homePage/NewsSlider";
-import NewsItemComponent from "../../components/pages/homePage/NewsItem/NewsItemComponent";
 import {newsList} from "../../data/newsList";
 import styles from './HomePage.module.scss';
 
@@ -30,7 +29,8 @@ const HomePage = () => {
                                 تازه تر از همه جا
                             </Typography>
                             <Typography variant="body1" textAlign="center" color="#535353">سوپرمارکت شکلی از
-                                خواربارفروشی ولی بزرگتر از آن است که مشتری خودش محصولات را از قفسه برمی‌دارد یا به اصطلاح
+                                خواربارفروشی ولی بزرگتر از آن است که مشتری خودش محصولات را از قفسه برمی‌دارد یا به
+                                اصطلاح
                                 سلف
                                 سرویس است.
                             </Typography>
@@ -57,7 +57,7 @@ const HomePage = () => {
                 <HomeFeatures/>
             </Col>
             <Col xs={12}>
-                <Row columnSpacing={4} width='100%'>
+                <Row spacing={4} width='100%'>
                     <Col xs={12} lg={8}>
                         <Row spacing={4} className={styles.someOffer}>
                             <Col xs={12} lg={6} height="50%">
@@ -163,8 +163,8 @@ const HomePage = () => {
             <Col xs={12}>
                 <Row className={styles.box3}>
                     <div>
-                        <Typography fontSize='40px' width="100%" color="black">دسته بندی</Typography>
-                        <Typography fontSize='40px' width="100%" color='#01e281'> محصولات ما</Typography>
+                        <Typography fontSize='2.3rem' width="100%" color="black">دسته بندی</Typography>
+                        <Typography fontSize='2.3rem' width="100%" color='#01e281'> محصولات ما</Typography>
                     </div>
                     <Row spacing={4} marginTop="0">
                         {productsCategories.map((item) => (
@@ -179,8 +179,8 @@ const HomePage = () => {
                 <Row className={styles.box4}>
                     <div className={styles.box4Title}>
                         <div>
-                            <Typography fontSize='40px' width="100%" color="black">پرفروش ترین</Typography>
-                            <Typography fontSize='40px' width="100%" color="secondary"> محصولات</Typography>
+                            <Typography fontSize='2.3rem' width="100%" color="black">پرفروش ترین</Typography>
+                            <Typography fontSize='2.3rem' width="100%" color="secondary"> محصولات</Typography>
                         </div>
                         <Button variant="contained" color="secondary" className={styles.button4}>
                             <Link href="/shop" fontSize='18px' color="primary" className={styles.button4Text}>همه
@@ -220,7 +220,8 @@ const HomePage = () => {
                             >
                                 سفارش با موبایل
                             </Typography>
-                            <Typography className={styles.box5Text1} fontSize='1rem' textAlign='center' color="white.main">
+                            <Typography className={styles.box5Text1} fontSize='1rem' textAlign='center'
+                                        color="white.main">
                                 سوپرمارکت شکلی از خواربارفروشی ولی بزرگتر از آن است که مشتری خودش محصولات را از قفسه
                                 برمی‌دارد.
                             </Typography>
@@ -244,16 +245,17 @@ const HomePage = () => {
             <Col xs={12} className={styles.box6}>
                 <div className={styles.box6Title}>
                     <div>
-                        <Typography fontSize='40px' color="black">جدید ترین</Typography>
-                        <Typography fontSize='40px' color="#01e281"> اخبار و مقالات</Typography>
+                        <Typography fontSize='2.3rem' color="black">جدید ترین</Typography>
+                        <Typography fontSize='2.3rem' color="#01e281"> اخبار و مقالات</Typography>
                     </div>
                 </div>
-                <div style={{width:"100%"}}>
+                <div style={{width: "100%"}}>
                     <NewsSlider/>
                 </div>
             </Col>
-            <Col xs={12} />
-        </Row>);
+            <Col xs={12}/>
+        </Row>
+    );
 };
 
 export default HomePage;

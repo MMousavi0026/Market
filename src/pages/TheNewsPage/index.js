@@ -15,17 +15,24 @@ import SideBox from "../../components/pages/ShopPage/SideBox";
 import {tags} from "../../data/tags";
 import HomeIcon from "@mui/icons-material/Home";
 import styles from "../NewsPage/NewsPage.module.css";
-
-const breadcrumbs = [
-    <Link style={{display: 'flex'}} underline="hover" key="1" color="inherit" href="/">
-        <HomeIcon style={{fontSize:'18px'}}/>
-    </Link>,
-    <Typography fontSize={"18px"} key="2" color="text.primary">
-        محصولات
-    </Typography>,
-];
+import {useParams} from "react-router-dom";
 
 const TheNewsPage = () => {
+
+    const params = useParams();
+
+    const thisNews = newsList.find(item => item.id === params.newsId)
+
+    const breadcrumbs = [
+        <Link style={{display: 'flex'}} underline="hover" key="1" color="inherit" href="/">
+            <HomeIcon style={{fontSize:'18px'}}/>
+        </Link>,
+        <Link fontSize={"18px"} underline="hover" key="2" color="inherit" href="/news">
+            اخبار و مقالات
+        </Link>,
+        <Typography fontSize={"18px"} key="2" color="text.primary">{thisNews.title}</Typography>
+    ];
+
     return (
         <Row rowSpacing={4} className={styles.pageWrapper}>
             <Col xs={12}/>
@@ -40,26 +47,26 @@ const TheNewsPage = () => {
                     <Col xs={8}>
                         <Row rowSpacing={4}>
                             <Col xs={12}>
-                                <img src={newsList[0].imgSrc} alt={newsList[0].title} width="100%" style={{borderRadius:"20px"}}/>
-                                <Typography fontSize={25} fontWeight="bold">{newsList[0].title}</Typography>
-                                <Typography fontSize={20} display="block" margin="10px 0" >{newsList[0].desc}</Typography>
+                                <img src={thisNews.imgSrc} alt={thisNews.title} width="100%" style={{borderRadius:"20px"}}/>
+                                <Typography fontSize={25} fontWeight="bold">{thisNews.title}</Typography>
+                                <Typography fontSize={20} display="block" margin="10px 0" >{thisNews.desc}</Typography>
                             </Col>
                             <Col xs={12} className={styles.bottomItemWrapper} >
                                 <div className={styles.bottomItem}>
                                     <PersonIcon color="secondary" fontSize="15px" className={styles.icon}/>
-                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{newsList[0].author}</Button>
+                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{thisNews.author}</Button>
                                 </div>
                                 <div className={styles.bottomItem}>
                                     <AccessTimeIcon color="secondary" fontSize="15px" className={styles.icon}/>
-                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{newsList[0].date}</Button>
+                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{thisNews.date}</Button>
                                 </div>
                                 <div className={styles.bottomItem}>
                                     <FolderIcon color="secondary" fontSize="15px" className={styles.icon}/>
-                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{newsList[0].categories}</Button>
+                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{thisNews.categories}</Button>
                                 </div>
                                 <div className={styles.bottomItem}>
                                     <LocalOfferIcon color="secondary" fontSize="15px" className={styles.icon}/>
-                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{newsList[0].tag}</Button>
+                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{thisNews.tag}</Button>
                                 </div>
 
                             </Col>

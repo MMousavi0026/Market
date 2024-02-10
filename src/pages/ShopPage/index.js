@@ -80,6 +80,13 @@ const ShopPage = () => {
         setData(productsList.slice((number - 1) * 6, number * 6))
     }, [productsList])
 
+    const scroll = () => {
+        window.scrollTo({
+            top: 250 ,
+            behavior: "smooth",
+        })
+    }
+
     return (
         <Row rowSpacing={4} className={styles.pageWrapper}>
             <Col xs={12} className={styles.breadcrumbs}>
@@ -147,7 +154,7 @@ const ShopPage = () => {
                                 </Row>
                             </Col>
                             <Col xs={12} sx={{display: "flex", justifyContent: "center"}}>
-                                <Pagination count={Math.ceil(productsList.length / 6)} color="primary" onChange={onPaginationChange} />
+                                <Pagination count={Math.ceil(productsList.length / 6)} onClick={scroll} color="primary" onChange={onPaginationChange} />
                             </Col>
                         </Row>
                     </Col>
@@ -181,7 +188,7 @@ const ShopPage = () => {
                                     {
                                         reviewsOfRecentProducts.map((item, index) => (
                                             <React.Fragment key={index}>
-                                                <div style={{display:"flex", flexDirection:"row", alignItems:'center', justifyContent:'space-between', width:'80%', margin:"10px 0"}}>
+                                                <div style={{display:"flex", flexDirection:"row", alignItems:'center', justifyContent:'space-between', width:'100%', margin:"10px 0"}}>
                                                     <img src={item.imgSrc} alt={item.title} style={{width: "90px", borderRadius: "10px"}}/>
                                                     <div>
                                                         <Typography variant="body1">{item.title}</Typography>

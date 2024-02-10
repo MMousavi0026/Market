@@ -28,10 +28,10 @@ function App() {
                             <Route exact path='shop' element={<ShopPage/>}/>
                             <Route exact path='shop/:productId' element={<ProductPage/>}/>
                             <Route exact path='news' element={<NewsPage/>}/>
-                            <Route exact path='the-news' element={<TheNewsPage/>}/>
+                            <Route exact path='news/:newsId' element={<TheNewsPage/>}/>
                             <Route exact path='contact-us' element={<ContactUsPage/>}/>
+                            <Route exact path='login' element={<LoginPage/>}/>
                         </Route>
-                        <Route exact path='login' element={<LoginPage/>}/>
                         <Route exact path='sign-in' element={<SignInPage/>}/>
                         <Route exact path='sign-up' element={<SignUpPage/>}/>
                     </Routes>
