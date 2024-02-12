@@ -49,7 +49,7 @@ const Footer = () => {
                         />
                         <Button variant="contained" color="secondary" className={styles.button1 +" "+ styles.searchIcon}>
                             <div className={styles.button1Text}>
-                                <DraftsIcon fontSize='20px' style={{marginLeft: '8px'}}/>
+                                <DraftsIcon color="primary" fontSize='20px' style={{marginLeft: '8px'}}/>
                             </div>
                             <Typography  fontSize='20px' className={styles.button1Text}>عضویت</Typography>
                         </Button>

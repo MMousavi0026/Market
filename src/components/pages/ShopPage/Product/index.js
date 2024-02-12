@@ -26,26 +26,24 @@ const Product = ({imgSrc, title, price, to, closeIcon, option}) => {
                     </div>
                 : null
             }
-            <Card sx={{width: '100%', borderRadius: '20px'}}>
-                <Link to={to}>
-                    <CardActionArea style={{paddingBottom: '40px'}}>
-                        <CardMedia
-                            component="img"
-                            height="250"
-                            image={imgSrc}
-                            alt={title}
-                            style={{objectFit: 'contain'}}
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h6" component="div">
-                                {title}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {price}
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                </Link>
+            <Card component={Link} to={to} sx={{width: '100%', borderRadius: '20px'}}>
+                <CardActionArea style={{paddingBottom: '40px'}}>
+                    <CardMedia
+                        component="img"
+                        height="250"
+                        image={imgSrc}
+                        alt={title}
+                        style={{objectFit: 'contain'}}
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h6" component="div">
+                            {title}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            {price}
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
                 <div className={styles.productOption}>
                             <ProductOption
                                 iconVertical="center"

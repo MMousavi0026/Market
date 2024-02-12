@@ -64,8 +64,8 @@
 }
 
 .icon {
+    color: white !important;
     font-size: 23px;
-    color: white;
     padding: 10px;
     border-radius: 100vh;
     border: 1px #354c5d solid;

@@ -1,6 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Col from "../../components/mui/Grid/Col";
-import {Accordion, AccordionDetails, AccordionSummary, Breadcrumbs, TextField} from "@mui/material";
+import {
+    Accordion,
+    AccordionDetails,
+    AccordionSummary,
+    Breadcrumbs,
+    FormControl,
+    InputLabel,
+    MenuItem,
+    Select,
+    styled,
+    Table,
+    TableBody,
+    TableCell,
+    tableCellClasses,
+    TableContainer,
+    TableHead,
+    TableRow,
+    TextField
+} from "@mui/material";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import styles from "./CartPage.module.css";
 import Typography from "@mui/material/Typography";
@@ -11,6 +29,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from "@mui/material/Button";
 import SideBox from "../../components/pages/ShopPage/SideBox";
+import {StyledTableRow, StyledTableCell} from "./index";
 
 const breadcrumbs = [
     <Link style={{display: 'flex'}} underline="hover" key="1" color="inherite" to="/">
@@ -22,6 +41,13 @@ const breadcrumbs = [
 ];
 
 const CheckoutPage = () => {
+
+    const [city, setCity] = useState('تهران')
+
+    const handleChange = (event) => {
+        setCity(event.target.value);
+    }
+
     return (
         <Row spacing={4}>
             <Col xs={12} />
@@ -46,7 +72,9 @@ const CheckoutPage = () => {
                         aria-controls="panel1-content"
                         id="panel1-header"
                     >
-                        کد تخیفف دارید؟ اینجا کلیک کنید
+                        <Typography fontWeight="bold">
+                            کد تخفیف دارید؟ برای نوشتن کد اینجا کلیک کنید
+                        </Typography>
                     </AccordionSummary>
                     <AccordionDetails sx={{display: 'flex', alignItems: 'center'}}>
                         <TextField
@@ -58,10 +86,98 @@ const CheckoutPage = () => {
                 </Accordion>
             </Col>
             <Col xs={12} sm={6}>
-                <SideBox title="جزئیات صورتحساب"></SideBox>
+                <SideBox title="جزئیات صورتحساب">
+                    <Row spacing={3}>
+                        <Col xs={12} sm={6}>
+                            <TextField type="text" label="نام" variant="outlined" color="secondary" fullWidth required/>
+                        </Col>
+                        <Col xs={12} sm={6}>
+                            <TextField type="text" label="نام خانوادگی" variant="outlined" color="secondary" fullWidth required/>
+                        </Col>
+                        <Col xs={12}>
+                            <TextField type="text" label="نام شرکت (اختیاری)" variant="outlined" color="secondary" fullWidth />
+                        </Col>
+                        <Col xs={12}>
+                            <FormControl style={{ width:"100%" }}>
+                                <InputLabel color="secondary" id="demo-simple-select-label">شهر</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={city}
+                                    label="شهر"
+                                    onChange={handleChange}
+                                    color="secondary"
+                                    fullWidth
+                                >
+                                    <MenuItem value={1}>قم</MenuItem>
+                                    <MenuItem value={2}>اصفهان</MenuItem>
+                                    <MenuItem value={3}>کرمان</MenuItem>
+                                    <MenuItem value={4}>مشهد</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Col>
+                        <Col xs={12}>
+                            <TextField type="text" label="آدرس" variant="outlined" color="secondary" fullWidth required />
+                        </Col>
+                        <Col xs={12}>
+                            <TextField type="text" label="کد پستی" variant="outlined" color="secondary" fullWidth required />
+                        </Col>
+                        <Col xs={12}>
+                            <TextField type="tel" label="تلفن" variant="outlined" color="secondary" fullWidth required />
+                        </Col>
+                        <Col xs={12}>
+                            <TextField type="email" label="ایمیل" variant="outlined" color="secondary" fullWidth required />
+                        </Col>
+                        <Col xs={12}>
+                            <TextField type="email" label="توضیحات تکمیلی" variant="outlined" color="secondary" fullWidth required />
+                        </Col>
+                    </Row>
+                </SideBox>
             </Col>
             <Col xs={12} sm={6}>
-                <SideBox title="سفارش شما"></SideBox>
+                <SideBox title="سفارش شما">
+                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
+                        <TableContainer>
+                            <Table aria-label="customized table">
+                                <TableHead>
+                                    <TableRow>
+                                        <StyledTableCell align="left">محصول</StyledTableCell>
+                                        <StyledTableCell align="left">جمع جزء</StyledTableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    <StyledTableRow>
+                                        <StyledTableCell component="th" scope="row">
+                                            <Typography>شامپو حمام * </Typography>
+                                            <Typography fontWeight="bold">۲</Typography>
+                                        </StyledTableCell>
+                                        <StyledTableCell>۴۵ تومان</StyledTableCell>
+                                    </StyledTableRow>
+                                    <StyledTableRow>
+                                        <StyledTableCell component="th" scope="row">
+                                            <Typography>بلوبری طبیعی * </Typography>
+                                            <Typography fontWeight="bold">۱</Typography>
+                                        </StyledTableCell>
+                                        <StyledTableCell>۲۲ تومان</StyledTableCell>
+                                    </StyledTableRow>
+                                    <StyledTableRow>
+                                        <StyledTableCell component="th" scope="row">
+                                            <Typography fontWeight="bold">جمع جزء</Typography>
+                                        </StyledTableCell>
+                                        <StyledTableCell>۶۷ تومان</StyledTableCell>
+                                    </StyledTableRow>
+                                    <StyledTableRow>
+                                        <StyledTableCell component="th" scope="row">
+                                            <Typography fontWeight="bold">مجموع</Typography>
+                                        </StyledTableCell>
+                                        <StyledTableCell>۶۷ تومان</StyledTableCell>
+                                    </StyledTableRow>
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                        <Button variant="contained" color="secondary" sx={{mt: "15px"}}>ثبت سفارش</Button>
+                    </div>
+                </SideBox>
             </Col>
             <Col xs={12}/>
         </Row>

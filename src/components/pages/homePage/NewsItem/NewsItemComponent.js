@@ -49,7 +49,7 @@ const NewsItemComponent = ({title, imgSrc, desc, date, to}) => {
                 </span>
             </div>
             <div className={styles.box6ItemLink}>
-                <LinkIcon/>
+                <LinkIcon color="primary"/>
             </div>
         </Link>
     );

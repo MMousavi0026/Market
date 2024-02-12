@@ -183,7 +183,7 @@ const ShopPage = () => {
                                                     <img src={item.imgSrc} alt={item.title} style={{width: "90px", borderRadius: "10px"}}/>
                                                     <div>
                                                         <Typography variant="body1">{item.title}</Typography>
-                                                        <Rating name="read-only" value={item.ratingNum} readOnly />
+                                                        <Rating name="read-only" value={item.ratingNum} color="#faaf00" readOnly />
                                                         <Typography variant="body2">{item.desc}</Typography>
                                                     </div>
                                                 </div>

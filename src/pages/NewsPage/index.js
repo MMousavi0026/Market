@@ -54,7 +54,7 @@ const NewsPage = () => {
                                             <Typography fontSize={15} display="block" color="text.secondary" margin="10px 0">{item.date}</Typography>
                                             <Typography fontSize={17} display="block" color="text.primary" className={styles.newsItemDesc}>{item.desc}</Typography>
                                             <Button component={Link} to={`/news/${item.id}`} variant="contained" color="secondary" sx={{mt:"20px"}}>
-                                                <LinkIcon/>
+                                                <LinkIcon color="primary" sx={{mr: '5px'}}/>
                                                 <Typography>ادامه مطلب</Typography>
                                             </Button>
                                         </div>

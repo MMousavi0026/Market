@@ -12,7 +12,7 @@ const theme = createTheme({
             defaultProps: {
                 variant: "span"
             }
-        }
+        },
     },
     palette: {
         primary: {

@@ -68,7 +68,6 @@ const TheNewsPage = () => {
                                     <LocalOfferIcon color="secondary" fontSize="15px" className={styles.icon}/>
                                     <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{thisNews.tag}</Button>
                                 </div>
-
                             </Col>
                             <Col xs={12}/>
                         </Row>
