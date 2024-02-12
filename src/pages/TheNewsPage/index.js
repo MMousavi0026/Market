@@ -24,10 +24,10 @@ const TheNewsPage = () => {
     const thisNews = newsList.find(item => item.id === params.newsId)
 
     const breadcrumbs = [
-        <Link style={{display: 'flex'}} underline="hover" key="1" color="inherit" href="/">
+        <Link style={{display: 'flex'}} underline="hover" key="1" color="inherit" to="/">
             <HomeIcon style={{fontSize:'18px'}}/>
         </Link>,
-        <Link fontSize={"18px"} underline="hover" key="2" color="inherit" href="/news">
+        <Link fontSize={"18px"} underline="hover" key="2" color="inherit" to="/news">
             اخبار و مقالات
         </Link>,
         <Typography fontSize={"18px"} key="2" color="text.primary">{thisNews.title}</Typography>
@@ -44,7 +44,7 @@ const TheNewsPage = () => {
             <Col xs={12}/>
             <Col xs={12}>
                 <Row columnSpacing={4}>
-                    <Col xs={8}>
+                    <Col xs={12} lg={8}>
                         <Row rowSpacing={4}>
                             <Col xs={12}>
                                 <img src={thisNews.imgSrc} alt={thisNews.title} width="100%" style={{borderRadius:"20px"}}/>
@@ -73,7 +73,7 @@ const TheNewsPage = () => {
                             <Col xs={12}/>
                         </Row>
                     </Col>
-                    <Col xs={4}>
+                    <Col xs={12} lg={4}>
                         <Row rowSpacing={4}>
                             <Col xs={12}>
                                 <SideBox title="جستجو">
@@ -92,7 +92,7 @@ const TheNewsPage = () => {
                                 <SideBox title="برچسب ها">
                                     {
                                         tags.map((item, index) => (
-                                            <Link href="#">
+                                            <Link to="#">
                                                 <Button variant="contained" color="white" sx={{ml:'10px', mb:'10px'}}>{item}</Button>
                                             </Link>
                                         ))
@@ -101,8 +101,8 @@ const TheNewsPage = () => {
                             </Col>
                             <Col xs={12}>
                                 <SideBox title="تبلیغات ساده">
-                                    <Link href="#" >
-                                        <img src="/img/ads.jpg" alt="تبلیغات" style={{borderRadius:"20px", marginTop:'15px'}}/>
+                                    <Link to="#" >
+                                        <img src="/img/ads.jpg" width="100%" alt="تبلیغات" style={{borderRadius:"20px", marginTop:'15px'}}/>
                                     </Link>
                                 </SideBox>
                             </Col>
@@ -110,6 +110,7 @@ const TheNewsPage = () => {
                     </Col>
                 </Row>
             </Col>
+            <Col xs={12} />
         </Row>
     );
 };

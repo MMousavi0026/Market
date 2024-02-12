@@ -30,6 +30,9 @@ const theme = createTheme({
         black: {
             main: "#000"
         },
+        inherit: {
+            main: "#999999"
+        }
     }
 })
 

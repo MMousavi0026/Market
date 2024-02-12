@@ -93,7 +93,7 @@ const Footer = () => {
                                     <Typography varianr="span" fontSize='22px' textAlign='center' color='white.main'>آیا علاقمند به داشتن </Typography>
                                     <Typography varianr="span" fontSize='22px' textAlign='center' color='#01e281'>سوپر مارکت هستید؟</Typography>
                                 </div>
-                                <Typography varianr="span" fontSize='17px' textAlign='center' color='rgb(159,159,159)' lineHeight='35px'>
+                                <Typography varianr="span" fontSize='17px' textAlign='center' color='inherit.main' lineHeight='35px'>
                                     اندازه سوپرمارکت‌ها معمولاً از خواربارفروشیهای سنتی بزرگترند و محصولات بیشتری می‌فروشند.
                                 </Typography>
                                 <Button className={styles.button2}>

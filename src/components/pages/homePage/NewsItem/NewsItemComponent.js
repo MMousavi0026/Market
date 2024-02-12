@@ -5,7 +5,7 @@ import Link from "@mui/material/Link";
 
 const NewsItemComponent = ({title, imgSrc, desc, date, to}) => {
     return (
-        <Link href={to} className={styles.box6Item}>
+        <Link to={to} className={styles.box6Item}>
             <div className={styles.button6}>
                 <span style={{fontSize: ".7rem", color: "white"}}>{title}</span>
             </div>

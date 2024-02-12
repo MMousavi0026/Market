@@ -23,7 +23,7 @@ import {Form} from "react-router-dom";
 import Button from "@mui/material/Button";
 
 const breadcrumbs = [
-    <Link style={{display: 'flex'}} underline="hover" key="1" color="inherit" href="/">
+    <Link style={{display: 'flex'}} underline="hover" key="1" color="inherit" to="/">
         <HomeIcon style={{fontSize:'18px'}}/>
     </Link>,
     <Typography fontSize={"18px"} key="2" color="text.primary">
@@ -75,7 +75,7 @@ const ContactUsPage = () => {
                             <Typography variant="h4" textAlign="center" color="white.main" marginBottom={5} >با ما در ارتباط باشید</Typography>
                         </div>
                     </Col>
-                    <Col xs={12} lg={6}>
+                    <Col xs={12} md={6}>
                         <TextField
                             required
                             id="outlined-required"
@@ -91,7 +91,7 @@ const ContactUsPage = () => {
                             }}
                         />
                     </Col>
-                    <Col xs={12} lg={6}>
+                    <Col xs={12} md={6}>
                         <TextField
                             required
                             id="outlined-required"
@@ -107,7 +107,7 @@ const ContactUsPage = () => {
                             }}
                         />
                     </Col>
-                    <Col xs={12} lg={6}>
+                    <Col xs={12} md={6}>
                         <TextField
                             required
                             id="outlined-required"
@@ -123,7 +123,7 @@ const ContactUsPage = () => {
                             }}
                         />
                     </Col>
-                    <Col xs={12} lg={6}>
+                    <Col xs={12} md={6}>
                         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", width:'100%'}}>
                             <FormControl style={{ width:"100%" }}>
                                 <InputLabel color="white" id="demo-simple-select-label" sx={{color: "white.main"}}>دپارتمان</InputLabel>

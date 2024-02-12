@@ -192,11 +192,13 @@ const ProductPage = () => {
                             <Col style={{display: 'flex', flexDirection: "column"}}>
                                 <div style={{display: 'flex', flexDirection: "row"}}>
                                     <Typography variant="body2"> تگ:&nbsp;</Typography>
-                                    <Typography variant="body2" sx={{color: "rgba(128, 128, 128, 0.8)"}}>{thisProduct.tag}</Typography>
+                                    <Typography variant="body2"
+                                                sx={{color: "rgba(128, 128, 128, 0.8)"}}>{thisProduct.tag}</Typography>
                                 </div>
                                 <div style={{display: 'flex', flexDirection: "row", marginTop: "5px"}}>
                                     <Typography variant="body2"> دسته بندی:&nbsp;</Typography>
-                                    <Typography variant="body2" sx={{color: "rgba(128, 128, 128, 0.8)"}}>{thisProduct.categories}</Typography>
+                                    <Typography variant="body2"
+                                                sx={{color: "rgba(128, 128, 128, 0.8)"}}>{thisProduct.categories}</Typography>
                                 </div>
                             </Col>
                             <Col xs={12}>
@@ -220,7 +222,8 @@ const ProductPage = () => {
                                     alignItems: "center",
                                     justifyContent: "center",
                                     flexDirection: "row",
-                                    padding: "5px 15px"
+                                    padding: "5px 15px",
+                                    flexWrap: "wrap",
                                 }}>
                                     <Typography style={{margin: "0 15px"}}>اشتراک گذاری:</Typography>
                                     {
@@ -256,23 +259,37 @@ const ProductPage = () => {
                                 <Typography variant="h4" color="white.main">۱ دیدگاه برای اسپری چند منظوره</Typography>
                             </Col>
                             <Col xs={12}>
-                                <div style={{backgroundColor: "white", width: "97%", borderRadius: "10px", padding: "10px", display: "flex", flexDirection: "column"}}>
+                                <div style={{
+                                    backgroundColor: "white",
+                                    width: "97%",
+                                    borderRadius: "10px",
+                                    padding: "10px",
+                                    display: "flex",
+                                    flexDirection: "column"
+                                }}>
                                     <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
                                         <img src="/img/4001b4cb302a45af47747d07c1208745.png" alt="user"
                                              style={{borderRadius: "50%"}}/>
                                         <div style={{marginRight: "10px"}}>
-                                            <Typography variant="h6" display="inline">آناهیتا خسروی</Typography>
-                                            <Typography variant="caption" padding="0 5px" sx={{
-                                                backgroundColor: "rgba(167,167,167,.15)",
-                                                borderRadius: "7px",
-                                                ml: "10px"
-                                            }}>۲۷ دی ۱۴۰۲</Typography>
+                                            <Typography variant="h6" display="block">آناهیتا خسروی</Typography>
+                                            <Typography
+                                                variant="caption"
+                                                padding="0 5px"
+                                                sx={{
+                                                    backgroundColor: "rgba(167,167,167,.15)",
+                                                    borderRadius: "7px",
+                                                    ml: "10px"
+                                                }}
+                                            >
+                                                ۲۷ دی ۱۴۰۲
+                                            </Typography>
                                             <div style={{marginTop: "10px"}}>
                                                 <Rating value={3} readOnly/>
                                             </div>
                                         </div>
                                     </div>
-                                    <Typography variant="body1" color="rgb(128, 128, 128)" sx={{mt: "10px", mb: "15px"}}>
+                                    <Typography variant="body1" color="rgb(128, 128, 128)"
+                                                sx={{mt: "10px", mb: "15px"}}>
                                         بسیار عالی، از حمایت صمیمانه و بهترین محصول شما بسیار متشکرم.
                                     </Typography>
                                 </div>
@@ -361,7 +378,8 @@ const ProductPage = () => {
                                         />
                                     </Col>
                                     <Col xs={12}>
-                                        <Button sx={{width: "fit-content", padding: "10px 40px"}} variant="contained" color="secondary">ثبت</Button>
+                                        <Button sx={{width: "fit-content", padding: "10px 40px"}} variant="contained"
+                                                color="secondary">ثبت</Button>
                                     </Col>
                                 </Row>
                             </Col>

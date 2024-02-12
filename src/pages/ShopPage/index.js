@@ -24,6 +24,8 @@ import styles from './shopPage.module.css'
 import {useLocation} from "react-router-dom";
 import {productsList} from "../../data/productsData";
 import Product from "../../components/pages/ShopPage/Product";
+import Box from "@mui/material/Box";
+import RangeSlider, {valuetext} from "../../components/pages/ShopPage/RangeSlider";
 
 const Content = () => {
     const location = useLocation();
@@ -43,10 +45,11 @@ const Content = () => {
         />
     );
 }
+
 const ShopPage = () => {
     const [dataList, setData] = useState(productsList.slice(0, 6));
-    const [value, setValue] = useState([0, 20]);
     const [age, setAge] = React.useState('');
+
     const [age2, setAge2] = React.useState('');
 
     const breadcrumbs = [
@@ -57,13 +60,6 @@ const ShopPage = () => {
             محصولات
         </Typography>,
     ];
-
-    const valuetext = (value) => {
-        return `${value} تومان`;
-    }
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
 
     const pageHandleChange = (event) => {
         setAge(event.target.value);
@@ -97,7 +93,7 @@ const ShopPage = () => {
             <Col xs={12}/>
             <Col xs={12}>
                 <Row spacing={6}>
-                    <Col xs={8}>
+                    <Col xs={12} lg={8}>
                         <Row rowSpacing={4}>
                             <Col xs={12} sx={{display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"space-between"}}>
                                 <Typography>نمایش {((pageNumberRef.current - 1) * 6) + 1} - {pageNumberRef.current * 6} از {productsList.length} نتیجه</Typography>
@@ -146,7 +142,7 @@ const ShopPage = () => {
                                 <Row spacing={4}>
                                     {
                                         dataList.map((item) => (
-                                            <Col xs={6}>
+                                            <Col xs={12} sm={6}>
                                                 <Product {...item} to={`/shop/${item.id}`} />
                                             </Col>
                                         ))
@@ -158,16 +154,11 @@ const ShopPage = () => {
                             </Col>
                         </Row>
                     </Col>
-                    <Col xs={4} sx={{position:"sticky"}}>
+                    <Col xs={12} lg={4} sx={{position:"sticky"}}>
                         <Row rowSpacing={4} flexDirection="column">
                             <Col>
                                 <SideBox title="فیلتر بر اساس قیمت" >
-                                    <Slider
-                                        value={value}
-                                        onChange={handleChange}
-                                        valueLabelDisplay="auto"
-                                        getAriaValueText={valuetext}
-                                    />
+                                    <RangeSlider />
                                 </SideBox>
                             </Col>
                             <Col>

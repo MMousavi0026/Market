@@ -3,7 +3,7 @@ import Row from "../../components/mui/Grid/Row";
 import Col from "../../components/mui/Grid/Col";
 import {Breadcrumbs, Pagination, TextField} from "@mui/material";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import Link from "@mui/material/Link";
+import {Link} from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import Typography from "@mui/material/Typography";
 import SideBox from "../../components/pages/ShopPage/SideBox";
@@ -12,9 +12,10 @@ import LinkIcon from '@mui/icons-material/Link';
 import {newsList} from "../../data/newsList";
 import styles from "./NewsPage.module.css";
 import {tags} from "../../data/tags";
+import Box from "@mui/material/Box";
 
 const breadcrumbs = [
-    <Link style={{display: 'flex'}} underline="hover" key="1" color="inherit" href="/">
+    <Link style={{display: 'flex'}} underline="hover" key="1" color="inherit" to="/">
         <HomeIcon style={{fontSize:'18px'}}/>
     </Link>,
     <Typography fontSize={"18px"} key="2" color="text.primary">
@@ -40,7 +41,7 @@ const NewsPage = () => {
             <Col xs={12}/>
             <Col xs={12}>
                 <Row columnSpacing={4} sx={{display: "flex", justifyContent: "center"}}>
-                    <Col xs={12} md={8}>
+                    <Col xs={12} lg={8}>
                         <Row spacing={4}>
                             {
                                 dataList.map((item, index) => (
@@ -49,10 +50,10 @@ const NewsPage = () => {
                                             <Button sx={{borderRadius:"20px", mb:"10px"}}>
                                                 <img src={item.imgSrc} alt={item.title} width="100%" style={{borderRadius:"20px"}} />
                                             </Button>
-                                            <Link fontSize={25} href="/" className={styles.newsItemTitle}>{item.title}</Link>
+                                            <Link fontSize={25} to={`/news/${item.id}`} className={styles.newsItemTitle}>{item.title}</Link>
                                             <Typography fontSize={15} display="block" color="text.secondary" margin="10px 0">{item.date}</Typography>
                                             <Typography fontSize={17} display="block" color="text.primary" className={styles.newsItemDesc}>{item.desc}</Typography>
-                                            <Button variant="contained" color="secondary" sx={{mt:"20px"}}>
+                                            <Button component={Link} to={`/news/${item.id}`} variant="contained" color="secondary" sx={{mt:"20px"}}>
                                                 <LinkIcon/>
                                                 <Typography>ادامه مطلب</Typography>
                                             </Button>
@@ -66,26 +67,26 @@ const NewsPage = () => {
                             <Col xs={12}/>
                         </Row>
                     </Col>
-                    <Col xs={10} md={4} >
+                    <Col xs={10} lg={4} >
                         <Row rowSpacing={4}>
                             <Col xs={12}>
                                 <SideBox title="جستجو">
-                                    <div style={{display:"flex", alignItems:"center"}}>
+                                    <Box sx={{display:"flex", alignItems:"center", flexDirection: {xs: "column", sm: "row"} }}>
                                         <TextField
                                             label="جستجو"
                                             type="text"
-                                            sx={{mr:2.5, backgroundColor:"white.main"}}
+                                            sx={{ mr: {xs: 0, sm: 2.5}, mb: {xs: 2, sm: 0}, backgroundColor:"white.main"}}
                                             color="secondary"
                                         />
                                         <Button variant="contained" color="secondary">جستجو</Button>
-                                    </div>
+                                    </Box>
                                 </SideBox>
                             </Col>
                             <Col xs={12}>
                                 <SideBox title="برچسبها">
                                     {
                                         tags.map((item, index) => (
-                                            <Link href="#">
+                                            <Link to="#">
                                                 <Button variant="contained" color="white" sx={{ml:'10px', mb:'10px'}}>{item}</Button>
                                             </Link>
                                         ))
@@ -94,7 +95,7 @@ const NewsPage = () => {
                             </Col>
                             <Col xs={12}>
                                 <SideBox title="تبلیغات ساده">
-                                    <Link href="#" >
+                                    <Link to="#" >
                                         <img src="/img/ads.jpg" alt="تبلیغات" width="100%" style={{borderRadius:"20px", marginTop:'15px'}}/>
                                     </Link>
                                 </SideBox>

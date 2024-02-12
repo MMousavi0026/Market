@@ -10,14 +10,14 @@ const Index = () => {
         <Row rowSpacing={4} style={{ width:"100%", display:"flex", alignItems: "center", justifyContent: "center" }}>
             <Col xs={12}/>
             <Col xs={12} sm={6} sx={{display: "flex", justifyContent: "center"}}>
-                <Link href="/sign-up" style={{textDecoration:"none", }}>
+                <Link to="/sign-up" style={{textDecoration:"none", }}>
                     <Button variant="contained" color="secondary" sx={{padding: "20px 50px"}}>
                         <Typography fontSize="30px">ثبت نام</Typography>
                     </Button>
                 </Link>
             </Col>
             <Col xs={12} sm={6} sx={{display: "flex", justifyContent: "center"}}>
-                <Link href="/sign-in" style={{textDecoration:"none", }}>
+                <Link to="/sign-in" style={{textDecoration:"none", }}>
                     <Button variant="contained" color="secondary" sx={{padding: "20px 50px"}}>
                         <Typography fontSize="30px">ورود</Typography>
                     </Button>

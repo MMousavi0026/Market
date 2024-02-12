@@ -16,6 +16,8 @@ import './assets/font/NotoArabic/style.css'
 import './App.scss'
 import LoginPage from "./pages/LoginPage";
 import TheNewsPage from "./pages/TheNewsPage";
+import FavoritePage from "./pages/FavoritePage";
+import CartPage from "./pages/CartPage";
 
 function App() {
     return (
@@ -31,6 +33,8 @@ function App() {
                             <Route exact path='news/:newsId' element={<TheNewsPage/>}/>
                             <Route exact path='contact-us' element={<ContactUsPage/>}/>
                             <Route exact path='login' element={<LoginPage/>}/>
+                            <Route exact path='favorite-list' element={<FavoritePage/>}/>
+                            <Route exact path='cart-list' element={<CartPage/>}/>
                         </Route>
                         <Route exact path='sign-in' element={<SignInPage/>}/>
                         <Route exact path='sign-up' element={<SignUpPage/>}/>

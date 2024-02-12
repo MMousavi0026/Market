@@ -1,3 +1,5 @@
+import React, {useState} from "react";
+import {Link} from "react-router-dom";
 import Row from "../../components/mui/Grid/Row";
 import Col from "../../components/mui/Grid/Col";
 import ProductsCategories from "../../components/Layout/Header/ProductsCategories";
@@ -5,8 +7,6 @@ import Product from "../../components/pages/ShopPage/Product";
 import HomeFeatures from "../../components/pages/homePage/HomeFeatures";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import React, {useState} from "react";
 import {productsList, productsCategories} from "../../data/productsData";
 import NewsSlider from "../../components/pages/homePage/NewsSlider";
 import {newsList} from "../../data/newsList";
@@ -35,15 +35,15 @@ const HomePage = () => {
                                 سرویس است.
                             </Typography>
                             <Col className={styles.box1Item1Buttons} width="fit-content">
-                                <Button variant="contained" className={styles.button1}>
-                                    <Link href="#" fontSize="1.2rem" color="white.main" className={styles.button1Text}>
+                                <Button component={Link} to="#" variant="contained" className={styles.button1}>
+                                    <Typography fontSize="1.2rem" color="white.main" className={styles.button1Text}>
                                         ۲۵٪ تخفیف ویژه
-                                    </Link>
+                                    </Typography>
                                 </Button>
-                                <Button variant="outlined" className={styles.button2}>
-                                    <Link href="/shop" fontSize="1.2rem" color="#122d40" className={styles.button1Text}>
+                                <Button component={Link} to="/shop" variant="outlined" className={styles.button2}>
+                                    <Typography fontSize="1.2rem" color="#122d40" className={styles.button1Text}>
                                         مشاهده محصولات
-                                    </Link>
+                                    </Typography>
                                 </Button>
                             </Col>
                         </Col>
@@ -182,9 +182,9 @@ const HomePage = () => {
                             <Typography fontSize='2.3rem' width="100%" color="black">پرفروش ترین</Typography>
                             <Typography fontSize='2.3rem' width="100%" color="secondary"> محصولات</Typography>
                         </div>
-                        <Button variant="contained" color="secondary" className={styles.button4}>
-                            <Link href="/shop" fontSize='18px' color="primary" className={styles.button4Text}>همه
-                                محصولات</Link>
+                        <Button component={Link} to="/shop" variant="contained" color="secondary" className={styles.button4}>
+                            <Typography fontSize='18px' color="primary" className={styles.button4Text}>همه
+                                محصولات</Typography>
                         </Button>
                     </div>
                     <Row spacing={4} width="100%">
@@ -227,16 +227,16 @@ const HomePage = () => {
                             </Typography>
                         </div>
                         <div className={styles.box5Buttons}>
-                            <Link href="/" className={styles.box5Button1}>
+                            <Link to="/" className={styles.box5Button1}>
                                 <img className={styles.googleplayImg} src="/img/googleplay.png" alt=""/>
                             </Link>
-                            <Link href="/">
+                            <Link to="/">
                                 <img className={styles.appStore} src="/img/appStore.png" alt=""/>
                             </Link>
                         </div>
                     </Col>
                     <Col xs={12} md={6} className={styles.box5Button}>
-                        <Link href="/" className={styles.box5Img}>
+                        <Link to="/" className={styles.box5Img}>
                             <img src="/img/mobile.png" width="100%" className={styles.box5Img2} alt=""/>
                         </Link>
                     </Col>

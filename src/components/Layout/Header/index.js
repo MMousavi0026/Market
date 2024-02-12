@@ -9,7 +9,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import PersonIcon from "@mui/icons-material/Person";
 import MenuIcon from '@mui/icons-material/Menu';
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
+import {Link} from "react-router-dom";
 import Drawer from "../../mui/Drawer";
 import Row from "../../mui/Grid/Row";
 import Col from "../../mui/Grid/Col";
@@ -60,7 +60,7 @@ const Header = () => {
                 <Toolbar className={styles.toolbarWrapper}>
                     <Row columnSpacing={1} className={styles.toolbar}>
                         <Col xs={4} sm={3} lg={3}>
-                            <Link href="/"  className={styles.logoWrapper}>
+                            <Link to="/"  className={styles.logoWrapper}>
                                 <img className={styles.logo} alt='logo' src="/img/logo-sm.png"/>
                             </Link>
                         </Col>
@@ -77,7 +77,7 @@ const Header = () => {
                         </Col>
                         <Col sx={2} lg={4} className={styles.iconsWrapper}>
                             <div className={styles.icons}>
-                                <Link href="/shop" className={styles.call}>
+                                <Link href="tel:0098922334455" className={styles.call} to={"tel:0098922334455"}>
                                     <IconButton className={styles.iconButton}>
                                         <PhoneInTalkIcon fontSize='20' className={styles.icon + " " + styles.callIcon}/>
                                     </IconButton>
@@ -86,17 +86,17 @@ const Header = () => {
                                         <Typography fontSize="1rem" color="white.main" fontWeight='bold'>۰۹۲۲۳۳۴۴۵۵</Typography>
                                     </div>
                                 </Link>
-                                <IconButton className={styles.iconButton}>
+                                <IconButton component={Link} to="/cart-list" className={styles.iconButton}>
                                     <Badge badgeContent={counterCart} color="error" sx={{'& span': {fontSize: 15}}}>
                                         <ShoppingCartIcon fontSize="20" className={styles.icon}/>
                                     </Badge>
                                 </IconButton>
-                                <IconButton className={styles.favorite}>
+                                <IconButton component={Link} to="favorite-list" className={styles.favorite}>
                                     <Badge badgeContent={counterBeloved} color="error" sx={{'& span': {fontSize: 15}}}>
                                         <FavoriteIcon fontSize='20' className={styles.icon}/>
                                     </Badge>
                                 </IconButton>
-                                <IconButton className={styles.person}>
+                                <IconButton component={Link} to="/login" className={styles.person}>
                                     <PersonIcon fontSize='20' className={styles.icon}/>
                                 </IconButton>
                                 <IconButton onClick={toggleDrawer(true)} className={styles.menu}>

@@ -16,7 +16,7 @@ const SocialMediaIcon = (props) => {
     const open = Boolean(anchorEl);
 
     return (
-        <Button className={styles.SocialMediaIcon}>
+        <Button className={styles.SocialMediaIcon} >
             <props.icon/>
         </Button>
     );
