@@ -18,6 +18,7 @@ import LoginPage from "./pages/LoginPage";
 import TheNewsPage from "./pages/TheNewsPage";
 import FavoritePage from "./pages/FavoritePage";
 import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CartPage/CheckoutPage";
 
 function App() {
     return (
@@ -35,6 +36,7 @@ function App() {
                             <Route exact path='login' element={<LoginPage/>}/>
                             <Route exact path='favorite-list' element={<FavoritePage/>}/>
                             <Route exact path='cart-list' element={<CartPage/>}/>
+                            <Route exact path='checkout' element={<CheckoutPage/>}/>
                         </Route>
                         <Route exact path='sign-in' element={<SignInPage/>}/>
                         <Route exact path='sign-up' element={<SignUpPage/>}/>

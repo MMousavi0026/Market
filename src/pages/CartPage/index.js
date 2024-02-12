@@ -8,7 +8,8 @@ import {
     tableCellClasses,
     TableContainer,
     TableHead,
-    TableRow
+    TableRow,
+    TextField
 } from "@mui/material";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import {Link} from "react-router-dom";
@@ -19,6 +20,9 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import styles from "./CartPage.module.css"
 import CloseIcon from "@mui/icons-material/Close";
 import Button from "@mui/material/Button";
+import SideBox from "../../components/pages/ShopPage/SideBox";
+import Product from "../../components/pages/ShopPage/Product";
+import {productsList} from "../../data/productsData";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -51,27 +55,29 @@ const breadcrumbs = [
 
 const CartPage = () => {
 
+    const [someProductsList] = useState(productsList.slice(0, 2))
+
     const [cartNumber, setCartNumber] = useState(1)
 
-    const [pluralOfPart, setPluralOfPart] = useState(cartNumber * )
     const decrementCartNumber = () => {
         if (cartNumber > 1) {
             setCartNumber(cartNumber - 1);
         }
     }
+
     const incrementCartNumber = () => {
         setCartNumber(cartNumber + 1)
     }
 
     return (
-        <Row rowSpacing={4}>
+        <Row spacing={4}>
             <Col xs={12} />
             <Col xs={12}>
                 <Breadcrumbs separator={<NavigateBeforeIcon fontSize="16px" />} aria-label="breadcrumb">
                     {breadcrumbs}
                 </Breadcrumbs>
             </Col>
-            <Col xs={12}>
+            <Col xs={12} sx={{ display: {xs: "none", sm: "block"} }}>
                 <div className={styles.titleWrapper}>
                     <Typography fontSize={25}>سبد خرید</Typography>
                     <ArrowBackIcon sx={{m: "0 20px"}}/>
@@ -122,12 +128,51 @@ const CartPage = () => {
                                         <Button onClick={incrementCartNumber} color="secondary">+</Button>
                                     </div>
                                 </StyledTableCell>
-                                <StyledTableCell>جمع جزء</StyledTableCell>
+                                <StyledTableCell>{cartNumber * 22}</StyledTableCell>
                             </StyledTableRow>
                         </TableBody>
                     </Table>
                 </TableContainer>
+                <Row spacing={2} sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                    <Col xs={12} sm={6}>
+                        <Button variant="contained" color="secondary" sx={{ width: {xs: '100%', sm: 'fit-content'} }}>ادامه خرید</Button>
+                    </Col>
+                    <Col xs={12} sm={6} sx={{display: 'flex', alignItems: 'center', justifyContent: {xs: 'center', sm: 'end'} }}>
+                        <TextField
+                            variant="outlined"
+                            label="کد تخفیف"
+                        />
+                        <Button variant="contained" color="secondary" sx={{ml: "10px"}}>اعمال کد تخفیف</Button>
+                    </Col>
+                </Row>
             </Col>
+            <Col xs={12} md={6}>
+                <SideBox title="محصولاتی که ممکنه دوست داشته باشید">
+                    <Row spacing={4}>
+                        {
+                            someProductsList.map((item) => (
+                                <Col xs={12} md={6}>
+                                    <Product {...item}/>
+                                </Col>
+                            ))
+                        }
+                    </Row>
+                </SideBox>
+            </Col>
+            <Col xs={12} md={6}>
+                <SideBox title="جمع کل سبد خرید">
+                    <TableRow>
+                        <StyledTableCell>جمع جزء</StyledTableCell>
+                        <StyledTableCell>۲۰۰ هزار تومان</StyledTableCell>
+                    </TableRow>
+                    <TableRow>
+                        <StyledTableCell>مجموع</StyledTableCell>
+                        <StyledTableCell>۲۰۰ هزار تومان</StyledTableCell>
+                    </TableRow>
+                    <Button variant="contained" component={Link} to="/checkout" color= "secondary" sx={{mt: "20px"}}>ادامه جهت تسویه حساب</Button>
+                </SideBox>
+            </Col>
+            <Col xs={12}/>
         </Row>
     );
 };

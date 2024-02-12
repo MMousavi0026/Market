@@ -113,7 +113,7 @@ const Footer = () => {
                     </Col>
                     <Col xs={12} md={6} className={styles.captionLWrapper}>
                         <div className={styles.captionL}>
-                            <img width='270px' className={styles.captionImg} src="/img/f1.png" alt=""/>
+                            <img width={250} className={styles.captionImg} src="/img/f1.png" alt=""/>
                         </div>
                     </Col>
                 </Row>
