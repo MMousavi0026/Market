@@ -1,17 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
 import {NavLink} from "react-router-dom";
 import Menu from "@mui/material/Menu";
 import styles from "./NMenu.module.scss";
 
-const NMenuButton = ({children, title, to}) => {
+const NMenuButton = ({children, title, to, elementVertical, elementHorizontal, childrenVertical, childrenHorizontal}) => {
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const handlePopoverOpen = (event) => {
+    const [anchorEl, setAnchorEl] = useState(null);
+    const handleHoverOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    const handlePopoverClose = () => {
+    const handleHoverClose = () => {
         setAnchorEl(null);
     };
     const open = Boolean(anchorEl);
@@ -20,8 +20,11 @@ const NMenuButton = ({children, title, to}) => {
         children ? (
             <>
                 <ListItem
-                    onMouseEnter={handlePopoverOpen}
-                    onMouseLeave={handlePopoverClose}
+                    id="basic-menu"
+                    aria-controls={open ? 'demo-positioned-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
+                    onMouseEnter={handleHoverOpen}
                     sx={{width: "fit-content", cursor: "pointer", color: "white"}}
                     className={styles.menuItems}
                 >
@@ -29,13 +32,13 @@ const NMenuButton = ({children, title, to}) => {
                 </ListItem>
                 <Menu
                     id="basic-menu"
-                    sx={{pointerEvents: 'none'}}
+                    aria-labelledby="demo-positioned-button"
                     open={open}
                     anchorEl={anchorEl}
-                    anchorOrigin={{vertical: 'bottom', horizontal: 'right',}}
-                    transformOrigin={{vertical: 'top', horizontal: 'right',}}
-                    onMouseLeave={handlePopoverClose}
-                    disableScrollLock
+                    onMouseLeave={handleHoverClose}
+                    anchorOrigin={{vertical: elementVertical, horizontal: elementHorizontal,}}
+                    transformOrigin={{vertical: childrenVertical, horizontal: childrenHorizontal,}}
+                    // disableScrollLock
                     slotProps={{paper: {className: styles.menuPaper}}}
                 >
                     {children}
@@ -52,7 +55,7 @@ const NMenuButton = ({children, title, to}) => {
                         : {
                             color: "white"
                         }
-                } to={to} className={styles.navLink}
+                } to={to}
             >
                 <ListItem className={styles.menuItems}>
                     <Typography textAlign="center" className={styles.menuItem} fontSize="1rem">{title}</Typography>

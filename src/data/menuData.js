@@ -14,6 +14,10 @@ const menuData = [
     {
         title: "تخفیفات ویژه",
         type: "button",
+        elementVertical: 'bottom',
+        elementHorizontal: 'right',
+        childrenVertical: 'top',
+        childrenHorizontal: 'right',
         children: [
             {
                 imgSrc: "/img/s1.png",
@@ -50,10 +54,18 @@ const menuData = [
     {
         title: "دسترسی سریع",
         type: "list",
+        elementVertical: 'bottom',
+        elementHorizontal: 'right',
+        childrenVertical: 'top',
+        childrenHorizontal: 'right',
         children: [
             {
                 title: "دسته بندی",
                 type: "list",
+                elementVertical: 'center',
+                elementHorizontal: 'left',
+                childrenVertical: 'top',
+                childrenHorizontal: 'right',
                 children: [
                     {
                         title: "سوپر مارکت",
@@ -84,6 +96,10 @@ const menuData = [
             {
                 title: "برچسب ها",
                 type: "list",
+                elementVertical: 'center',
+                elementHorizontal: 'left',
+                childrenVertical: 'top',
+                childrenHorizontal: 'right',
                 children: [
                     {
                         title: "سس",
@@ -110,6 +126,10 @@ const menuData = [
             {
                 title: "دسترسی سریع",
                 type: "list",
+                elementVertical: 'center',
+                elementHorizontal: 'left',
+                childrenVertical: 'top',
+                childrenHorizontal: 'right',
                 children: [
                     {
                         title: "سس",

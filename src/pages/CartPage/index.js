@@ -128,12 +128,12 @@ const CartPage = () => {
                                         <Button onClick={incrementCartNumber} color="secondary">+</Button>
                                     </div>
                                 </StyledTableCell>
-                                <StyledTableCell>{cartNumber * 22}</StyledTableCell>
+                                <StyledTableCell>{cartNumber * 22} تومان</StyledTableCell>
                             </StyledTableRow>
                         </TableBody>
                     </Table>
                 </TableContainer>
-                <Row spacing={2} sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <Row spacing={2} sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', mt: '5px'}}>
                     <Col xs={12} sm={6}>
                         <Button variant="contained" color="secondary" sx={{ width: {xs: '100%', sm: 'fit-content'} }}>ادامه خرید</Button>
                     </Col>

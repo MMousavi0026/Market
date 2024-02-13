@@ -18,10 +18,10 @@ const NavMenu = () => {
                 {
                     item.children?.length && (
                         item.type === "button" ?
-                            <Row spacing={2} sx={{padding: "10px"}}>
+                            <Row spacing={2} sx={{ padding: "10px", }}>
                                 {
                                     item.children.map((discountDataItem) => (
-                                        <Col xs={2.2}>
+                                        <Col xs={2}>
                                             <ProductsCategories
                                                 titleColor="white"
                                                 discount="۲۰٪ تخفیف"
@@ -33,7 +33,7 @@ const NavMenu = () => {
                             </Row>
                             :
                             <Row spacing={3} sx={{padding: "10px 24px"}}>
-                                <Col className={styles.NMenuList}>
+                                <Col xs={12} className={styles.NMenuList}>
                                     {
                                         item.children?.length ?
                                             processElements(item.children) : null

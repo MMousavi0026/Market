@@ -129,7 +129,7 @@ const CheckoutPage = () => {
                             <TextField type="email" label="ایمیل" variant="outlined" color="secondary" fullWidth required />
                         </Col>
                         <Col xs={12}>
-                            <TextField type="email" label="توضیحات تکمیلی" variant="outlined" color="secondary" fullWidth required />
+                            <TextField type="email" label="توضیحات تکمیلی" variant="outlined" color="secondary" fullWidth />
                         </Col>
                     </Row>
                 </SideBox>
