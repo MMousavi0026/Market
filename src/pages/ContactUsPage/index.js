@@ -49,21 +49,21 @@ const ContactUsPage = () => {
                 <Row spacing={4}>
                     <Col xs={12} sm={4}>
                         <div className={styles.feature} style={{cursor:"pointer", display:"flex", flexDirection:"column", alignItems:"center"}}>
-                            <EmailIcon className={styles.icon}/>
+                            <EmailIcon className={styles.icon} color="white.main"/>
                             <Typography className={styles.featureTitle} variant="h5" marginTop="10px">پشتیبانی</Typography>
                             <Link href="mailto:support@yoursite.com" sx={{cursor:"pointer", textDecoration:"none"}}>support@yoursite.com</Link>
                         </div>
                     </Col>
                     <Col xs={12} sm={4}>
                         <div className={styles.feature} style={{cursor:"pointer", display:"flex", flexDirection:"column", alignItems:"center"}}>
-                            <CallIcon className={styles.icon}/>
+                            <CallIcon className={styles.icon} color="white.main"/>
                             <Typography className={styles.featureTitle} variant="h5" marginTop="10px">تلفن تماس</Typography>
                             <Link href="tel:009822334455" sx={{textDecoration:"none"}}>۹۸۲۲۳۳۴۴۵۵+</Link>
                         </div>
                     </Col>
                     <Col xs={12} sm={4}>
                         <div className={styles.feature} style={{cursor:"pointer", display:"flex", flexDirection:"column", alignItems:"center"}}>
-                            <LocationOnIcon className={styles.icon}/>
+                            <LocationOnIcon className={styles.icon} color="white.main"/>
                             <Typography className={styles.featureTitle} variant="h5" marginTop="10px">آدرس</Typography>
                             <Typography sx={{cursor:"pointer", textDecoration:"none"}}>تهران، خیابان آزادی</Typography>
                         </div>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Col from "../../components/mui/Grid/Col";
 import {
     Accordion,
@@ -29,7 +29,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from "@mui/material/Button";
 import SideBox from "../../components/pages/ShopPage/SideBox";
-import {StyledTableRow, StyledTableCell} from "./index";
+import {StyledTableRow, StyledTableCell, } from "./index";
+import axios from "axios";
 
 const breadcrumbs = [
     <Link style={{display: 'flex'}} underline="hover" key="1" color="inherite" to="/">
@@ -42,7 +43,25 @@ const breadcrumbs = [
 
 const CheckoutPage = () => {
 
+    const [cartProducts, setCartProducts] = useState([])
+    const [sumPrice, setSumPrice] = useState([])
     const [city, setCity] = useState('تهران')
+
+    useEffect(() => {
+        const updatedSumPrice = cartProducts.map(item => 2 * item.price);
+        setSumPrice(updatedSumPrice);
+    }, [cartProducts]);
+
+    const sum = sumPrice.reduce((a, c) => a + c, 0)
+
+    console.log()
+
+    useEffect(() => {
+        axios.get('https://json.xstack.ir/api/v1/products')
+            .then(res => {
+                setCartProducts(res.data.data.slice(10, 15))
+            })
+    }, []);
 
     const handleChange = (event) => {
         setCity(event.target.value);
@@ -146,31 +165,30 @@ const CheckoutPage = () => {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    <StyledTableRow>
-                                        <StyledTableCell component="th" scope="row">
-                                            <Typography>شامپو حمام * </Typography>
-                                            <Typography fontWeight="bold">۲</Typography>
-                                        </StyledTableCell>
-                                        <StyledTableCell>۴۵ تومان</StyledTableCell>
-                                    </StyledTableRow>
-                                    <StyledTableRow>
-                                        <StyledTableCell component="th" scope="row">
-                                            <Typography>بلوبری طبیعی * </Typography>
-                                            <Typography fontWeight="bold">۱</Typography>
-                                        </StyledTableCell>
-                                        <StyledTableCell>۲۲ تومان</StyledTableCell>
-                                    </StyledTableRow>
+                                    {
+                                        cartProducts.map((item) => {
+                                            return (
+                                                <StyledTableRow>
+                                                    <StyledTableCell component="th" scope="row">
+                                                        <Typography>{item.name} * </Typography>
+                                                        <Typography fontWeight="bold">2</Typography>
+                                                    </StyledTableCell>
+                                                    <StyledTableCell>{item.price * 2} تومان</StyledTableCell>
+                                                </StyledTableRow>
+                                            )
+                                        })
+                                    }
                                     <StyledTableRow>
                                         <StyledTableCell component="th" scope="row">
                                             <Typography fontWeight="bold">جمع جزء</Typography>
                                         </StyledTableCell>
-                                        <StyledTableCell>۶۷ تومان</StyledTableCell>
+                                        <StyledTableCell>{sum} تومان</StyledTableCell>
                                     </StyledTableRow>
                                     <StyledTableRow>
                                         <StyledTableCell component="th" scope="row">
                                             <Typography fontWeight="bold">مجموع</Typography>
                                         </StyledTableCell>
-                                        <StyledTableCell>۶۷ تومان</StyledTableCell>
+                                        <StyledTableCell>{sum} تومان</StyledTableCell>
                                     </StyledTableRow>
                                 </TableBody>
                             </Table>

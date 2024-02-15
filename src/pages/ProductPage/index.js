@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Row from "../../components/mui/Grid/Row";
 import Col from "../../components/mui/Grid/Col";
 import ProductOption from "../../components/pages/ShopPage/Product/ProductOption";
@@ -26,6 +26,7 @@ import Product from "../../components/pages/ShopPage/Product";
 import {shopFeatures} from "../../data/shopFeatures";
 import {useParams} from "react-router-dom";
 import {increaseCounterBeloved} from "../../redux/reducers/counterBeloved";
+import axios from "axios";
 
 const CustomTabPanel = ({children, value, index, ...other}) => {
     const dispatch = useDispatch()
@@ -66,11 +67,25 @@ const a11yProps = (index) => {
 }
 
 const ProductPage = () => {
+
     const [numRate, setNumRate] = useState(0)
-
-    const [someProductsList] = useState(productsList.slice(0, 3))
-
+    const [someProductsList, setProductsList] = useState([])
+    const [cartNumber, setCartNumber] = useState(1)
     const params = useParams();
+
+    useEffect(() => {
+        axios.get('https://json.xstack.ir/api/v1/products')
+            .then(res => {
+                setProductsList(res.data.data);
+            })
+            .catch(res => {
+                console.log(res.response)
+            })
+    }, []);
+
+    const thisProduct = someProductsList.find(item => item.id == params.productId)??{}
+
+    console.log(someProductsList)
 
     const socialMediaIcon = [
         {icon: FacebookOutlinedIcon, title: "اشتراک گذاری در فیسبوک"},
@@ -83,7 +98,6 @@ const ProductPage = () => {
 
     const dispatch = useDispatch()
 
-    const [cartNumber, setCartNumber] = useState(1)
     const decrementCartNumber = () => {
         if (cartNumber > 1) {
             setCartNumber(cartNumber - 1);
@@ -98,8 +112,6 @@ const ProductPage = () => {
         setValue(newValue);
     };
 
-    const thisProduct = productsList.find(item => item.id === params.productId)
-
     return (
         <Row rowSpacing={4} className={styles.pageWrapper}>
             <Col xs={12} height="50px"/>
@@ -109,8 +121,8 @@ const ProductPage = () => {
                         <div>
                             <img
                                 width="100%"
-                                src={thisProduct.imgSrc}
-                                alt={thisProduct.title}
+                                src={thisProduct.image}
+                                alt={thisProduct.name}
                                 className={styles.productImg}
                             />
                         </div>
@@ -118,10 +130,10 @@ const ProductPage = () => {
                     <Col md={6.5}>
                         <Row rowSpacing={3}>
                             <Col xs={12}>
-                                <Typography gutterBottom fontWeight="bold" variant="h4">{thisProduct.title}</Typography>
+                                <Typography gutterBottom fontWeight="bold" variant="h4">{thisProduct.name}</Typography>
                             </Col>
                             <Col xs={12}>
-                                <Rating name="read-only" value={thisProduct.rateNum} readOnly/>
+                                <Rating name="read-only" value={3} readOnly/>
                             </Col>
                             <Col xs={12}>
                                 <Typography fontWeight="bold" variant="h6" color="secondary">
@@ -130,7 +142,7 @@ const ProductPage = () => {
                             </Col>
                             <Col xs={12}>
                                 <Typography variant="body1" color="gray">
-                                    {thisProduct.desc}
+                                    {thisProduct.description}
                                 </Typography>
                             </Col>
                             <Col xs={12} style={{display: "flex", alignItems: "flex-start", flexDirection: "column"}}>
@@ -193,12 +205,12 @@ const ProductPage = () => {
                                 <div style={{display: 'flex', flexDirection: "row"}}>
                                     <Typography variant="body2"> تگ:&nbsp;</Typography>
                                     <Typography variant="body2"
-                                                sx={{color: "rgba(128, 128, 128, 0.8)"}}>{thisProduct.tag}</Typography>
+                                                sx={{color: "rgba(128, 128, 128, 0.8)"}}>{thisProduct?.tag}</Typography>
                                 </div>
                                 <div style={{display: 'flex', flexDirection: "row", marginTop: "5px"}}>
                                     <Typography variant="body2"> دسته بندی:&nbsp;</Typography>
                                     <Typography variant="body2"
-                                                sx={{color: "rgba(128, 128, 128, 0.8)"}}>{thisProduct.categories}</Typography>
+                                                sx={{color: "rgba(128, 128, 128, 0.8)"}}>{thisProduct?.category_id}</Typography>
                                 </div>
                             </Col>
                             <Col xs={12}>

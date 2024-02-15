@@ -1,38 +1,50 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import PersonIcon from '@mui/icons-material/Person';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import FolderIcon from '@mui/icons-material/Folder';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import Col from "../../components/mui/Grid/Col";
-import {Breadcrumbs, TextField} from "@mui/material";
+import {Breadcrumbs, Chip, TextField} from "@mui/material";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import Row from "../../components/mui/Grid/Row";
 import Button from "@mui/material/Button";
-import Link from "@mui/material/Link";
+import {Link} from "react-router-dom";
 import Typography from "@mui/material/Typography";
-import {newsList} from "../../data/newsList";
 import SideBox from "../../components/pages/ShopPage/SideBox";
 import {tags} from "../../data/tags";
 import HomeIcon from "@mui/icons-material/Home";
 import styles from "../NewsPage/NewsPage.module.css";
 import {useParams} from "react-router-dom";
+import axios from "axios";
 
 const TheNewsPage = () => {
 
+    const [thisNewsData, setThisNews] = useState([])
+
     const params = useParams();
 
-    const thisNews = newsList.find(item => item.id === params.newsId)
+    useEffect(() => {
+        axios.get('https://json.xstack.ir/api/v1/posts')
+            .then(res => {
+                setThisNews(res.data.data)
+            })
+    }, []);
+
+    const thisNews = thisNewsData.find(item => item.id == params.newsId)??{}
 
     const breadcrumbs = [
-        <Link style={{display: 'flex'}} underline="hover" key="1" color="inherit" to="/">
+        <Typography component={Link} style={{display: 'flex'}} underline="hover" key="1" color="inherit" to="/">
             <HomeIcon style={{fontSize:'18px'}}/>
-        </Link>,
-        <Link fontSize={"18px"} underline="hover" key="2" color="inherit" to="/news">
+        </Typography>,
+        <Typography component={Link} fontSize={"18px"} underline="hover" key="2" color="inherit.main" to="/news">
             اخبار و مقالات
-        </Link>,
-        <Typography fontSize={"18px"} key="2" color="text.primary">{thisNews.title}</Typography>
+        </Typography>,
     ];
 
+    const handleClick = () => {
+        console.info('You clicked the Chip.');
+    };
     return (
         <Row rowSpacing={4} className={styles.pageWrapper}>
             <Col xs={12}/>
@@ -47,26 +59,22 @@ const TheNewsPage = () => {
                     <Col xs={12} lg={8}>
                         <Row rowSpacing={4}>
                             <Col xs={12}>
-                                <img src={thisNews.imgSrc} alt={thisNews.title} width="100%" style={{borderRadius:"20px"}}/>
-                                <Typography fontSize={25} fontWeight="bold">{thisNews.title}</Typography>
-                                <Typography fontSize={20} display="block" margin="10px 0" >{thisNews.desc}</Typography>
+                                <img src={thisNews?.imgSrc} alt={thisNews?.title} width="100%" style={{borderRadius:"20px"}}/>
+                                <Typography fontSize={25} fontWeight="bold">{thisNews?.title}</Typography>
+                                <Typography fontSize={20} display="block" margin="10px 0" >{thisNews?.body}</Typography>
                             </Col>
                             <Col xs={12} className={styles.bottomItemWrapper} >
                                 <div className={styles.bottomItem}>
-                                    <PersonIcon color="secondary" fontSize="15px" className={styles.icon}/>
-                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{thisNews.author}</Button>
-                                </div>
-                                <div className={styles.bottomItem}>
                                     <AccessTimeIcon color="secondary" fontSize="15px" className={styles.icon}/>
-                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{thisNews.date}</Button>
+                                    <Chip label={thisNews?.created_at} variant="outlined" onClick={handleClick} sx={{fontSize:"15px", ml:"7px", py: '20px', borderRadius: '30px'}} />
                                 </div>
                                 <div className={styles.bottomItem}>
-                                    <FolderIcon color="secondary" fontSize="15px" className={styles.icon}/>
-                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{thisNews.categories}</Button>
+                                    <RemoveRedEyeIcon color="secondary" fontSize="15px" className={styles.icon}/>
+                                    <Chip label={`${thisNews?.view} نفر`} variant="outlined" onClick={handleClick} sx={{fontSize:"15px", ml:"7px", py: '20px', borderRadius: '30px'}} />
                                 </div>
                                 <div className={styles.bottomItem}>
                                     <LocalOfferIcon color="secondary" fontSize="15px" className={styles.icon}/>
-                                    <Button variant="outlined" color="primary" sx={{fontSize:"15px", ml:"7px"}}>{thisNews.tag}</Button>
+                                    <Chip label={thisNews?.slug} variant="outlined" onClick={handleClick} sx={{fontSize:"15px", ml:"7px", py: '20px', borderRadius: '30px'}} />
                                 </div>
                             </Col>
                             <Col xs={12}/>

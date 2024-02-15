@@ -1,18 +1,29 @@
-import React, {useContext, useReducer} from 'react';
+import React, {useContext, useReducer, useState} from 'react';
 import ProductOption from "./ProductOption";
 import {useDispatch, useSelector} from "react-redux";
 import {counterCart, increaseCounterCart, increment} from "../../../../redux/reducers/counterCart";
 import {faCartShopping, faCodeCompare, faHeart, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {Card, CardActionArea, CardContent, CardMedia, IconButton} from "@mui/material";
+import {Alert, Card, CardActionArea, CardContent, CardMedia, Dialog, DialogTitle, IconButton} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import styles from './Product.module.css';
 import Button from "@mui/material/Button";
 import {counterBeloved, increaseCounterBeloved} from "../../../../redux/reducers/counterBeloved";
-import Link from "@mui/material/Link";
+import {Link} from "react-router-dom";
 import CloseIcon from '@mui/icons-material/Close';
 
-const Product = ({imgSrc, title, price, to, closeIcon, option}) => {
+const Product = ({ image, name, price, to, closeIcon, }) => {
+
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     const dispatch = useDispatch()
 
     return (
@@ -20,8 +31,8 @@ const Product = ({imgSrc, title, price, to, closeIcon, option}) => {
             {
                 closeIcon ?
                     <div className={styles.closeIconWrapper}>
-                        <IconButton className={styles.closeIcon}>
-                            <CloseIcon/>
+                        <IconButton color="error" className={styles.closeIcon}>
+                            <CloseIcon color="error"/>
                         </IconButton>
                     </div>
                 : null
@@ -31,13 +42,13 @@ const Product = ({imgSrc, title, price, to, closeIcon, option}) => {
                     <CardMedia
                         component="img"
                         height="250"
-                        image={imgSrc}
-                        alt={title}
+                        image={image}
+                        alt={name}
                         style={{objectFit: 'contain'}}
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h6" component="div">
-                            {title}
+                            {name}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             {price}
@@ -45,35 +56,42 @@ const Product = ({imgSrc, title, price, to, closeIcon, option}) => {
                     </CardContent>
                 </CardActionArea>
                 <div className={styles.productOption}>
-                            <ProductOption
-                                iconVertical="center"
-                                iconHorizontal="right"
-                                textVertical="center"
-                                textHorizontal="left"
-                                iconName={faHeart}
-                                title='افزودن به علاقمندی ها'
-                                onClick={() => dispatch(increaseCounterBeloved())}
-                            />
-                            <ProductOption
-                                iconVertical="center"
-                                iconHorizontal="right"
-                                textVertical="center"
-                                textHorizontal="left"
-                                iconName={faCodeCompare}
-                                title='افزودن به مقایسه'
-                            />
-                            <ProductOption
-                                iconVertical="center"
-                                iconHorizontal="right"
-                                textVertical="center"
-                                textHorizontal="left"
-                                iconName={faMagnifyingGlass}
-                                title='نمایش سریع'
-                            />
-                        </div>
+                    <ProductOption
+                        iconVertical="center"
+                        iconHorizontal="right"
+                        textVertical="center"
+                        textHorizontal="left"
+                        iconName={faHeart}
+                        title='افزودن به علاقمندی ها'
+                        onClick={() => dispatch(increaseCounterBeloved())}
+                    />
+                    <ProductOption
+                        iconVertical="center"
+                        iconHorizontal="right"
+                        textVertical="center"
+                        textHorizontal="left"
+                        iconName={faCodeCompare}
+                        title='افزودن به مقایسه'
+                    />
+                    <ProductOption
+                        iconVertical="center"
+                        iconHorizontal="right"
+                        textVertical="center"
+                        textHorizontal="left"
+                        iconName={faMagnifyingGlass}
+                        title='نمایش سریع'
+                    />
+                </div>
             </Card>
-            <Button variant="contained" color="secondary"
-                    className={styles.button1} onClick={() => dispatch(increaseCounterCart())}>
+            <Button
+                variant="contained"
+                color="secondary"
+                className={styles.button1}
+                onClick={ () =>{
+                    dispatch(increaseCounterCart())
+                    handleClickOpen()
+                }}
+            >
                 <FontAwesomeIcon className={styles.button1Text} style={{marginLeft: '10px'}} icon={faCartShopping}/>
                 <Typography className={styles.button1Text}>افزودن به سبد خرید</Typography>
             </Button>

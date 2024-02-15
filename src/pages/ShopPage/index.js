@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import Row from "../../components/mui/Grid/Row";
 import Col from "../../components/mui/Grid/Col";
 import SideBox from "../../components/pages/ShopPage/SideBox";
@@ -18,14 +18,13 @@ import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
-import Slider from "react-slick";
 import {productsCategories, reviewsOfRecentProducts} from "../../data/productsData";
 import styles from './shopPage.module.css'
 import {useLocation} from "react-router-dom";
 import {productsList} from "../../data/productsData";
 import Product from "../../components/pages/ShopPage/Product";
-import Box from "@mui/material/Box";
 import RangeSlider, {valuetext} from "../../components/pages/ShopPage/RangeSlider";
+import axios from "axios";
 
 const Content = () => {
     const location = useLocation();
@@ -47,17 +46,26 @@ const Content = () => {
 }
 
 const ShopPage = () => {
-    const [dataList, setData] = useState(productsList.slice(0, 6));
-    const [age, setAge] = React.useState('');
 
-    const [age2, setAge2] = React.useState('');
+    useEffect(() => {
+        axios.get('https://json.xstack.ir/api/v1/products')
+            .then(res => {
+                setProductList(res.data.data);
+                setData(res.data.data.slice(0, 6))
+            })
+    }, []);
+
+    const [productList, setProductList] = useState([]);
+    const [dataList, setData] = useState([]);
+    const [age, setAge] = useState('');
+    const [age2, setAge2] = useState('');
 
     const breadcrumbs = [
         <Link style={{display: 'flex'}} underline="hover" key="1" color="inherit" href="/">
             <HomeIcon style={{fontSize:'18px'}}/>
         </Link>,
         <Typography fontSize={"18px"} key="2" color="text.primary">
-            محصولات
+            اخبار
         </Typography>,
     ];
 
@@ -73,8 +81,8 @@ const ShopPage = () => {
 
     const onPaginationChange = useCallback((_, number)=> {
         pageNumberRef.current = number
-        setData(productsList.slice((number - 1) * 6, number * 6))
-    }, [productsList])
+        setData(productList.slice((number - 1) * 6, number * 6))
+    }, [productList])
 
     const scroll = () => {
         window.scrollTo({
@@ -96,7 +104,7 @@ const ShopPage = () => {
                     <Col xs={12} lg={8}>
                         <Row rowSpacing={4}>
                             <Col xs={12} sx={{display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"space-between"}}>
-                                <Typography>نمایش {((pageNumberRef.current - 1) * 6) + 1} - {pageNumberRef.current * 6} از {productsList.length} نتیجه</Typography>
+                                <Typography>نمایش {((pageNumberRef.current - 1) * 6) + 1} - {pageNumberRef.current * 6} از {productList.length} نتیجه</Typography>
                                 <div>
                                     <FormControl sx={{ m: 1, minWidth: 120 , color:"primary"}}>
                                         <InputLabel id="demo-simple-select-helper-label" >تعداد محصول در هر صفحه</InputLabel>
@@ -141,8 +149,8 @@ const ShopPage = () => {
                             <Col xs={12}>
                                 <Row spacing={4}>
                                     {
-                                        dataList.map((item) => (
-                                            <Col xs={12} sm={6}>
+                                        dataList.map((item, index) => (
+                                            <Col key={index} xs={12} sm={6}>
                                                 <Product {...item} to={`/shop/${item.id}`} />
                                             </Col>
                                         ))
@@ -150,7 +158,7 @@ const ShopPage = () => {
                                 </Row>
                             </Col>
                             <Col xs={12} sx={{display: "flex", justifyContent: "center"}}>
-                                <Pagination count={Math.ceil(productsList.length / 6)} onClick={scroll} color="primary" onChange={onPaginationChange} />
+                                <Pagination count={Math.ceil(productList.length / 6)} onClick={scroll} color="primary" onChange={onPaginationChange} />
                             </Col>
                         </Row>
                     </Col>

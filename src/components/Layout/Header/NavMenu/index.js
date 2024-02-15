@@ -55,7 +55,7 @@ const NavMenu = () => {
                     }
                 </List>
                 <Button variant="contained" className={styles.giftButton}>
-                    <CardGiftCardIcon className={styles.giftIcon}/>
+                    <CardGiftCardIcon color="primary" className={styles.giftIcon}/>
                     <Typography fontSize="1rem">
                         تخففیفات روزانه
                     </Typography>

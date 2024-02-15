@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
 import Row from "../../components/mui/Grid/Row";
 import Col from "../../components/mui/Grid/Col";
 import {Breadcrumbs, Pagination, TextField} from "@mui/material";
@@ -13,6 +13,7 @@ import {newsList} from "../../data/newsList";
 import styles from "./NewsPage.module.css";
 import {tags} from "../../data/tags";
 import Box from "@mui/material/Box";
+import axios from "axios";
 
 const breadcrumbs = [
     <Link style={{display: 'flex'}} underline="hover" key="1" color="inherit" to="/">
@@ -24,11 +25,23 @@ const breadcrumbs = [
 ];
 
 const NewsPage = () => {
-    const [dataList, setData] = useState(newsList.slice(0,4));
+    const [dataList, setData] = useState([]);
+    const [newsList, setNews] = useState([]);
 
-    const onPaginationChange = useCallback((_, index) => (
-        setData(newsList.slice((index - 1) * 4, index * 4))
-    ), [newsList])
+    useEffect(() => {
+        axios.get('https://json.xstack.ir/api/v1/posts')
+            .then(res => {
+                setData(res.data.data)
+                setNews(res.data.data.slice(0, 6))
+            })
+    }, []);
+
+    const pageNumberRef = useRef(1)
+
+    const onPaginationChange = useCallback((_, number)=> {
+        pageNumberRef.current = number
+        setNews(dataList.slice((number - 1) * 4, number * 4))
+    }, [newsList])
 
     return (
         <Row rowSpacing={4} className={styles.pageWrapper}>
@@ -44,11 +57,11 @@ const NewsPage = () => {
                     <Col xs={12} lg={8}>
                         <Row spacing={4}>
                             {
-                                dataList.map((item, index) => (
+                                newsList.map((item, index) => (
                                     <Col xs={12} sm={6} key={index}>
                                         <div className={styles.newsItem}>
                                             <Button sx={{borderRadius:"20px", mb:"10px"}}>
-                                                <img src={item.imgSrc} alt={item.title} width="100%" style={{borderRadius:"20px"}} />
+                                                <img src={item.image} alt={item.title} width="100%" style={{borderRadius:"20px"}} />
                                             </Button>
                                             <Link fontSize={25} to={`/news/${item.id}`} className={styles.newsItemTitle}>{item.title}</Link>
                                             <Typography fontSize={15} display="block" color="text.secondary" margin="10px 0">{item.date}</Typography>
@@ -62,7 +75,7 @@ const NewsPage = () => {
                                 ))
                             }
                             <Col xs={12} sx={{display: "flex", justifyContent: "center"}}>
-                                <Pagination count={Math.ceil(newsList.length / 4)} color="primary" onChange={onPaginationChange} />
+                                <Pagination count={Math.ceil(dataList.length / 4)} color="primary" onChange={onPaginationChange} />
                             </Col>
                             <Col xs={12}/>
                         </Row>

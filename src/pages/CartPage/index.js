@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Col from "../../components/mui/Grid/Col";
 import {
     Breadcrumbs, IconButton,
@@ -22,7 +22,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Button from "@mui/material/Button";
 import SideBox from "../../components/pages/ShopPage/SideBox";
 import Product from "../../components/pages/ShopPage/Product";
-import {productsList} from "../../data/productsData";
+import axios from "axios";
 
 export const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -55,9 +55,30 @@ const breadcrumbs = [
 
 const CartPage = () => {
 
-    const [someProductsList] = useState(productsList.slice(0, 2))
-
+    const [cartProducts, setCartProducts] = useState([])
     const [cartNumber, setCartNumber] = useState(1)
+    const [relatedProducts, setRelatedProducts] = useState([])
+    const [sumPrice, setSumPrice] = useState([])
+
+    useEffect(() => {
+        const updatedSumPrice = cartProducts.map(item => cartNumber * item.price);
+        setSumPrice(updatedSumPrice);
+    }, [cartProducts, cartNumber]);
+
+    useEffect(() => {
+        axios.get('https://json.xstack.ir/api/v1/products')
+            .then(res =>{
+                setCartProducts(res.data.data.slice(0,5));
+                setRelatedProducts(res.data.data.slice(10,12))
+            })
+            .catch(res => {
+                console.log(res.response)
+            })
+    }, []);
+
+    const sum = sumPrice.reduce((a, c) => a + c, 0)
+
+
 
     const decrementCartNumber = () => {
         if (cartNumber > 1) {
@@ -100,42 +121,49 @@ const CartPage = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <StyledTableRow>
-                                <StyledTableCell component="th" scope="row">
-                                    <IconButton color="error">
-                                        <CloseIcon color="error"/>
-                                    </IconButton>
-                                </StyledTableCell>
-                                <StyledTableCell>
-                                    <img width={100} src="/img/water.jpg" alt="water"/>
-                                </StyledTableCell>
-                                <StyledTableCell>سس پاستا</StyledTableCell>
-                                <StyledTableCell>۲۲ تومان</StyledTableCell>
-                                <StyledTableCell>
-                                    <div style={{
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        marginBottom: "10px"
-                                    }}>
-                                        <Button onClick={decrementCartNumber} color="secondary">-</Button>
-                                        <div style={{
-                                            border: "rgba(128, 128, 128, 0.4) solid 1px",
-                                            padding: "5px 15px",
-                                            borderRadius: "10px",
-                                            margin: "0 5px"
-                                        }}>{cartNumber}</div>
-                                        <Button onClick={incrementCartNumber} color="secondary">+</Button>
-                                    </div>
-                                </StyledTableCell>
-                                <StyledTableCell>{cartNumber * 22} تومان</StyledTableCell>
-                            </StyledTableRow>
+                            {
+                                cartProducts.map((item, index) => {
+
+                                    return (
+                                    <StyledTableRow key={index}>
+                                        <StyledTableCell component="th" scope="row">
+                                            <IconButton color="error">
+                                                <CloseIcon color="error"/>
+                                            </IconButton>
+                                        </StyledTableCell>
+                                        <StyledTableCell component={Link} to={`/shop/${item.id}`}>
+                                            <img width={100} src={item.image} alt={item.name}/>
+                                        </StyledTableCell>
+                                        <StyledTableCell component={Link} to={`/shop/${item.id}`}>{item.name}</StyledTableCell>
+                                        <StyledTableCell>{item.price}</StyledTableCell>
+                                        <StyledTableCell>
+                                            <div style={{
+                                                display: "flex",
+                                                flexDirection: "row",
+                                                alignItems: "center",
+                                                marginBottom: "10px"
+                                            }}>
+                                                <Button onClick={decrementCartNumber} color="secondary">-</Button>
+                                                <div style={{
+                                                    border: "rgba(128, 128, 128, 0.4) solid 1px",
+                                                    padding: "5px 15px",
+                                                    borderRadius: "10px",
+                                                    margin: "0 5px"
+                                                }}>{cartNumber}</div>
+                                                <Button onClick={incrementCartNumber} color="secondary">+</Button>
+                                            </div>
+                                        </StyledTableCell>
+                                        <StyledTableCell>{cartNumber * item.price} تومان</StyledTableCell>
+                                    </StyledTableRow>
+                                )})
+                            }
+
                         </TableBody>
                     </Table>
                 </TableContainer>
                 <Row spacing={2} sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', mt: '5px'}}>
                     <Col xs={12} sm={6}>
-                        <Button variant="contained" color="secondary" sx={{ width: {xs: '100%', sm: 'fit-content'} }}>ادامه خرید</Button>
+                        <Button variant="contained" component={Link} to='/shop' color="secondary" sx={{ width: {xs: '100%', sm: 'fit-content'} }}>ادامه خرید</Button>
                     </Col>
                     <Col xs={12} sm={6} sx={{display: 'flex', alignItems: 'center', justifyContent: {xs: 'center', sm: 'end'} }}>
                         <TextField
@@ -147,12 +175,12 @@ const CartPage = () => {
                 </Row>
             </Col>
             <Col xs={12} md={6}>
-                <SideBox title="محصولاتی که ممکنه دوست داشته باشید">
+                <SideBox title="محصولات مرتبط">
                     <Row spacing={4}>
                         {
-                            someProductsList.map((item) => (
+                            relatedProducts.map((item) => (
                                 <Col xs={12} md={6}>
-                                    <Product {...item}/>
+                                    <Product {...item} to={item.id}/>
                                 </Col>
                             ))
                         }
@@ -163,11 +191,11 @@ const CartPage = () => {
                 <SideBox title="جمع کل سبد خرید">
                     <TableRow>
                         <StyledTableCell>جمع جزء</StyledTableCell>
-                        <StyledTableCell>۲۰۰ هزار تومان</StyledTableCell>
+                        <StyledTableCell>{sum} تومان</StyledTableCell>
                     </TableRow>
                     <TableRow>
                         <StyledTableCell>مجموع</StyledTableCell>
-                        <StyledTableCell>۲۰۰ هزار تومان</StyledTableCell>
+                        <StyledTableCell>{sum} تومان</StyledTableCell>
                     </TableRow>
                     <Button variant="contained" component={Link} to="/checkout" color= "secondary" sx={{mt: "20px"}}>ادامه جهت تسویه حساب</Button>
                 </SideBox>

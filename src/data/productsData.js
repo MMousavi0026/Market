@@ -9,7 +9,6 @@ export const productsCategories = [
 
 export const productsList = [
     {
-        id: "1",
         to: "/shop/1",
         title: "اسپری چند منظوره",
         imgSrc: "/img/pr7-600x600.jpg",
@@ -21,7 +20,6 @@ export const productsList = [
         commentsNum: 2,
     },
     {
-        id: "2",
         to: "/shop/2",
         title: "آب معدنی",
         imgSrc: "/img/water.jpg",
@@ -33,7 +31,6 @@ export const productsList = [
         commentsNum: 2,
     },
     {
-        id: "3",
         to: "/shop/3",
         title: "سس پاستا",
         imgSrc: "/img/sos.jpg",
@@ -45,7 +42,6 @@ export const productsList = [
         commentsNum: 2,
     },
     {
-        id: "4",
         to: "/shop/4",
         title: "بلوبری طبیعی",
         imgSrc: "/img/bueberi.jpg",
@@ -57,7 +53,6 @@ export const productsList = [
         commentsNum: 2,
     },
     {
-        id: "5",
         to: "/shop/5",
         title: "شامپو بدن",
         imgSrc: "/img/shampooBadan.jpg",
@@ -69,7 +64,6 @@ export const productsList = [
         commentsNum: 2,
     },
     {
-        id: "6",
         to: "/shop/6",
         title: "فیله مرغ",
         imgSrc: "/img/filehMorgh.jpg",
@@ -81,7 +75,6 @@ export const productsList = [
         commentsNum: 2,
     },
     {
-        id: "7",
         to: "/shop/7",
         title: "موز",
         imgSrc: "/img/banana.jpg",
@@ -93,7 +86,6 @@ export const productsList = [
         commentsNum: 2,
     },
     {
-        id: "8",
         to: "/shop/8",
         title: "شامپو داو",
         imgSrc: "/img/shampooDov.jpg",
@@ -105,7 +97,6 @@ export const productsList = [
         commentsNum: 2,
     },
     {
-        id: "9",
         to: "/shop/9",
         title: "آب معدنی",
         imgSrc: "/img/water.jpg",
@@ -117,7 +108,6 @@ export const productsList = [
         commentsNum: 2,
     },
     {
-        id: "10",
         to: "/shop/10",
         title: "گوشت همبرگری",
         imgSrc: "/img/meetHum.jpg",
@@ -129,7 +119,6 @@ export const productsList = [
         commentsNum: 2,
     },
     {
-        id: "11",
         to: "/shop/11",
         title: "گوشت گوساله",
         imgSrc: "/img/meetGoo.jpg",
@@ -141,7 +130,6 @@ export const productsList = [
         commentsNum: 2,
     },
     {
-        id: "12",
         to: "/shop/12",
         title: "شامپو حمام",
         imgSrc: "/img/shampoo.jpg",
