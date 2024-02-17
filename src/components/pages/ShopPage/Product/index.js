@@ -51,7 +51,7 @@ const Product = ({ image, name, price, to, closeIcon, }) => {
                             {name}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            {price}
+                            {price} تومان
                         </Typography>
                     </CardContent>
                 </CardActionArea>

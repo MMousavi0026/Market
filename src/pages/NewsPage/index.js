@@ -32,7 +32,7 @@ const NewsPage = () => {
         axios.get('https://json.xstack.ir/api/v1/posts')
             .then(res => {
                 setData(res.data.data)
-                setNews(res.data.data.slice(0, 6))
+                setNews(res.data.data.slice(0, 4))
             })
     }, []);
 

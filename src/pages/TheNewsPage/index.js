@@ -19,9 +19,7 @@ import {useParams} from "react-router-dom";
 import axios from "axios";
 
 const TheNewsPage = () => {
-
     const [thisNewsData, setThisNews] = useState([])
-
     const params = useParams();
 
     useEffect(() => {

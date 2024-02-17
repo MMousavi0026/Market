@@ -381,6 +381,7 @@ const ProductPage = () => {
                                             required
                                             control={<Checkbox color="secondary"/>}
                                             label="ذخیره نام، ایمیل و وبسایت من در مرورگر برای زمانی که دوباره دیدگاهی می‌نویسم."
+                                            color="secondary"
                                             sx={{
                                                 color: "white.main",
                                                 "& .muirtl-i4bv87-MuiSvgIcon-root": {

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import Row from "../../components/mui/Grid/Row";
 import Col from "../../components/mui/Grid/Col";
@@ -11,10 +11,19 @@ import {productsList, productsCategories} from "../../data/productsData";
 import NewsSlider from "../../components/pages/homePage/NewsSlider";
 import {newsList} from "../../data/newsList";
 import styles from './HomePage.module.scss';
+import axios from "axios";
 
 const HomePage = () => {
-    const [productsDataList] = useState(productsList.slice(0, 4))
-    const [newsData] = useState(newsList.slice(0, 4))
+    const [productsList, setProductsList] = useState([])
+
+    useEffect(() => {
+        axios.get('https://json.xstack.ir/api/v1/products')
+            .then(res => {
+                setProductsList(res.data.data.slice(20, 24))
+            })
+    }, []);
+
+
 
     return (
         <Row rowSpacing={4}>
@@ -188,7 +197,7 @@ const HomePage = () => {
                         </Button>
                     </div>
                     <Row spacing={4} width="100%">
-                        {productsDataList.map((productDataItem) => (<Col xs={12} sm={6} lg={3}>
+                        {productsList.map((productDataItem) => (<Col xs={12} sm={6} lg={3}>
                             <Product {...productDataItem} />
                         </Col>))}
                     </Row>
