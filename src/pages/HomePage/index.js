@@ -7,9 +7,8 @@ import Product from "../../components/pages/ShopPage/Product";
 import HomeFeatures from "../../components/pages/homePage/HomeFeatures";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import {productsList, productsCategories} from "../../data/productsData";
+import {productsCategories} from "../../data/productsData";
 import NewsSlider from "../../components/pages/homePage/NewsSlider";
-import {newsList} from "../../data/newsList";
 import styles from './HomePage.module.scss';
 import axios from "axios";
 
