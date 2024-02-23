@@ -4,26 +4,23 @@ import Col from "../../components/mui/Grid/Col";
 import SideBox from "../../components/pages/ShopPage/SideBox";
 import {
     Breadcrumbs,
-    FormControl, FormHelperText,
+    FormControl,
     InputLabel,
     MenuItem,
     Pagination,
-    PaginationItem,
     Rating,
     Select
 } from "@mui/material";
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import Link from "@mui/material/Link";
+import {Link} from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
 import {productsCategories, reviewsOfRecentProducts} from "../../data/productsData";
 import styles from './shopPage.module.css'
-import {useLocation} from "react-router-dom";
-import {productsList} from "../../data/productsData";
 import Product from "../../components/pages/ShopPage/Product";
-import RangeSlider, {valuetext} from "../../components/pages/ShopPage/RangeSlider";
+import RangeSlider from "../../components/pages/ShopPage/RangeSlider";
 import axios from "axios";
 
 const ShopPage = () => {
@@ -100,11 +97,11 @@ const ShopPage = () => {
                                             <MenuItem value="">
                                                 <i>تعداد محصول در هر صفحه</i>
                                             </MenuItem>
-                                            <MenuItem value={10}>۴ محصول در هر صفحه</MenuItem>
-                                            <MenuItem value={20}>۸  محصول در هر صفحه</MenuItem>
-                                            <MenuItem value={30}>۱۶  محصول در هر صفحه</MenuItem>
-                                            <MenuItem value={40}>۲۴  محصول در هر صفحه</MenuItem>
-                                            <MenuItem value={50}>۳۲  محصول در هر صفحه</MenuItem>
+                                            <MenuItem value={6}>۶ محصول در هر صفحه</MenuItem>
+                                            <MenuItem value={8}>۸  محصول در هر صفحه</MenuItem>
+                                            <MenuItem value={12}>۱۲  محصول در هر صفحه</MenuItem>
+                                            <MenuItem value={16}>۱۶  محصول در هر صفحه</MenuItem>
+                                            <MenuItem value={32}>۳۲  محصول در هر صفحه</MenuItem>
                                         </Select>
                                     </FormControl>
                                     <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -153,8 +150,8 @@ const ShopPage = () => {
                             <Col>
                                 <SideBox title="دسته بندی محصولات">
                                     {
-                                        productsCategories.map((item) => (
-                                            <ListItem className={styles.sideBoxItemWrapper}>
+                                        productsCategories.map((item, index) => (
+                                            <ListItem key={index} className={styles.sideBoxItemWrapper}>
                                                 <Link to={item.to}>
                                                     <Typography className={styles.sideBoxItem}>{item.title}</Typography>
                                                 </Link>
@@ -172,7 +169,7 @@ const ShopPage = () => {
                                                     <img src={item.imgSrc} alt={item.title} style={{width: "90px", borderRadius: "10px"}}/>
                                                     <div>
                                                         <Typography variant="body1">{item.title}</Typography>
-                                                        <Rating name="read-only" value={item.ratingNum} color="#faaf00" readOnly />
+                                                        <Rating name="read-only" value={3} color="#faaf00" readOnly />
                                                         <Typography variant="body2">{item.desc}</Typography>
                                                     </div>
                                                 </div>

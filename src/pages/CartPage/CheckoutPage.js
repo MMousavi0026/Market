@@ -54,8 +54,6 @@ const CheckoutPage = () => {
 
     const sum = sumPrice.reduce((a, c) => a + c, 0)
 
-    console.log()
-
     useEffect(() => {
         axios.get('https://json.xstack.ir/api/v1/products')
             .then(res => {

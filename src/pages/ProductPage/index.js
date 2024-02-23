@@ -2,9 +2,8 @@ import React, {useEffect, useState} from 'react';
 import Row from "../../components/mui/Grid/Row";
 import Col from "../../components/mui/Grid/Col";
 import ProductOption from "../../components/pages/ShopPage/Product/ProductOption";
-import {productsList} from "../../data/productsData";
 import Typography from "@mui/material/Typography";
-import {Checkbox, FormControlLabel, inputLabelClasses, paperClasses, Rating, Tab, Tabs, TextField} from "@mui/material";
+import {Checkbox, FormControlLabel, Rating, Tab, Tabs, TextField} from "@mui/material";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCartShopping, faCodeCompare, faHeart} from "@fortawesome/free-solid-svg-icons";
 import Button from "@mui/material/Button";
@@ -29,7 +28,6 @@ import {increaseCounterBeloved} from "../../redux/reducers/counterBeloved";
 import axios from "axios";
 
 const CustomTabPanel = ({children, value, index, ...other}) => {
-    const dispatch = useDispatch()
     return (
         <div
             role="tabpanel"
@@ -78,14 +76,9 @@ const ProductPage = () => {
             .then(res => {
                 setProductsList(res.data.data);
             })
-            .catch(res => {
-                console.log(res.response)
-            })
     }, []);
 
     const thisProduct = someProductsList.find(item => item.id == params.productId)??{}
-
-    console.log(someProductsList)
 
     const socialMediaIcon = [
         {icon: FacebookOutlinedIcon, title: "اشتراک گذاری در فیسبوک"},
@@ -404,7 +397,7 @@ const ProductPage = () => {
                 <SideBox title="محصولات مرتبط">
                     <Row spacing={4}>
                         {
-                            someProductsList.map((item) => (
+                            someProductsList.slice(0, 3).map((item) => (
                                 <Col xs={12} md={4}>
                                     <Product {...item}/>
                                 </Col>
@@ -417,7 +410,7 @@ const ProductPage = () => {
                 <SideBox title="محصولات پرفروش">
                     <Row spacing={4}>
                         {
-                            someProductsList.map((item) => (
+                            someProductsList.slice(0, 3).map((item) => (
                                 <Col xs={12} md={4}>
                                     <Product {...item}/>
                                 </Col>

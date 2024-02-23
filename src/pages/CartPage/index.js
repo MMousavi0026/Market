@@ -71,9 +71,6 @@ const CartPage = () => {
                 setCartProducts(res.data.data.slice(0,5));
                 setRelatedProducts(res.data.data.slice(10,12))
             })
-            .catch(res => {
-                console.log(res.response)
-            })
     }, []);
 
     const sum = sumPrice.reduce((a, c) => a + c, 0)

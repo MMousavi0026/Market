@@ -20,8 +20,8 @@ const NavMenu = () => {
                         item.type === "button" ?
                             <Row spacing={2} sx={{ padding: "10px", }}>
                                 {
-                                    item.children.map((discountDataItem) => (
-                                        <Col xs={2}>
+                                    item.children.map((discountDataItem, index) => (
+                                        <Col xs={2} key={index}>
                                             <ProductsCategories
                                                 titleColor="white"
                                                 discount="۲۰٪ تخفیف"
