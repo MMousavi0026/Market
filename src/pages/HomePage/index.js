@@ -197,7 +197,7 @@ const HomePage = () => {
                     </div>
                     <Row spacing={4} width="100%">
                         {productsList.map((productDataItem) => (<Col xs={12} sm={6} lg={3}>
-                            <Product {...productDataItem} />
+                            <Product {...productDataItem} to={`/shop/${productDataItem.id}`}/>
                         </Col>))}
                     </Row>
                 </Row>
