@@ -13,7 +13,7 @@ import { Provider } from 'react-redux'
 import theme from "./components/mui/ThemeConfig";
 import store from "./redux/store";
 import './assets/font/NotoArabic/style.css'
-import './App.scss'
+import './App.css'
 import LoginPage from "./pages/LoginPage";
 import TheNewsPage from "./pages/TheNewsPage";
 import FavoritePage from "./pages/FavoritePage";

@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
-import styles from "./NMenu.module.css";
+import styles from "./NMenu.module.scss";
 
 const NMenuButton = ({children, title, href, className}) => {
 
@@ -20,7 +20,7 @@ const NMenuButton = ({children, title, href, className}) => {
                 </div>
             </div>
         ) : (
-            <Link style={{color: "white"}} href={href}>
+            <Link style={{color: "white"}} to={href}>
                 <ListItem className={styles.menuItems}>
                     <Typography textAlign="center" className={styles.menuItem} fontSize="1rem">{title}</Typography>
                 </ListItem>

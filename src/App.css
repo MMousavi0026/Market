@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: 'Noto Sans Arabic', sans-serif !important;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none !important;
+    color: #122d40;
+}
+
+@media (min-width: 1200px) {
+    html {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 900px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    html {
+        font-size: 11px;
+    }
+}

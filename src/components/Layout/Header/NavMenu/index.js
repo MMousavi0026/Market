@@ -1,4 +1,5 @@
 import React, {useCallback} from 'react';
+import {Link} from "react-router-dom";
 import {AppBar, Toolbar} from "@mui/material";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
@@ -14,11 +15,11 @@ import styles from "./NMenu.module.scss";
 const NavMenu = () => {
     const processElements = useCallback((data) => (
         data.map((item, index) => (
-            <NMenuButton key={index} fontSize="1.2rem"{...item}>
+            <NMenuButton key={index} fontSize="1.2rem"{...item} className={item.type === 'list' && styles.listItemChild}>
                 {
                     item.children?.length && (
                         item.type === "button" ?
-                            <Row spacing={2} sx={{ padding: "10px", }}>
+                            <Row spacing={2} sx={{padding: "10px"}}>
                                 {
                                     item.children.map((discountDataItem, index) => (
                                         <Col xs={2} key={index}>
@@ -31,6 +32,23 @@ const NavMenu = () => {
                                     ))
                                 }
                             </Row>
+                            : item.type === "list" ?
+                            <div className={"flex flex-row text-white p-4"}>
+                                {
+                                    item.children.map((item, index) => (
+                                        <div key={index} style={{width: '33%'}} className={"text-white w-4/12 p-3"}>
+                                            <Typography href={`/shop/${item.href}`} className={'text-lg text-secondary font-bold'}>{item.title}</Typography>
+                                            <div className={"flex flex-col pt-4"}>
+                                                {
+                                                    item.children.map((item, index) => (
+                                                        <Link className={"text-white p-1 hover:text-secondary transition-colors: duration-300"} href={`/shop/${item.href}`} key={index}>{item.title}</Link>
+                                                    ))
+                                                }
+                                            </div>
+                                        </div>
+                                    ))
+                                }
+                            </div>
                             :
                             <Row spacing={3} sx={{padding: "10px 24px"}}>
                                 <Col xs={12} className={styles.NMenuList}>
